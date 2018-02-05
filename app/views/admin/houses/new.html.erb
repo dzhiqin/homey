@@ -1,0 +1,124 @@
+<h1>new house</h1>
+<% if @house.errors.any? %>
+  <ul>
+    <%@house.errors.full_messages.each do |error|%>
+      <li><%=error%></li>
+    <%end%>
+  </ul>
+<% end %>
+<%= simple_form_for [:admin,@house] do |f|%>
+<table class="table table-bordered">
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="1"><%= f.input :house_id ,label:'编号',required:true%></td>
+      <td colspan="1"><%= f.input :contact_phone,label:'看房热线' ,required:true%></td>
+      <td colspan="1"><%= f.input :district,label:'区域'%></td>
+      <td colspan="3"><%= f.input :address ,label:'产权地址',required:true%></td>
+    </tr>
+
+    <!-- <tr>
+      <td colspan="4"></td>
+    </tr> -->
+    <tr>
+      <td colspan="1"><%= f.input :landscape,label:'景观' %></td>
+      <td colspan="1"><%= f.input :greening,label:'绿化' %></td>
+      <td colspan="1"><%= f.input :structure,label:'结构' %></td>
+      <td colspan="3"><%= f.input :spatial_planning,label:'空间规划',required:true%></td>
+
+    </tr>
+    <tr>
+
+
+    </tr>
+    <tr>
+      <td rowspan="1">
+        <%= f.label :floor_height ,"层高"%>   |
+        <%= f.check_box :is_duplex %>
+        <%= f.label "是否为复式" %>
+        <%= f.number_field :floor_height ,:class=>"form-control",required:true%>
+      </td>
+
+      <td><%= f.input :property_area,label:'产权面积' %></td>
+
+      <td colspan="1"><%= f.input :actual_area,label:'实际使用面积'%></td>
+      <td><%=f.input :public_area,label:'公摊面积'%></td>
+      <td colspan="2"><%= f.input :completion_date,label:'竣工时间',:start_year=>1970,:end_year=>Date.current.year %></td>
+    </tr>
+    <tr>
+
+      <td>
+        <%= f.label :parking_space,"停车位" %>
+        <%=f.select :parking_space,['有','无'],prompt:"未选择"%>
+      </td>
+      <td>
+        <%= f.label :public_passage ,"公共通道" %>
+        <%=f.select :public_passage,['窄','适中','宽'],prompt:"未选择"%>
+      </td>
+
+      <td>
+        <%= f.label :gated_community ,"封闭式小区" %>
+        <%=f.select :gated_community,['是','否'],prompt:"请选择",required:true%>
+      </td>
+      <td>
+        <%= f.label :wall_malleability,"套内墙体可塑性" %>
+        <%=f.select :wall_malleability,['弱','中','强'],prompt:"未选择",class:"form-control"%>
+      </td>
+      <td>
+        <%= f.label :house_malleability,"涉品公寓可塑性" %>
+        <%=f.select :house_malleability,['弱','中','强'],prompt:"未选择",:class=>"form-control"%>
+      </td>
+      <td>
+        <%= f.label :education_resources,"教育资源" %>
+        <%=f.select :education_resources,['稀少','中等','丰富'],prompt:"未选择",:class=>"form-control"%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :house_upgrade,"套内硬装" %>
+        <%=f.select :house_upgrade,['有','无'],prompt:"请选择",required:true%>
+      </td>
+      <td>
+        <%= f.label :house_furnishings,"套内软装" %>
+        <%=f.select :house_furnishings,['有','无'],prompt:"未选择"%>
+      </td>
+      <td>
+        <%= f.label :gas_pipeline,"燃气管道" %>
+        <%=f.select :gas_pipeline,['有','无'],prompt:"请选择",required:true%>
+      </td>
+      <td>
+        <%= f.label :elevator,"电梯" %>
+        <%=f.select :elevator,['有','无'],prompt:"请选择",required:true%>
+      </td>
+      <td>
+        <%= f.label :charter_costs,"包租成本" %>
+        <%=f.select :charter_costs,['有','无'],prompt:"请选择",required:true%>
+      </td>
+      <td>
+        <%= f.label :sercurity_service,"门禁安保服务" %>
+        <%=f.select :sercurity_service,['有','无'],prompt:"请选择",required:true%>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1">
+        <%= f.label :transportation_convinence,"出入便利性" %>
+        <%=f.select :transportation_convinence,['低','中','高'],prompt:"未选择"%>
+      </td>
+      <td colspan="1">
+        <%= f.label :shopping_convinence,"购物便利性" %>
+        <%=f.select :shopping_convinence,['低','中','高'],prompt:"未选择"%>
+      </td>
+      <td colspan="1">
+        <%= f.label :medical_convinence,"医疗便利性" %>
+        <%=f.select :medical_convinence,['低','中','高'],prompt:"未选择"%>
+      </td>
+
+      <td><%=f.input :price_before_operation,label:'运营前市价'%></td>
+      <td><%=f.input :monthly_rent,label:'月租金'%></td>
+      <td><%=f.input :payment_method,label:'支付方式'%></td>
+    </tr>
+  </tbody>
+</table>
+  <%= f.submit "confirm" %>
+<%end%>

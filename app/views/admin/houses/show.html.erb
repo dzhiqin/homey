@@ -1,0 +1,58 @@
+<h1>show house</h1>
+
+<table class="table table-bordered">
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="1">编号:<%= @house.house_id %></td>
+      <td colspan="1">录入时间: <%= @house.created_at.strftime('%F %H:%M') %></td>
+      <td colspan="1">上次登录: <%= current_user.last_sign_in_at.strftime('%F %H:%M') %></td>
+      <td colspan="1">景观: <%= @house.landscape %></td>
+      <td colspan="1">看房热线 <%= @house.contact_phone %></td>
+
+    </tr>
+
+    <tr>
+      <td colspan="1">区域: <%= @house.district %></td>
+      <td colspan="2">产权地址: <%= @house.address %></td>
+      <td colspan="1">绿化: <%= @house.greening %></td>
+      <td colspan="1">竣工时间 <%= @house.completion_date %></td>
+    </tr>
+
+    <tr>
+      <td >层高(<%= render_single_or_deplex(@house) %>): <%= @house.floor_height %></td>
+      <td>产权面积: <%= @house.property_area %></td>
+      <td>公摊面积: <%= @house.public_area %></td>
+      <td>实际使用面积: <%= @house.actual_area %></td>
+      <td>公共通道: <%= @house.public_passage %></td>
+    </tr>
+    <tr>
+      <td colspan="1">结构: <%= @house.structure %></td>
+      <td colspan="2">空间规划: <%= @house.spatial_planning %></td>
+      <td>套内硬装: <%= @house.house_upgrade %></td>
+      <td>套内软装: <%= @house.house_furnishings %></td>
+    </tr>
+    <tr>
+      <td>停车位: <%= @house.parking_space %></td>
+      <td>封闭式小区: <%= @house.gated_community %></td>
+      <td>燃气管道: <%= @house.gas_pipeline %></td>
+      <td>电梯: <%= @house.elevator %></td>
+      <td>包租成本: <%= @house.charter_costs %></td>
+    </tr>
+    <tr>
+      <td>门禁安保服务: <%= @house.sercurity_service %></td>
+      <td>套内墙体可塑性: <%= @house.wall_malleability %></td>
+      <td>涉品公寓可塑性: <%= @house.house_malleability %></td>
+      <td>教育资源: <%= @house.education_resources %></td>
+      <td>运营前市价: <%= @house.price_before_operation %></td>
+    </tr>
+    <tr>
+      <td>出入便利性: <%= @house.transportation_convinence %></td>
+      <td>购物便利性: <%= @house.shopping_convinence %></td>
+      <td>医疗便利性: <%= @house.medical_convinence %></td>
+      <td>月租金: <%= @house.monthly_rent %></td>
+      <td>支付方式: <%= @house.payment_method %></td>
+    </tr>
+  </tbody>
+</table>

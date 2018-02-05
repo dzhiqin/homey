@@ -21,6 +21,16 @@
 
 en:
   hello: "Hello world"
-  welcome: "hello welcome"
-  admin:
-    confirm: "Confirm"
+  welcome: "welcome you"
+  my_yes: "Yes"
+  my_no: "No"
+  is_duplex: "Duplex"
+  is_single: "Single"
+  my_with: "Yes"
+  my_without: "No"
+  low: "Low"
+  middle: "Middle"
+  high: "High"
+  rare: "Rare"
+  medium: "Medium"
+  plenty: "Plenty"

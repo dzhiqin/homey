@@ -30,27 +30,27 @@
     <tr>
       <td colspan="1">结构: <%= @house.structure %></td>
       <td colspan="2">空间规划: <%= @house.spatial_planning %></td>
-      <td>套内硬装: <%= @house.house_upgrade %></td>
-      <td>套内软装: <%= @house.house_furnishings %></td>
+      <td>套内硬装: <%= render_with_or_without(@house.house_upgrade) %></td>
+      <td>套内软装: <%= render_with_or_without(@house.house_furnishings) %></td>
     </tr>
     <tr>
-      <td>停车位: <%= @house.parking_space %></td>
-      <td>封闭式小区: <%= @house.gated_community %></td>
-      <td>燃气管道: <%= @house.gas_pipeline %></td>
-      <td>电梯: <%= @house.elevator %></td>
-      <td>包租成本: <%= @house.charter_costs %></td>
+      <td>停车位: <%= render_with_or_without(@house.parking_space) %></td>
+      <td>封闭式小区: <%= render_yes_or_no(@house.gated_community) %></td>
+      <td>燃气管道: <%= render_with_or_without(@house.gas_pipeline) %></td>
+      <td>电梯: <%= render_with_or_without(@house.elevator) %></td>
+      <td>包租成本: <%= render_with_or_without(@house.charter_costs) %></td>
     </tr>
     <tr>
-      <td>门禁安保服务: <%= @house.sercurity_service %></td>
-      <td>套内墙体可塑性: <%= @house.wall_malleability %></td>
-      <td>涉品公寓可塑性: <%= @house.house_malleability %></td>
-      <td>教育资源: <%= @house.education_resources %></td>
+      <td>门禁安保服务: <%= render_with_or_without(@house.sercurity_service) %></td>
+      <td>套内墙体可塑性: <%= render_malleability_degree(@house.wall_malleability) %></td>
+      <td>涉品公寓可塑性: <%= render_malleability_degree(@house.house_malleability) %></td>
+      <td>教育资源: <%= render_education_resources_degree(@house.education_resources) %></td>
       <td>运营前市价: <%= @house.price_before_operation %></td>
     </tr>
     <tr>
-      <td>出入便利性: <%= @house.transportation_convinence %></td>
-      <td>购物便利性: <%= @house.shopping_convinence %></td>
-      <td>医疗便利性: <%= @house.medical_convinence %></td>
+      <td>出入便利性: <%= render_convinence_level(@house.transportation_convinence) %></td>
+      <td>购物便利性: <%= render_convinence_level(@house.shopping_convinence) %></td>
+      <td>医疗便利性: <%= render_convinence_level(@house.medical_convinence) %></td>
       <td>月租金: <%= @house.monthly_rent %></td>
       <td>支付方式: <%= @house.payment_method %></td>
     </tr>

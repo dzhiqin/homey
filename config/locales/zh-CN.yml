@@ -1,4 +1,14 @@
 zh-CN:
-  welcome: "欢迎"
-  admin:
-    confirm: "确定"
+  my_yes: "是"
+  my_no: "否"
+  welcome: "欢迎你"
+  is_duplex: "复式"
+  is_single: "单层"
+  my_with: "有"
+  my_without: "无"
+  low: "低"
+  middle: "中"
+  high: "高"
+  rare: "稀少"
+  medium: "适中"
+  plenty: "丰富"

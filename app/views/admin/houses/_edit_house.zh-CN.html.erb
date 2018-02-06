@@ -13,7 +13,12 @@
     <tr>
       <td colspan="1"><%= f.input :house_id ,label:'编号',required:true%></td>
       <td colspan="1"><%= f.input :contact_phone,label:'看房热线' ,required:true%></td>
-      <td colspan="1"><%= f.input :district,label:'区域'%></td>
+      <td colspan="1">
+        <%= f.label :district_id ,"区域" %>
+        <div class="">
+          <%= f.select :district_id,District.all.map{|dis| [dis.name,dis.id]},prompt:"未选择"%>
+        </div>
+      </td>
       <td colspan="3"><%= f.input :address ,label:'产权地址',required:true%></td>
     </tr>
 
@@ -36,7 +41,7 @@
         <%= f.label :floor_height ,"层高"%>   |
         <%= f.check_box :is_duplex %>
         <%= f.label "是否为复式" %>
-        <%= f.number_field :floor_height ,:class=>"form-control",required:true%>
+        <%= f.text_field :floor_height ,:class=>"form-control",required:true%>
       </td>
 
       <td><%= f.input :property_area,label:'产权面积' %></td>

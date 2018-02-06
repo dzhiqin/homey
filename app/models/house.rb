@@ -3,4 +3,6 @@ class House < ApplicationRecord
   validates_format_of :contact_phone,
     :with=> /1\d{10}/,
     :message=> 'must be a phone number!'
+
+  belongs_to :district
 end

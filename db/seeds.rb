@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+  if District.all.empty?
+    District.create!(:name=>'Si Ming')
+    District.create!(:name=>'Hu Li')
+    District.create!(:name=>'Hai Cang')
+    District.create!(:name=>'Ji Mei')
+    District.create!(:name=>'Tong An')
+    District.create!(:name=>'Xiang An')
+  end

@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205030226) do
+ActiveRecord::Schema.define(version: 20180206055906) do
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "houses", force: :cascade do |t|
     t.datetime "last_login"
     t.integer  "house_id"
-    t.integer  "contact_phone"
+    t.string   "contact_phone"
     t.string   "district"
     t.string   "address"
     t.string   "gated_community"
@@ -50,6 +56,8 @@ ActiveRecord::Schema.define(version: 20180205030226) do
     t.datetime "updated_at",                                null: false
     t.boolean  "is_duplex",                 default: false
     t.decimal  "floor_height"
+    t.integer  "district_id"
+    t.index ["district_id"], name: "index_houses_on_district_id"
   end
 
   create_table "users", force: :cascade do |t|

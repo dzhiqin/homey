@@ -2,7 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_locale
   def admin_required
-
+    if !current_user.has_role?(:admin)
+      redirect_to '/'
+      flash[:alert]="you are not admin!"
+    end
   end
   def set_locale
     if params[:locale]&& I18n.available_locales.include?(params[:locale].to_sym)

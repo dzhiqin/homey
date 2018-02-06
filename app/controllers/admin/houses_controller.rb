@@ -1,6 +1,6 @@
 class Admin::HousesController < ApplicationController
   before_action :authenticate_user!
-  # before_action :admin_required
+  before_action :admin_required
   def index
     @houses=House.all
   end

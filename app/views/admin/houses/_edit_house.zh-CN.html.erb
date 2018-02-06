@@ -16,7 +16,7 @@
       <td colspan="1">
         <%= f.label :district_id ,"区域" %>
         <div class="">
-          <%= f.select :district_id,District.all.map{|dis| [dis.name,dis.id]},prompt:"未选择"%>
+          <%= f.select :district_id,District.all.map{|dis| [dis.name,dis.id]},prompt:"请选择",required:true%>
         </div>
       </td>
       <td colspan="3"><%= f.input :address ,label:'产权地址',required:true%></td>
@@ -38,16 +38,16 @@
     </tr>
     <tr>
       <td rowspan="1">
-        <%= f.label :floor_height ,"层高"%>   |
+        <%= f.label :floor_height ,"层高(m)"%>   |
         <%= f.check_box :is_duplex %>
         <%= f.label "是否为复式" %>
         <%= f.text_field :floor_height ,:class=>"form-control",required:true%>
       </td>
 
-      <td><%= f.input :property_area,label:'产权面积' %></td>
+      <td><%= f.input :property_area,label:'产权面积(㎡)' %></td>
 
-      <td colspan="1"><%= f.input :actual_area,label:'实际使用面积'%></td>
-      <td><%=f.input :public_area,label:'公摊面积'%></td>
+      <td colspan="1"><%= f.input :actual_area,label:'实际使用面积(㎡)'%></td>
+      <td><%=f.input :public_area,label:'公摊面积(㎡)'%></td>
       <td colspan="2"><%= f.input :completion_date,label:'竣工时间',:start_year=>1970,:end_year=>Date.current.year %></td>
     </tr>
     <tr>
@@ -118,8 +118,8 @@
         <%=f.select :medical_convinence,{'低'=>0,'中'=>1,'高'=>2},prompt:"未选择"%>
       </td>
 
-      <td><%=f.input :price_before_operation,label:'运营前市价'%></td>
-      <td><%=f.input :monthly_rent,label:'月租金'%></td>
+      <td><%=f.input :price_before_operation,label:'运营前市价(¥)'%></td>
+      <td><%=f.input :monthly_rent,label:'月租金(¥)'%></td>
       <td><%=f.input :payment_method,label:'支付方式'%></td>
     </tr>
 

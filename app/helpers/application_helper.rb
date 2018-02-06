@@ -47,4 +47,13 @@ module ApplicationHelper
       t('high')
     end
   end
+  def render_passage_level(condition)
+    if condition === '0'
+      t('narrow')
+    elsif condition === '1'
+      t('medium')
+    elsif condition === '2'
+      t('wide')
+    end
+  end
 end

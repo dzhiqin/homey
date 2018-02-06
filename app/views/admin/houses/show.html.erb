@@ -14,18 +14,18 @@
     </tr>
 
     <tr>
-      <td colspan="1">区域: <%= @house.district %></td>
+      <td colspan="1">区域: <%= @house.district.name %></td>
       <td colspan="2">产权地址: <%= @house.address %></td>
       <td colspan="1">绿化: <%= @house.greening %></td>
       <td colspan="1">竣工时间 <%= @house.completion_date %></td>
     </tr>
 
     <tr>
-      <td >层高(<%= render_single_or_deplex(@house) %>): <%= @house.floor_height %></td>
-      <td>产权面积: <%= @house.property_area %></td>
-      <td>公摊面积: <%= @house.public_area %></td>
-      <td>实际使用面积: <%= @house.actual_area %></td>
-      <td>公共通道: <%= @house.public_passage %></td>
+      <td >层高(<%= render_single_or_deplex(@house) %>): <%= @house.floor_height %>(m)</td>
+      <td>产权面积: <%= @house.property_area %>(㎡)</td>
+      <td>公摊面积: <%= @house.public_area %>(㎡)</td>
+      <td>实际使用面积: <%= @house.actual_area %>(㎡)</td>
+      <td>公共通道: <%= render_passage_level(@house.public_passage) %></td>
     </tr>
     <tr>
       <td colspan="1">结构: <%= @house.structure %></td>
@@ -45,13 +45,13 @@
       <td>套内墙体可塑性: <%= render_malleability_degree(@house.wall_malleability) %></td>
       <td>涉品公寓可塑性: <%= render_malleability_degree(@house.house_malleability) %></td>
       <td>教育资源: <%= render_education_resources_degree(@house.education_resources) %></td>
-      <td>运营前市价: <%= @house.price_before_operation %></td>
+      <td>运营前市价: <%= @house.price_before_operation %>(¥)</td>
     </tr>
     <tr>
       <td>出入便利性: <%= render_convinence_level(@house.transportation_convinence) %></td>
       <td>购物便利性: <%= render_convinence_level(@house.shopping_convinence) %></td>
       <td>医疗便利性: <%= render_convinence_level(@house.medical_convinence) %></td>
-      <td>月租金: <%= @house.monthly_rent %></td>
+      <td>月租金: <%= @house.monthly_rent %>(¥)</td>
       <td>支付方式: <%= @house.payment_method %></td>
     </tr>
   </tbody>

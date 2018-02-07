@@ -6,4 +6,6 @@ class House < ApplicationRecord
 
   belongs_to :district
   mount_uploader :logo, LogoUploader
+  has_many :house_images,:dependent=>:destroy
+  accepts_nested_attributes_for :house_images,:allow_destroy=>true,:reject_if=>:all_blank
 end

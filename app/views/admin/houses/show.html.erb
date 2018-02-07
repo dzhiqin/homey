@@ -56,6 +56,13 @@
     </tr>
   </tbody>
 </table>
-<% if @house.logo.present? %>
+<!-- <% if @house.logo.present? %>
   <%= link_to image_tag(@house.logo.url(:thumb)),@house.logo.url,:target=>"_blank" %>
-<% end %>
+<% end %> -->
+<ul>
+  <% if !@house.house_images.empty? %>
+  <% end %>
+  <% @house.house_images.each do |house_image| %>
+    <li><%=link_to house_image.image.file.filename,house_image.image.url  ,:target=>"_blank"%></li>
+  <% end %>
+</ul>

@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207023242) do
+ActiveRecord::Schema.define(version: 20180207030306) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "house_images", force: :cascade do |t|
+    t.integer  "house_id"
+    t.string   "image"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["house_id"], name: "index_house_images_on_house_id"
   end
 
   create_table "houses", force: :cascade do |t|

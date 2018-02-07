@@ -6,12 +6,14 @@ class Admin::HousesController < ApplicationController
   end
   def new
     @house=House.new
+    @house.house_images.build
   end
   def show
     @house=House.find(params[:id])
   end
   def edit
     @house=House.find(params[:id])
+    @house.house_images.build if @house.house_images.empty?
   end
   def create
     @house=House.new(house_params)
@@ -37,7 +39,7 @@ class Admin::HousesController < ApplicationController
   end
   private
   def house_params
-    params.require(:house).permit(:house_id,:last_login,:contact_phone,:district_id,:address,:gated_community,:landscape,:greening,:parking_space,:structure,:spatial_planning,:completion_date,:floor_height,:is_duplex,:property_area,:actual_area,:house_upgrade,:house_furnishings,:gas_pipeline,:elevator,:public_area,:wall_malleability,:house_malleability,:public_passage,:sercurity_service,:charter_costs,:monthly_rent,:payment_method,:price_before_operation,:transiportation_convinence,:shopping_convinence,:medical_convinence,:education_resources,:logo,:remove_logo)
+    params.require(:house).permit(:house_id,:last_login,:contact_phone,:district_id,:address,:gated_community,:landscape,:greening,:parking_space,:structure,:spatial_planning,:completion_date,:floor_height,:is_duplex,:property_area,:actual_area,:house_upgrade,:house_furnishings,:gas_pipeline,:elevator,:public_area,:wall_malleability,:house_malleability,:public_passage,:sercurity_service,:charter_costs,:monthly_rent,:payment_method,:price_before_operation,:transiportation_convinence,:shopping_convinence,:medical_convinence,:education_resources,:logo,:remove_logo,:house_images_attributes=>[:id,:image,:description,:_destroy])
 
   end
 end

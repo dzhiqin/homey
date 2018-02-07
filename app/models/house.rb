@@ -5,4 +5,5 @@ class House < ApplicationRecord
     :message=> 'must be a phone number!'
 
   belongs_to :district
+  mount_uploader :logo, LogoUploader
 end

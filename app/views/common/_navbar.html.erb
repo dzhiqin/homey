@@ -11,17 +11,33 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
-          <li><%=link_to('Sign in',new_user_registration_path)%></li>
-          <li><%=link_to(content_tag(:i,'Log in',class:'fa fa-sign-in'),new_user_session_path)%></li>
+          <li><%=link_to(t('sign in'),new_user_registration_path)%></li>
+          <li><%=link_to(content_tag(:i,t('log in'),class:'fa fa-sign-in'),new_user_session_path)%></li>
         <%else%>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理员选项 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+            <li><%=link_to('建材清单')%></li>
+            <li><%=link_to('装修设计图')%></li>
+            <li><%=link_to('房源信息',admin_houses_path)%></li>
+            <li><%=link_to('资讯管理')%></li>
+            <li><%=link_to('员工信息')%></li>
+            <li><%=link_to('广告合作')%></li>
+            <li><%=link_to('线上加盟系统')%></li>
+          </ul>
+        </li>
+
           <li class="dropdown">
             <a href='#' class="dropdown-toggle" data-toggle="dropdown">
               Hi,<%=current_user.email%>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><%=link_to(content_tag(:i,'Log out',class:'fa fa-sign-out'),destroy_user_session_path,method: :delete)%></li>
-              <li><%=link_to('Change Profile',edit_registration_path(:user))%></li>
+              <li><%=link_to('日程看板')%></li>
+              <li><%=link_to('我的资料')%></li>
+              <li><%=link_to(t('change password'),edit_registration_path(:user))%></li>
+              <li><%=link_to(content_tag(:i,t('log out'),class:'fa fa-sign-out'),destroy_user_session_path,method: :delete)%></li>
             </ul>
           </li>
         <%end%>

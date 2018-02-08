@@ -56,4 +56,5 @@ module ApplicationHelper
       t('wide')
     end
   end
+
 end

@@ -155,5 +155,6 @@
 <p class="text-right">
   <%= f.add_nested_fields_link :house_images,"新增图档",class: "btn btn-primary" %>
 </p>
-  <%= f.submit 'confirm'%>
+  <%= link_to "取消",:back,class: "btn btn-default" %>
+  <%= f.submit '确定',class: "btn btn-primary"%>
 <%end%>

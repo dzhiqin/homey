@@ -1,42 +1,46 @@
 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
   <div class="property-item ">
-
-    <a href="http://www.homeyagency.com/properties/B97546" target="_blank">
+    <%= link_to house_path(house),target:"_blank" do %>
       <figure class="property-thumbnail">
-        <img src="http://homey2.jp.production.s3.amazonaws.com/uploads/image/file/858/medium_P1030EB.tmp_____.jpg"  class="img-responsive attachment-property-thumbnail wp-post-image" alt="" width="" height="">
+        <!-- <img src="http://homey2.jp.production.s3.amazonaws.com/uploads/image/file/858/medium_P1030EB.tmp_____.jpg"  class="img-responsive" alt="" width="" height=""> -->
+        <% if house.house_images.first.present?%>
+          <%= image_tag(house.house_images.first.image.url,class:"img-responsive medium") %>
+        <% else %>
+          <%= image_tag("http://placehold.it/400x400&text=No Pic",class: "img-responsive medium") %>
+        <% end %>
         <figcaption>
           <div class="property-title">
             <div class="title">
-              Golden see view
+              编号: <%= house.house_id %>
             </div>
             <div class="subtitle">
-              <span class="type">Appartments</span>
+              <span class="type">地址</span>
               <span>-</span>
-              <span class="location">Si Ming</span>
+              <span class="location"><%= house.address %></span>
             </div>
           </div>
         </figcaption>
       </figure>
-    </a>
+    <% end %>
     <div class="property-content">
       <div class="property-meta clearfix">
 
         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
           <div class="">
             <div class="meta-title">
-              <i class="fa fa-bed"></i>
+              <i class="fa fa-tree"></i>
             </div>
-            <div class="meta-data" data-original-title="Bedrooms" data-toggle="tooltips" title>
-              3 bedrooms
+            <div class="meta-data" >
+              <%= house.landscape %>
             </div>
           </div>
 
           <div class="">
             <div class="meta-title">
-              <i class="fa fa-tint"></i>
+              <i class="fa fa-home"></i>
             </div>
-            <div class="meta-data" data-original-title="Bedrooms" data-toggle="tooltips" title>
-              1 bathrooms
+            <div class="meta-data" >
+              软装: <%= render_with_or_without(house.house_furnishings) %>
             </div>
           </div>
         </div>
@@ -44,19 +48,19 @@
         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
           <div class="">
             <div class="meta-title">
-              <i class="fa fa-expand"></i>
+              <i class="fa fa-arrow-up"></i>
             </div>
-            <div class="meta-data" data-original-title="Bedrooms" data-toggle="tooltips" title>
-              115.0 sq.m.
+            <div class="meta-data" >
+              电梯: <%= render_with_or_without(house.elevator) %>
             </div>
           </div>
 
           <div class="">
             <div class="meta-title">
-              <i class="fa fa-building-o"></i>
+              <i class="fa fa-shield"></i>
             </div>
-            <div class="meta-data" data-original-title="Bedrooms" data-toggle="tooltips" title>
-              5 rooms
+            <div class="meta-data" >
+              安保: <%= render_with_or_without(house.sercurity_service) %>
             </div>
           </div>
         </div>

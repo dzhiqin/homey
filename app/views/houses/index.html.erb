@@ -12,10 +12,10 @@
   <tbody>
     <% @houses.each do |house|%>
       <tr>
-        <td><%= link_to(house.house_id,admin_house_path(house))  %></td>
+        <td><%= link_to(house.house_id,house_path(house))  %></td>
         <td><%= house.address %></td>
         <td><%= house.created_at %></td>
-        
+
       </tr>
     <%end%>
   </tbody>

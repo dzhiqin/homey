@@ -38,7 +38,7 @@ module ApplicationHelper
       t('plenty')
     end
   end
-  def render_convinence_level(condition)
+  def render_convenience_level(condition)
     if condition === '0'
       t('low')
     elsif condition === '1'

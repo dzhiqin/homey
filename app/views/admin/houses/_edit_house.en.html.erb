@@ -17,7 +17,7 @@
       <td colspan="3"><%= f.input :address ,label:'产权地址',required:true%></td>
     </tr>
 
-  
+
     <tr>
       <td colspan="1"><%= f.input :landscape,label:'景观' %></td>
       <td colspan="1"><%= f.input :greening,label:'绿化' %></td>
@@ -99,16 +99,16 @@
     </tr>
     <tr>
       <td colspan="1">
-        <%= f.label :transportation_convinence,"出入便利性" %>
-        <%=f.select :transportation_convinence,{'低'=>0,'中'=>1,'高'=>2},prompt:"未选择"%>
+        <%= f.label :transportation_convenience,"出入便利性" %>
+        <%=f.select :transportation_convenience,{'低'=>0,'中'=>1,'高'=>2},prompt:"未选择"%>
       </td>
       <td colspan="1">
-        <%= f.label :shopping_convinence,"购物便利性" %>
-        <%=f.select :shopping_convinence,{'低'=>0,'中'=>1,'高'=>2},prompt:"未选择"%>
+        <%= f.label :shopping_convenience,"购物便利性" %>
+        <%=f.select :shopping_convenience,{'低'=>0,'中'=>1,'高'=>2},prompt:"未选择"%>
       </td>
       <td colspan="1">
-        <%= f.label :medical_convinence,"医疗便利性" %>
-        <%=f.select :medical_convinence,{'低'=>0,'中'=>1,'高'=>2},prompt:"未选择"%>
+        <%= f.label :medical_convenience,"医疗便利性" %>
+        <%=f.select :medical_convenience,{'低'=>0,'中'=>1,'高'=>2},prompt:"未选择"%>
       </td>
 
       <td><%=f.input :price_before_operation,label:'运营前市价'%></td>

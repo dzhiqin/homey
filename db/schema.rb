@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207030306) do
+ActiveRecord::Schema.define(version: 20180225014634) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -57,13 +57,13 @@ ActiveRecord::Schema.define(version: 20180207030306) do
     t.decimal  "monthly_rent"
     t.string   "payment_method"
     t.decimal  "price_before_operation"
-    t.string   "transportation_convinence"
-    t.string   "shopping_convinence"
-    t.string   "medical_convinence"
+    t.string   "transportation_convenience"
+    t.string   "shopping_convenience"
+    t.string   "medical_convenience"
     t.string   "education_resources"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.boolean  "is_duplex",                 default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.boolean  "is_duplex",                  default: false
     t.decimal  "floor_height"
     t.integer  "district_id"
     t.string   "logo"

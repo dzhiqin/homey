@@ -18,3 +18,4 @@
 //= require bootstrap/dropdown
 //= require bootstrap/carousel
 //= require bootstrap-sprockets
+//= require jquery.flexslider

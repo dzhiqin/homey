@@ -48,9 +48,9 @@
       <td>运营前市价: <%= @house.price_before_operation %>(¥)</td>
     </tr>
     <tr>
-      <td>出入便利性: <%= render_convinence_level(@house.transportation_convinence) %></td>
-      <td>购物便利性: <%= render_convinence_level(@house.shopping_convinence) %></td>
-      <td>医疗便利性: <%= render_convinence_level(@house.medical_convinence) %></td>
+      <td>出入便利性: <%= render_convenience_level(@house.transportation_convenience) %></td>
+      <td>购物便利性: <%= render_convenience_level(@house.shopping_convenience) %></td>
+      <td>医疗便利性: <%= render_convenience_level(@house.medical_convenience) %></td>
       <td>月租金: <%= @house.monthly_rent %>(¥)</td>
       <td>支付方式: <%= @house.payment_method %></td>
     </tr>

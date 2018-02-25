@@ -6,7 +6,7 @@
         <% if house.house_images.first.present?%>
           <%= image_tag(house.house_images.first.image.url,class:"img-responsive medium") %>
         <% else %>
-          <%= image_tag("http://placehold.it/400x400&text=No Pic",class: "img-responsive medium") %>
+          <%= image_tag("http://placehold.it/200x200&text=No Pic",class: "img-responsive medium") %>
         <% end %>
         <figcaption>
           <div class="property-title">

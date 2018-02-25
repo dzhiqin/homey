@@ -2,9 +2,12 @@ class HouseImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fit: [800,800]
+  process resize_to_fit: [800,600]
   version :medium do
     process resize_to_fit: [400,400]
+  end
+  version :thumb do
+    process resize_to_fit: [50,50]
   end
   # Choose what kind of storage to use for this uploader:
   storage :file

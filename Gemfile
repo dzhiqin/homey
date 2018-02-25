@@ -46,7 +46,7 @@ gem 'rolify'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'nested_form_fields'
-gem 'flexslider'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -136,6 +136,8 @@
 
   <% end %>
 </div> -->
+
+
 <%= f.nested_fields_for :house_images do |ff| %>
   <fieldset style="border-left: 5px solid #bbb;margin-bottom:10px;padding:10px">
     <div class="form-group">
@@ -155,6 +157,14 @@
 <p class="text-right">
   <%= f.add_nested_fields_link :house_images,"新增图档",class: "btn btn-primary" %>
 </p>
+
+<!-- <%= f.text_field :cp_lat, :id => "maplat", :type => "hidden" %>
+<%= f.text_field :cp_lng, :id => "maplng", :type => "hidden" %>
+<%= render "common/baidumap_1" %> -->
   <%= link_to "取消",:back,class: "btn btn-default" %>
   <%= f.submit '确定',class: "btn btn-primary"%>
+  <br>
+  <%= f.text_field :cp_lat, :id => "maplat", :type => "hidden" %>
+  <%= f.text_field :cp_lng, :id => "maplng", :type => "hidden" %>
+  <%= render "common/baidumap_1" %>
 <%end%>

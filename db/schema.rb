@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225014634) do
+ActiveRecord::Schema.define(version: 20180225094109) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20180225014634) do
     t.decimal  "floor_height"
     t.integer  "district_id"
     t.string   "logo"
+    t.string   "cp_lng"
+    t.string   "cp_lat"
     t.index ["district_id"], name: "index_houses_on_district_id"
   end
 

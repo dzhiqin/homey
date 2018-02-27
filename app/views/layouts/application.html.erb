@@ -15,15 +15,15 @@
         <%= render "common/navbar"%>
 
         <%= render "common/flashes" %>
-
+        <%=yield%>
         <div class="container">
           <div class="row">
 
-            <%=yield%>
+
           </div>
         </div>
 
-        <%=render "common/footer"%>
+        <!-- <%=render "common/footer"%> -->
         <p class="text-right">
           <%= link_to "中文版",:controller=>controller_name,:action=>action_name,:locale=>"zh-CN" %> /
           <%= link_to "English",:controller=>controller_name,:action=>action_name,:locale=>"en"%>

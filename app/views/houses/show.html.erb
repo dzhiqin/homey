@@ -8,7 +8,8 @@
     <tr>
       <td colspan="1">编号:<%= @house.house_id %></td>
       <td colspan="1">录入时间: <%= @house.created_at.strftime('%F %H:%M') %></td>
-      <td colspan="1">上次登录: <%= current_user.last_sign_in_at.strftime('%F %H:%M') %></td>
+
+      <td colspan="1">上次登录: <%if current_user%> <%= current_user.last_sign_in_at.strftime('%F %H:%M') %> <%end%></td>
       <td colspan="1">景观: <%= @house.landscape %></td>
       <td colspan="1">看房热线 <%= @house.contact_phone %></td>
 

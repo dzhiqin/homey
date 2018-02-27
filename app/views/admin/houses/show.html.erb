@@ -1,6 +1,7 @@
-<h1>房源信息</h1>
 
-<table class="table table-bordered">
+<h4 class="separate-title">房源信息</h4>
+<hr class="separate-line">
+<table class="table table-bordered table-striped table-hover table-responsive">
   <thead>
   </thead>
   <tbody>
@@ -56,14 +57,62 @@
     </tr>
   </tbody>
 </table>
-<%= link_to("返回",:back,:class=>"btn btn-default") %>
-<!-- <% if @house.logo.present? %>
-  <%= link_to image_tag(@house.logo.url(:thumb)),@house.logo.url,:target=>"_blank" %>
-<% end %> -->
-<ul>
+
+<div class="col-md-8">
   <% if !@house.house_images.empty? %>
+  <section class="slider">
+    <div id="slider" class="flexslider">
+      <ul class="slides">
+        <% @house.house_images.each do |house_image| %>
+        <li>
+          <%= image_tag(house_image.image.url) %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div id="carousel" class="flexslider">
+      <ul class="slides">
+        <% @house.house_images.each do |house_image| %>
+        <li>
+          <%= image_tag(house_image.image.medium.url) %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+  <% else %>
+    <h4>暂未上传图片</h4>
   <% end %>
-  <% @house.house_images.each do |house_image| %>
-    <li><%=link_to house_image.image.file.filename,house_image.image.url  ,:target=>"_blank"%></li>
-  <% end %>
-</ul>
+</div>
+<div class="col-md-4 col-lg-4">
+
+  <%= render "common/baidumap_2" %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    SyntaxHighlighter.all();
+  });
+  $(window).load(function(){
+    $('#carousel').flexslider({
+      animation: "slide",
+      controlNav: false,
+      animationLoop: false,
+      slideshow: false,
+      itemWidth: 210,
+      itemMargin: 5,
+      asNavFor: '#slider'
+    });
+
+    $('#slider').flexslider({
+      animation: "slide",
+      controlNav: false,
+      animationLoop: false,
+      slideshow: false,
+      sync: "#carousel",
+      start: function(slider){
+        $('body').removeClass('loading');
+      }
+    });
+  });
+</script>

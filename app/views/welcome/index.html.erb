@@ -48,10 +48,13 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-<hr>
+
 <br>
+
 <div class="container">
   <div class="row">
+    <h4 class="separate-title">房源信息浏览</h4>
+    <hr class="separate-line">
     <div class="col-md-9 col-lg-10 col-sm-12 col-xs-12">
       <% @houses.each do |house| %>
         <%= render "houses/item",:house=> house %>

@@ -1,7 +1,7 @@
-<h1>show</h1>
 
-
-<table class="table table-bordered">
+<h4 class="separate-title">房源信息</h4>
+<hr class="separate-line">
+<table class="table table-bordered table-striped table-hover table-responsive">
   <thead>
   </thead>
   <tbody>
@@ -68,8 +68,6 @@
           <%= image_tag(house_image.image.url) %>
         </li>
         <% end %>
-
-
       </ul>
     </div>
     <div id="carousel" class="flexslider">
@@ -82,10 +80,12 @@
       </ul>
     </div>
   </section>
+  <% else %>
+    <h4>暂未上传图片</h4>
   <% end %>
 </div>
 <div class="col-md-4 col-lg-4">
-  <%= link_to("房源信息栏","/",class: "btn btn-primary") %>
+
   <%= render "common/baidumap_2" %>
 </div>
 

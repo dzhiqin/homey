@@ -149,8 +149,17 @@
   font-weight: bold;
 }
 // flexslider 部分
-.slider { margin: 50px 0 10px!important;}
+.slider { margin: 0px 0 10px!important;}
  #carousel li {margin-right: 5px;}
  #carousel img {display: block; opacity: .5; cursor: pointer;}
  #carousel img:hover {opacity: 1;}
  #carousel .flex-active-slide img {opacity: 1; cursor: default;}
+// separate
+.separate-title {
+  margin-bottom: 0;
+  color: #e84828;
+}
+.separate-line {
+  margin-top: 0;
+  border-top: 4px solid #eee;
+}

@@ -1,6 +1,7 @@
 <table class="table table-bordered">
   <thead>
-    <th>user email</th>
+    <th>email账号</th>
+    <th>注册时间</th>
     <th>员工</th>
     <th>美工</th>
     <th>客房管家</th>
@@ -22,6 +23,7 @@
     <% users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
+        <td><%= user.created_at.strftime('%F')%></td>
         <td>
           <%= check_box_tag "checkbox_employee[#{user.id}]",1,user.has_role?(:employee),:data=>{:url=>employee_admin_user_manager_path(user)},:class=>"change_role" %>
         </td>
@@ -74,3 +76,4 @@
 
   </tbody>
 </table>
+<%= paginate users %>

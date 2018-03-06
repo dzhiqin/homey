@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
+  scope :recent, -> {order('created_at DESC')}
   def add_a_role(role)
     self.add_role role
   end

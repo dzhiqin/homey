@@ -2,7 +2,16 @@ class Admin::UserManagersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_required
   def index
-    @users=User.all
+    if params[:from_date].present?
+      @from_date=params[:from_date]
+      @to_date=params[:to_date]
+      @users=User.where("created_at>=? and created_at <=?",params[:from_date],params[:to_date]).recent.page(params[:page]).per(per_page)
+    elsif params[:user_email].present?
+      @user_email=params[:user_email]
+      @users=User.where('email LIKE ?',"#{params[:user_email]}%").recent.page(params[:page]).per(per_page)
+    else
+      @users=User.recent.page(params[:page]).per(per_page)
+    end
   end
   def art_designer
     @user=User.find(params[:id])
@@ -13,7 +22,7 @@ class Admin::UserManagersController < ApplicationController
     end
   end
   def employee
-    @users=User.all
+    @users=User.recent.page(params[:page]).per(per_page)
     @user=User.find(params[:id])
     if @user.has_role?(:employee)
       @user.remove_role :employee
@@ -128,7 +137,7 @@ class Admin::UserManagersController < ApplicationController
     end
   end
   def admin
-    @users=User.all
+
     @user=User.find(params[:id])
     if @user.has_role?(:admin)
       @user.remove_role :admin
@@ -136,5 +145,9 @@ class Admin::UserManagersController < ApplicationController
 
       @user.add_role :admin
     end
+  end
+  private
+  def per_page
+    20
   end
 end

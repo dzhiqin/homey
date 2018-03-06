@@ -5,6 +5,24 @@
 <div class="tab-content">
   <div class="tab-pane fade in active" id="permission-config">
     <h1>用户权限设置</h1>
+    <div class="col-md-12 col-lg-12">
+      <%= form_tag admin_user_managers_path,method: :get do %>
+        从<%= date_field_tag 'from_date',"2010-01-01"%>到<%= date_field_tag 'to_date',Date.today %>
+        <%= submit_tag '按注册日期筛选',:class=>"btn btn-sm btn-primary" %>
+        <%if @from_date.present?%>
+        (筛选日期:<%= @from_date%> 到 <%= @to_date %>)
+        <%end%>
+      <% end %>
+    </div>
+    <div class="col-md-12 col-lg-12">
+      <%= form_tag admin_user_managers_path,method: :get do %>
+        <%= text_field_tag 'user_email',nil,placeholder:'请输入注册邮箱名' %>
+        <%= submit_tag '按注册名筛选',:class=>"btn btn-sm btn-primary" %>
+        <%if @user_email.present?%>
+        (筛选条件: <%= @user_email %>)
+        <%end %>
+      <%end%>
+    </div>
     <div class="user-table" id="user-table">
       <%= render "table",:users=>@users %>
     </div>

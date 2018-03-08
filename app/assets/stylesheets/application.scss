@@ -17,6 +17,9 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+ body,html ,button,input,select,textarea {
+   font-family: sans-serif,"Helvetica Neue",Helvetica,Tahoma,sans-serif
+ }
  .alert-container{
   position: absolute;
   z-index: 100;
@@ -39,6 +42,7 @@
 .property-item {
   position: relative;
   margin-bottom: 30px;
+
   border: 1px solid #ddd;
 }
 .property-item .property-thumbnail{
@@ -226,4 +230,93 @@
   position: relative;
   top: -0.65rem;
   left: -5.05rem;
+}
+//////////
+/* 本例子css */
+.slideTxtBox{ width:100%; border:none;  margin-top: 100px;}
+.slideTxtBox .hd{
+  height:50px;
+  background:#fff; padding:0 ;    position:relative;
+  margin: 0 auto;width: 1200px;
+  }
+.slideTxtBox .hd ul{
+  float:left;  position:absolute; top:16px;   list-style: none;
+  width:100%;
+   height:50px;
+  justify-content: space-between;
+}
+
+.slideTxtBox .hd ul li{
+  float:left; padding:0; cursor:pointer;
+  margin-right: 160px;
+  height: 34px;
+  text-align: center;
+  width: 77px;
+  text-align: center;
+  font-size: 16px;
+}
+.slideTxtBox .hd ul li:last-child{
+  margin-right: 0px;
+}
+.slideTxtBox .hd ul li.on{   background:#fff; color: red;border-bottom: 4px solid red;}
+
+.slideTxtBox .bd .box-left{
+  padding: 10%;
+}
+.slideTxtBox .bd .box-right{
+  padding: 10%;
+  color: #fff;
+}
+.slideTxtBox .bd{
+  width: 100%;;
+  // background-color: #ccc;
+  background-color: #2e3047;
+  color: #fff;
+}
+.slideTxtBox .bd ul{
+  width: 100%;
+  padding:15px;
+  zoom:1;
+  height: 500px;
+  list-style: none;
+}
+.slideTxtBox .bd li{
+  height:24px; line-height:24px;
+  position: relative;
+  left: 0;
+}
+.slideTxtBox .bd li a{
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 5px;
+  min-width: 200px;
+}
+.slideTxtBox .bd li a:hover{
+  background-color: #f5533d;
+}
+.slideTxtBox .bd li .box-item{
+  margin-bottom: 20px;
+}
+.slideTxtBox .bd li .date{ float:right; color:#999;  }
+
+.title-main{
+  // margin-top: 30px;
+  height: 71px;
+  font-size: 30px;
+  text-align: center;
+  font-family: sans-serif,"Helvetica Neue",Helvetica,Tahoma,sans-serif
+}
+.hot-contain{
+  margin: 0 5%;
+}
+.hot-contain .more{
+  text-align: right;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.hot-contain .more a:hover{
+  color: #f5533d;
+  text-decoration: none;
 }

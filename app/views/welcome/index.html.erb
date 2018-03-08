@@ -49,17 +49,150 @@
   </a>
 </div>
 
-<br>
+
+<div class="col-md-12 " style="margin-top:30px;">
+  <h2 class="title-main">主要功能与服务</h2>
+</div>
+<!-- //=================== -->
+
+<div class="slideTxtBox">
+
+  <div class="hd">
+
+    <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
 
 
-    <h4 class="separate-title">房源信息浏览</h4>
-    <hr class="separate-line">
-    <div class="col-md-9 col-lg-10 col-sm-12 col-xs-12">
-      <% @houses.each do |house| %>
-        <%= render "houses/item",:house=> house %>
-      <% end %>
+    <ul>
+      <li>资管</li>
+      <li>信息</li>
+      <li>委托</li>
+      <li>房租</li>
+      <li>装修</li>
 
-    </div>
+    </ul>
+  </div>
+  <div class="bd">
+    <ul >
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <li class="box-left">
+          <%= image_tag("http://placehold.it/200x200&text=No Pic",class: "img-responsive medium") %>
+        </li>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <li class="box-right">
+          <p>资产管理介绍</p>
+          <p>更多详细信息</p>
+          <%= link_to("浏览","/")  %>
+        </li>
+      </div>
+
+    </ul>
+    <ul >
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <li class="box-left">
+          <%= image_tag("http://placehold.it/200x200&text=No Pic",class: "img-responsive medium") %>
+        </li>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <li class="box-right">
+          <div class="box-item">
+            <%=link_to("本地生活资讯","/")%>
+          </div>
+          <div class="box-item">
+            <%=link_to("不动产新闻","/")%>
+          </div>
+          <div class="box-item">
+            <%=link_to("优质不动产信息","/")%>
+          </div>
+          <div class="box-item">
+            <%=link_to("求租信息","/")%>
+          </div>
+
+        </li>
+      </div>
+    </ul>
+    <ul >
+      <div class="col-md-6 col-sm-6 col-ms-6">
+        <li class="box-left">
+          <%= image_tag("http://placehold.it/200x200&text=No Pic",class: "img-responsive medium") %>
+        </li>
+      </div>
+      <div class="col-md-6 col-sm-6 col-ms-6">
+        <li class="box-right">
+          <div class="box-item">
+            <%=link_to("优质不动产信息录入","/")%>
+          </div>
+          <div class="box-item">
+            <%=link_to("发布求租信息","/")%>
+          </div>
+        </li>
+      </div>
+
+
+    </ul>
+    <ul >
+      <div class="col-md-6 col-sm-6 col-ms-6">
+        <li class="box-left">
+          <%= image_tag("http://placehold.it/200x200&text=No Pic",class: "img-responsive medium") %>
+        </li>
+      </div>
+      <div class="col-md-6 col-sm-6 col-ms-6">
+        <li class="box-right">
+          <p>您可以完成：</p>
+          <p>房租租赁</p>
+          <p>房租催缴</p>
+          <p>房租支付</p>
+          <div class="box-item">
+            <%=link_to("点击进入","/")%>
+          </div>
+        </li>
+      </div>
+
+
+    </ul>
+    <ul >
+      <div class="col-md-6 col-sm-6 col-ms-6">
+        <li class="box-left">
+          <%= image_tag("http://placehold.it/200x200&text=No Pic",class: "img-responsive medium") %>
+        </li>
+      </div>
+      <div class="col-md-6 col-sm-6 col-ms-6">
+        <li class="box-right">
+          <p>您可以查看或编辑：</p>
+          <div class="box-item">
+            <%=link_to("室内装修设计图","/")%>
+          </div>
+          <div class="box-item">
+            <%=link_to("建材清单","/")%>
+          </div>
+        </li>
+      </div>
+
+
+    </ul>
+  </div>
+</div>
+<script
+ type="text/javascript">jQuery(".slideTxtBox").slide({effect:"fade"});
+</script>
+
+<!-- ============================ -->
+<div class="col-md-12 title-main">
+
+
+</div>
+<div class="hot-contain" style="margin-top:30px;">
+  <h2 class="title-main">热门房源速览</h2>
+  <p class="more"><%= link_to("查看更多","/")%></p>
+  <hr class="separate-line">
+  <div class="col-md-12 col-sm-12">
+    <% @houses.each do |house| %>
+      <%= render "houses/item",:house=> house %>
+    <% end %>
+
+  </div>
+</div>
+
     <div class="col-md-3 col-lg-2 col-sm-12 col-xs-12">
       <%= link_to "资讯栏","/" ,class: "btn btn-primary"%>
     </div>

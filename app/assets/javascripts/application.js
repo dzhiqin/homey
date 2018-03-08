@@ -19,3 +19,4 @@
 //= require bootstrap/carousel
 //= require bootstrap-sprockets
 //= require jquery.flexslider
+//= require jquery.SuperSlide.2.1.1

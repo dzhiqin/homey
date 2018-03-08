@@ -2,7 +2,6 @@
   <div class="property-item ">
     <%= link_to house_path(house),target:"_blank" do %>
       <figure class="property-thumbnail">
-        <!-- <img src="http://homey2.jp.production.s3.amazonaws.com/uploads/image/file/858/medium_P1030EB.tmp_____.jpg"  class="img-responsive" alt="" width="" height=""> -->
         <% if house.house_images.first.present?%>
           <%= image_tag(house.house_images.first.image.url,class:"img-responsive medium") %>
         <% else %>

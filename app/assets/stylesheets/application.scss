@@ -42,8 +42,10 @@
 .property-item {
   position: relative;
   margin-bottom: 30px;
-
   border: 1px solid #ddd;
+}
+.property-item:hover{
+  box-shadow: 2px 4px #ccc;
 }
 .property-item .property-thumbnail{
   position: relative;
@@ -232,33 +234,37 @@
   left: -5.05rem;
 }
 //////////
-/* 本例子css */
-.slideTxtBox{ width:100%; border:none;  margin-top: 100px;}
+/* superslide 本例子css */
+.slideTxtBox{ width:100%; border:none;}
 .slideTxtBox .hd{
   height:50px;
-  background:#fff; padding:0 ;    position:relative;
-  margin: 0 auto;width: 1200px;
+  background:#fff;
+  padding:0 ;
+  position:relative;
+  margin: 0 auto;
   }
 .slideTxtBox .hd ul{
-  float:left;  position:absolute; top:16px;   list-style: none;
+  float:left;
+  position:absolute;
+  top:16px;
+  list-style: none;
   width:100%;
-   height:50px;
   justify-content: space-between;
 }
-
+.slideTxtBox .hd ul{
+  margin:0 auto;
+}
 .slideTxtBox .hd ul li{
-  float:left; padding:0; cursor:pointer;
-  margin-right: 160px;
-  height: 34px;
-  text-align: center;
-  width: 77px;
+  width: 19.5%;
   text-align: center;
   font-size: 16px;
+  height: 35px;
+
 }
-.slideTxtBox .hd ul li:last-child{
-  margin-right: 0px;
+.slideTxtBox .hd ul li.on{
+  color: #f5533d;
+  border-bottom: 4px solid #f5533d;
 }
-.slideTxtBox .hd ul li.on{   background:#fff; color: red;border-bottom: 4px solid red;}
 
 .slideTxtBox .bd .box-left{
   padding: 10%;
@@ -268,7 +274,8 @@
   color: #fff;
 }
 .slideTxtBox .bd{
-  width: 100%;;
+  width: 110%;
+  margin: 0 -20px;
   // background-color: #ccc;
   background-color: #2e3047;
   color: #fff;
@@ -302,14 +309,12 @@
 .slideTxtBox .bd li .date{ float:right; color:#999;  }
 
 .title-main{
-  // margin-top: 30px;
-  height: 71px;
   font-size: 30px;
   text-align: center;
   font-family: sans-serif,"Helvetica Neue",Helvetica,Tahoma,sans-serif
 }
 .hot-contain{
-  margin: 0 5%;
+  margin: 0 10%;
 }
 .hot-contain .more{
   text-align: right;

@@ -16,7 +16,7 @@
 <div>
   <input id="biao" type="button" value="标注" style="cursor: pointer;" class="btn btn-success btn-sm"/>
 </div>
-<div style="width: 420px; height: 340px; border: 1px solid gray; float: left;" id="container"></div>
+<div style="width: 100%; height: 340px; border: 1px solid gray; float: left;" id="container"></div>
 <script type="text/javascript">
   var map = new BMap.Map("container");
   //创建地址解析的实例
@@ -87,7 +87,7 @@
       map.addOverlay(marker);
       marker.enableDragging(); //可以拖动
       //创建信息窗口
-      var infoWindow = new BMap.InfoWindow("这是您公司的位置。<br/>如果不正确，请拖动红色图标");
+      var infoWindow = new BMap.InfoWindow("这是您定位的位置。<br/>如果不正确，请拖动红色图标");
       //显示窗口
       marker.openInfoWindow(infoWindow);
       //点击监听

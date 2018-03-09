@@ -6,10 +6,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href='/'>Homey</a>
+      <a class="navbar-brand" href='/'>
+        <img src='<%= image_url "homey_icon.jpg"%>' alt="" class="nav-icon">
+      </a>
+
+
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
+      <!-- <p class="text-right">
+        <%= link_to "中文版",:controller=>controller_name,:action=>action_name,:locale=>"zh-CN" %> /
+        <%= link_to "English",:controller=>controller_name,:action=>action_name,:locale=>"en"%>
+      </p> -->
       <ul class="nav navbar-nav navbar-right">
+
+        <li><%= link_to "中文版",:controller=>controller_name,:action=>action_name,:locale=>"zh-CN" %> </li>
+        <li><%= link_to "English",:controller=>controller_name,:action=>action_name,:locale=>"en"%></li>
         <li><%=link_to('关于我们',about_us_path)%></li>
         <li><%=link_to('员工通道')%></li>
         <% if !current_user %>
@@ -26,8 +37,9 @@
             <li><%=link_to('用户权限管理',admin_user_managers_path)%></li>
             <li><%=link_to('建材清单')%></li>
             <li><%=link_to('装修设计图')%></li>
-            <li><%=link_to('房源信息',admin_houses_path)%></li>
-            <li><%=link_to('资讯管理')%></li>
+            <li><%=link_to('资产管理',admin_houses_path)%></li>
+            <li><%=link_to('房源管理',admin_houses_path)%></li>
+            <li><%=link_to('信息管理')%></li>
             <li><%=link_to('员工信息')%></li>
             <li><%=link_to('广告合作')%></li>
             <li><%=link_to('线上加盟系统')%></li>

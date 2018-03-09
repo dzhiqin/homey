@@ -30,6 +30,23 @@
 .navbar {
   margin-bottom: 0px;
 }
+.navbar-brand{
+  padding: 0;
+}
+.navbar-brand .nav-icon{
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+
+}
+.icon-title{
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin-left: 50px;
+  padding: auto;
+}
 .show-image{
 
   width: 100%;
@@ -274,8 +291,8 @@
   color: #fff;
 }
 .slideTxtBox .bd{
-  width: 110%;
-  margin: 0 -20px;
+  // width: 110%;
+  // margin: 0 -20px;
   // background-color: #ccc;
   background-color: #2e3047;
   color: #fff;
@@ -324,4 +341,9 @@
 .hot-contain .more a:hover{
   color: #f5533d;
   text-decoration: none;
+}
+.sign-container{
+  background-color: #ccc;
+  height: 300px;
+  width: 100%;
 }

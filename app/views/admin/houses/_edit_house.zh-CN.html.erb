@@ -1,25 +1,63 @@
-<% if house.errors.any? %>
+<!-- <% if house.errors.any? %>
   <ul>
     <%house.errors.full_messages.each do |error|%>
       <li><%=error%></li>
     <%end%>
   </ul>
-<% end %>
+<% end %> -->
 <%= simple_form_for [:admin,house] do |f|%>
 <table class="table table-bordered">
   <thead>
   </thead>
   <tbody>
     <tr>
-      <td colspan="1"><%= f.input :house_id ,label:'编号',required:true%></td>
-      <td colspan="1"><%= f.input :contact_phone,label:'看房热线' ,required:true%></td>
       <td colspan="1">
-        <%= f.label :district_id ,"区域" %>
-        <div class="">
-          <%= f.select :district_id,District.all.map{|dis| [dis.name,dis.id]},prompt:"请选择",required:true%>
+        <div class="form-group <%=(f.object.errors[:house_id].any?)? "has-error" : ""%>">
+          <%= f.input :house_id ,label:'编号', required:true,placeholder:"必填",class:"required-label"%>
+          <!-- <%if f.object.errors[:house_id]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:house_id],"、") %>
+            </span>
+          <%end%> -->
         </div>
+
       </td>
-      <td colspan="3"><%= f.input :address ,label:'产权地址',required:true%></td>
+      <td colspan="1">
+        <div class="form-group <%= (f.object.errors[:contact_phone].any?)? "has-error" : ""%>">
+          <%= f.input :contact_phone,label:'看房热线' ,required:true,placeholder:"必填"%>
+          <!-- <% if f.object.errors[:contact_phone]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:contact_phone],"、") %>
+            </span>
+          <% end %> -->
+        </div>
+
+      </td>
+      <td colspan="1">
+        <div class="form-group <%= (f.object.errors[:district_id].any?)? "has-error" : ""%>">
+          <%= f.label :district_id ,"区域" %>
+          <div class="">
+            <%= f.select :district_id,District.all.map{|dis| [dis.name,dis.id]},prompt:"必选",required:true%>
+          </div>
+          <% if f.object.errors[:district_id]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:district_id],"、") %>
+            </span>
+          <% end %>
+        </div>
+
+      </td>
+      <td colspan="3">
+        <div class="form-group <%= (f.object.errors[:address].any?)? "has-error" : ""%>">
+          <%= f.input :address ,label:'产权地址',required:true,placeholder:"必填"%>
+          <!-- <% if f.object.errors[:address] %>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:address],"、") %>
+            </span>
+          <%end%> -->
+        </div>
+
+      </td>
     </tr>
 
     <!-- <tr>
@@ -29,7 +67,16 @@
       <td colspan="1"><%= f.input :landscape,label:'景观' %></td>
       <td colspan="1"><%= f.input :greening,label:'绿化' %></td>
       <td colspan="1"><%= f.input :structure,label:'结构' %></td>
-      <td colspan="3"><%= f.input :spatial_planning,label:'空间规划',required:true%></td>
+      <td colspan="3">
+        <div class="form-group <%= (f.object.errors[:spatial_planning].any?)? "has-error" : ""%>">
+          <%= f.input :spatial_planning,label:'空间规划',required:true,placeholder:"必填"%>
+          <!-- <%if f.object.errors[:spatial_planning]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:spatial_planning],"、") %>
+            </span>
+          <%end%> -->
+        </div>
+      </td>
 
     </tr>
     <tr>
@@ -41,7 +88,15 @@
         <%= f.label :floor_height ,"层高(m)"%>   |
         <%= f.check_box :is_duplex %>
         <%= f.label "是否为复式" %>
-        <%= f.text_field :floor_height ,:class=>"form-control",required:true%>
+        <div class="form-group <%= (f.object.errors[:floor_height].any?)? "has-error" : ""%>">
+          <%= f.text_field :floor_height ,:class=>"form-control",required:true,placeholder:"必填"%>
+          <% if f.object.errors[:floor_height]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:floor_height],"、") %>
+            </span>
+          <% end %>
+        </div>
+
       </td>
 
       <td><%= f.input :property_area,label:'产权面积(㎡)' %></td>
@@ -62,8 +117,16 @@
       </td>
 
       <td>
-        <%= f.label :gated_community ,"封闭式小区" %>
-        <%=f.select :gated_community,{'否'=>0,'是'=>1},prompt:"请选择",required:true%>
+        <div class="form-group <%=(f.object.errors[:gated_community].any?)? "has-error" : ""%>">
+          <%= f.label :gated_community ,"封闭式小区" %>
+          <%=f.select :gated_community,{'否'=>0,'是'=>1},prompt:"必选",required:true%>
+          <% if f.object.errors[:gated_community] %>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:gated_community],"、") %>
+            </span>
+          <% end %>
+        </div>
+
       </td>
       <td>
         <%= f.label :wall_malleability,"套内墙体可塑性" %>
@@ -80,28 +143,68 @@
     </tr>
     <tr>
       <td>
-        <%= f.label :house_upgrade,"套内硬装" %>
-        <%=f.select :house_upgrade,{'无'=>0,'有'=>1},prompt:"请选择",required:true%>
+        <div class="form-group <%= (f.object.errors[:house_upgrade].any?)? "has-error" : ""%>">
+          <%= f.label :house_upgrade,"套内硬装" %>
+          <%=f.select :house_upgrade,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
+          <% if f.object.errors[:house_upgrade]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:house_upgrade],"、") %>
+            </span>
+          <% end %>
+        </div>
+
       </td>
       <td>
         <%= f.label :house_furnishings,"套内软装" %>
         <%=f.select :house_furnishings,{'无'=>0,'有'=>1},prompt:"未选择"%>
       </td>
       <td>
-        <%= f.label :gas_pipeline,"燃气管道" %>
-        <%=f.select :gas_pipeline,{'无'=>0,'有'=>1},prompt:"请选择",required:true%>
+        <div class="form-group <%= (f.object.errors[:gas_pipeline].any?)? "has-error" : ""%>">
+          <%= f.label :gas_pipeline,"燃气管道" %>
+          <%=f.select :gas_pipeline,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
+          <% if f.object.errors[:gas_pipeline]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:gas_pipeline],"、") %>
+            </span>
+          <% end %>
+        </div>
+
       </td>
       <td>
-        <%= f.label :elevator,"电梯" %>
-        <%=f.select :elevator,{'无'=>0,'有'=>1},prompt:"请选择",required:true%>
+        <div class="form-group <%= (f.object.errors[:elevator].any?)? "has-error" : ""%>">
+          <%= f.label :elevator,"电梯" %>
+          <%=f.select :elevator,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
+          <% if f.object.errors[:elevator]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:elevator],"、") %>
+            </span>
+          <% end %>
+        </div>
+
       </td>
       <td>
-        <%= f.label :charter_costs,"包租成本" %>
-        <%=f.select :charter_costs,{'无'=>0,'有'=>1},prompt:"请选择",required:true%>
+        <div class="form-group <%= (f.object.errors[:charter_costs].any?)? "has-error" : ""%>">
+          <%= f.label :charter_costs,"包租成本" %>
+          <%=f.select :charter_costs,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
+          <% if f.object.errors[:charter_costs]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:charter_costs],"、") %>
+            </span>
+          <% end %>
+        </div>
+
       </td>
       <td>
-        <%= f.label :sercurity_service,"门禁安保服务" %>
-        <%=f.select :sercurity_service,{'无'=>0,'有'=>1},prompt:"请选择",required:true%>
+        <div class="form-group <%= (f.object.errors[:sercurity_service].any?)? "has-error" : ""%>">
+          <%= f.label :sercurity_service,"门禁安保服务" %>
+          <%=f.select :sercurity_service,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
+          <% if f.object.errors[:sercurity_service]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:sercurity_service],"、") %>
+            </span>
+          <% end %>
+        </div>
+
       </td>
     </tr>
     <tr>
@@ -141,14 +244,14 @@
 <%= f.nested_fields_for :house_images do |ff| %>
   <fieldset style="border-left: 5px solid #bbb;margin-bottom:10px;padding:10px">
     <div class="form-group">
-      <%= ff.label :image %>
+      <%= ff.label :image,"添加图片" %>
       <%= ff.file_field :image,:class=>"form-control" %>
       <% if ff.object.image.present? %>
         已上传档案<%= link_to ff.object.image.file.filename,ff.object.image.url,:target=>"_blank" %>
       <% end %>
     </div>
     <div class="form-group">
-      <%= ff.label :description %>
+      <%= ff.label :description ,"图片简单描述"%>
       <%= ff.text_field :description,:class=>"form-control" %>
     </div>
     <%= ff.remove_nested_fields_link "移除这个图片",class: "btn btn-danger" %>
@@ -158,9 +261,7 @@
   <%= f.add_nested_fields_link :house_images,"新增图档",class: "btn btn-primary" %>
 </p>
 
-<!-- <%= f.text_field :cp_lat, :id => "maplat", :type => "hidden" %>
-<%= f.text_field :cp_lng, :id => "maplng", :type => "hidden" %>
-<%= render "common/baidumap_1" %> -->
+
   <%= link_to "取消",:back,class: "btn btn-default" %>
   <%= f.submit '确定',class: "btn btn-primary"%>
   <br>

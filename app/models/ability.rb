@@ -3,7 +3,17 @@ class Ability
 
   def initialize(user)
     if user.has_role?(:admin)
-      can :manage, :all 
+      can :manage, :all
+    elsif user.has_role?(:imanager)
+      can :manage,House
+    elsif user.has_role?(:imanager_p)
+      can :manage,House
+    elsif user.has_role?(:acc)
+      can :read,House
+    elsif user.has_role?(:asset_user)
+      can :read ,House
+    elsif user.has_role?(:employee)
+      can :read ,House
     end
     # Define abilities for the passed in user here. For example:
     #

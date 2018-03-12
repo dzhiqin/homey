@@ -5,7 +5,7 @@
     <%end%>
   </ul>
 <% end %> -->
-<%= simple_form_for [:admin,house] do |f|%>
+<%= simple_form_for (current_user.has_role?(:admin)? [:admin,house] : house)  do |f|%>
 <table class="table table-bordered">
   <thead>
   </thead>

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'about_us',to: "welcome#about_us"
 
-
+  namespace :employee do
+    resources :houses
+  end
   namespace :admin do
     resources :houses
     resources :user_managers do

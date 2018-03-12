@@ -1,22 +1,39 @@
-<h1>index</h1>
 
+<h1>房屋资产信息列表</h1>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>id</th>
       <th>address</th>
       <th>created_at</th>
-
+      <th>options</th>
     </tr>
   </thead>
   <tbody>
     <% @houses.each do |house|%>
       <tr>
-        <td><%= link_to(house.house_id,house_path(house))  %></td>
+        <td>
+
+            <%= link_to(house.house_id,house_path(house))  %>
+        </td>
         <td><%= house.address %></td>
         <td><%= house.created_at %></td>
-
+        <td>
+          <% if current_user %>
+            <% if can? :update ,house %>
+              <%= link_to('edit',edit_house_path(house),class:"btn btn-info") %>
+            <% end %>
+            <% if can? :destroy , house %>
+              <%= link_to('destroy',house_path(house),method: :delete,data:{confirm:"are you sure?"},class:"btn btn-danger") %>
+            <%end%>
+          <% end %>
+        </td>
       </tr>
     <%end%>
   </tbody>
 </table>
+<% if current_user %>
+  <% if can? :create,House %>
+    <%= link_to '新增房源信息',new_house_path,:class=>"btn btn-default" %>
+  <%end %>
+<% end %>

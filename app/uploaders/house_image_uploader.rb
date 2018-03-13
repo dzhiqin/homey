@@ -10,7 +10,11 @@ class HouseImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [50,50]
   end
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  if Rails.env.development?
+    storage :file
+  else
+    storage :fog
+  end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.

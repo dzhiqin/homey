@@ -183,11 +183,13 @@
 
   <p class="more"><%= link_to("查看更多",admin_houses_path)%></p>
   <hr class="separate-line">
-  <div class="col-md-12 col-sm-12">
-    <% @houses.each do |house| %>
-      <%= render "houses/item",:house=> house %>
-    <% end %>
-  </div>
+  <% if @houses.any? %>
+    <div class="col-md-12 col-sm-12">
+      <% @houses.each do |house| %>
+        <%= render "houses/item",:house=> house %>
+      <% end %>
+    </div>
+  <%end%>
 </div>
 <div class="col-md-12 container-fluid sign-container">
   <ul class="nav nav-tabs">

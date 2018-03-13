@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -48,10 +48,12 @@ gem 'mini_magick'
 gem 'nested_form_fields'
 gem 'figaro'
 gem 'kaminari'
-
+gem 'mysql2'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
 end
 
 group :development do

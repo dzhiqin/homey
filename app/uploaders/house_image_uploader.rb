@@ -12,7 +12,7 @@ class HouseImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development?
     storage :file
-  else
+  elsif Rails.env.production
     storage :fog
   end
   # storage :fog

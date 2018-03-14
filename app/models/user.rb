@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   scope :recent, -> {order('created_at DESC')}
-  config = YAML::load_file('config/application.yml')
+
   def add_a_role(role)
     self.add_role role
   end

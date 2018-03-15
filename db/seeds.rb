@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
   if District.all.empty?
-    District.create!(:name=>'Si Ming')
-    District.create!(:name=>'Hu Li')
-    District.create!(:name=>'Hai Cang')
-    District.create!(:name=>'Ji Mei')
-    District.create!(:name=>'Tong An')
-    District.create!(:name=>'Xiang An')
+    District.create!(:name=>'思明区')
+    District.create!(:name=>'湖里区')
+    District.create!(:name=>'海沧区')
+    District.create!(:name=>'集美区')
+    District.create!(:name=>'同安区')
+    District.create!(:name=>'翔安区')
   end

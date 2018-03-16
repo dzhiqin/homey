@@ -5,9 +5,11 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+  # config.action_mailer.default_url_options = { :host => '120.79.19.233' }
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method=:letter_opener
+  # config.action_mailer.delivery_method=:smtp
   # ActionMailer::Base.smtp_settings={
   #   address:"smtpcloud.sohu.com",
   #   port: 25,
@@ -17,6 +19,7 @@ Rails.application.configure do
   #   user_name: ENV["SEND_CLOUD_USER_NAME"],
   #   password: ENV["SEND_CLOUD_USER_KEY"]
   #   }
+
   # ActionMailer::Base.smtp_settings={
   #   address:"smtp.sendgrid.net",
   #   port: 587,

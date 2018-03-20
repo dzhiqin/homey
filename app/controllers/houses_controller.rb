@@ -12,6 +12,9 @@ class HousesController < ApplicationController
   def new
     # @house=House.new
     @house.house_images.build
+    if !@house.house_id.present?
+      @house.house_id=generate_id.upcase
+    end
 
   end
   def edit

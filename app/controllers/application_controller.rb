@@ -22,4 +22,17 @@ class ApplicationController < ActionController::Base
     end
     I18n.locale=session[:locale]||I18n.default_locale
   end
+  def generate_id
+    if !$base_number.present?
+      $base_number=10
+    elsif $base_number > 99
+      $base_number=10
+    elsif $base_number <10
+      $base_number = 99
+    else
+      $base_number+=1
+    end
+
+    SecureRandom.uuid.split("-")[0]+$base_number.to_s
+  end
 end

@@ -13,7 +13,7 @@
     <tr>
       <td colspan="1">
         <div class="form-group <%=(f.object.errors[:house_id].any?)? "has-error" : ""%>">
-          <%= f.input :house_id ,label:'编号', required:true,placeholder:"必填",class:"required-label"%>
+          <%= f.input :house_id ,label:'编号', required:true,placeholder:"必填",class:"required-label",disabled:true%>
           <!-- <%if f.object.errors[:house_id]%>
             <span class="help-block">
               <%= safe_join(f.object.errors[:house_id],"、") %>

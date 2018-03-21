@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
   get 'about_us',to: "welcome#about_us"
-
+  get 'backend',to: "backend/base#index"
   namespace :employee do
     resources :houses
   end
@@ -32,4 +32,13 @@ Rails.application.routes.draw do
 
   end
   resources :houses
+  namespace :backend do
+    resources :resources
+    resources :requests
+    resources :inquiries
+    resources :messages
+    resources :subleases
+    resources :renters
+    resources :visitors
+  end
 end

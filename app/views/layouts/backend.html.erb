@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homey</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="https://api.map.baidu.com/api?v=2.0&ak=fitXUIqC5oHoWvnUhd4PwtHlbMb22AvH&s=1" type="text/javascript"></script>
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <%= render "common/navbar"%>
+
+        <%= render "common/flashes" %>
+        <div class="col-md-3">
+          <div class="backend-left">
+            <ul>
+              <li class=""><%=link_to("委托求租",backend_requests_path)%></li>
+              <li ><%=link_to("平台求租")%></li>
+              <li ><%=link_to("站内信息")%></li>
+              <li ><%=link_to("生活资讯")%></li>
+              <li ><%=link_to("分租信息")%></li>
+              <li ><%=link_to("在租客信息")%></li>
+              <li ><%=link_to("求租客信息",backend_visitors_path)%></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-md-9">
+          <div class="backend-right">
+            <%=yield%>
+          </div>
+
+        </div>
+
+
+        <!-- <%=render "common/footer"%> -->
+        <!-- <p class="text-right">
+          <%= link_to "中文版",:controller=>controller_name,:action=>action_name,:locale=>"zh-CN" %> /
+          <%= link_to "English",:controller=>controller_name,:action=>action_name,:locale=>"en"%>
+        </p> -->
+      </div>
+
+    </div>
+  </body>
+</html>
+<!-- 设置alert消息自动隐藏 -->
+<script>
+  setTimeout("$('.alert-container').fadeOut('slow')", 3000);
+
+</script>

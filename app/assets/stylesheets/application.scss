@@ -347,3 +347,41 @@
   height: 300px;
   width: 100%;
 }
+// backend部分
+.backend-left{
+  margin-top: 50px;
+}
+.backend-left ul li{
+  border: solid 1px #ccc;
+  text-align: center;
+  // padding: 10px;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.backend-left ul li:hover{
+  background-color: #f5533d;
+}
+.backend-left ul li a{
+  text-decoration: none;
+  color: #f5533d;
+  display: block;
+  padding: 10px;
+}
+.backend-left ul li:hover a{
+  color: #fff;
+}
+.backend-left ul li.active a{
+  color: #fff;
+  background-color: #f5533d;
+}
+
+.backend-left ul{
+  list-style: none;
+}
+.backend-right{
+  margin-top: 10px;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  min-height: 600px;
+}

@@ -16,21 +16,21 @@
         <%= render "common/navbar"%>
 
         <%= render "common/flashes" %>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="backend-left">
             <ul>
-              <li class=""><%=link_to("委托求租",backend_requests_path)%></li>
-              <li ><%=link_to("平台求租")%></li>
-              <li ><%=link_to("站内信息")%></li>
-              <li ><%=link_to("生活资讯")%></li>
-              <li ><%=link_to("分租信息")%></li>
-              <li ><%=link_to("在租客信息")%></li>
-              <li ><%=link_to("求租客信息",backend_visitors_path)%></li>
+              <li id="requests"><%=link_to("委托求租",backend_requests_path)%></li>
+              <li id="inquiries"><%=link_to("平台求租")%></li>
+              <li id="messages"><%=link_to("站内信息")%></li>
+              <li id="resources"><%=link_to("生活资讯")%></li>
+              <li id="subleases"><%=link_to("分租信息")%></li>
+              <li id="renters"><%=link_to("在租客信息")%></li>
+              <li id="guests"><%=link_to("求租客信息",backend_guests_path)%></li>
             </ul>
           </div>
 
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
           <div class="backend-right">
             <%=yield%>
           </div>
@@ -51,5 +51,7 @@
 <!-- 设置alert消息自动隐藏 -->
 <script>
   setTimeout("$('.alert-container').fadeOut('slow')", 3000);
-
+  path_name=window.location.href.split("/").pop();
+  item = document.getElementById(path_name);
+  item.className += " active";
 </script>

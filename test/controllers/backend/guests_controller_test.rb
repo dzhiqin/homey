@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Backend::VisitorsControllerTest < ActionDispatch::IntegrationTest
+class Backend::GuestsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

@@ -39,6 +39,6 @@ Rails.application.routes.draw do
     resources :messages
     resources :subleases
     resources :renters
-    resources :visitors
+    resources :guests
   end
 end

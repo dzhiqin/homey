@@ -1,0 +1,96 @@
+<h1>求租客信息管理</h1>
+<hr>
+<%= simple_form_for [:backend,@guest] do |f| %>
+<h3 class="col-md-12">个人信息</h3>
+<div class="col-md-3">
+  <%= f.input :name,:label=>"名称" %>
+</div>
+<div class="col-md-3 country-select">
+  <%= f.label :country, "国籍" %>
+  <%= f.country_select :country_code ,priority_countries:["US","IT","RU","MY","GB"],locale:'en'%>
+</div>
+<div class="col-md-3">
+  <%= f.input :job, label:"工作" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :company ,label:"公司信息" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :email ,label:"电子邮件",as: :email %>
+</div>
+<div class="col-md-3">
+  <%= f.input :wechat ,label:"微信" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :phone ,label:"电话",as: :tel %>
+</div>
+<div class="col-md-3">
+  <%= f.input :status ,collection:["求租","在租","退租"],label:"租赁状态" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :referrer ,label:"推荐人" %>
+</div>
+
+<div class="col-md-3">
+  <%= f.input :approach ,collection:["官网","客户推荐","relocation suppliers","高校/外企人事部","广告","其它"],label:"获取途径" %>
+</div>
+<h3 class="col-md-12">房屋需求</h3>
+<div class="col-md-12">
+  <%= f.input :house_options ,collection:["个人出租住宅","品牌公寓","别墅","商铺","车库"],label:"房屋类型",as: :check_boxes %>
+</div>
+<div class="col-md-3">
+  <%= f.input :house_district ,label:"区域" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :house_type ,label:"户型" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :liked_estate ,label:"中意小区" %>
+</div>
+<div class="col-md-3">
+  <!-- <%= f.label :landscape,"景观" %>
+  <div class="form-control">
+      <%= f.select :landscape ,{'否'=>0,'是'=>1} %>
+  </div> -->
+  <%= f.input :landscape,collection:["湖景","海景"],label:'景观' %>
+</div>
+<div class="col-md-3">
+  <%= f.input :house_floor ,collection:["高","中","低","无要求"],label:"楼层" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :house_furnished ,collection:["有","无"] ,label:"室内家具" %>
+</div>
+
+<div class="col-md-3">
+  <%= f.input :house_parking ,collection:["一个","二个","三个","无"], label:"停车位" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :house_XIS ,collection:["有","无"],label:"XIS校车停靠点" %>
+</div>
+
+<h3 class="col-md-12">个人需求</h3>
+<div class="col-md-3">
+  <%= f.input :check_in_date,label:'计划入住' %>
+</div>
+<div class="col-md-3">
+  <%= f.input :duration ,label:"计划租期" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :budget ,label:"最高预算" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :has_pet ,collection:["有","无"],label:"宠物" %>
+</div>
+<div class="col-md-3">
+  <%= f.input :want_buy ,collection:["有","无"],label:"购房意向" %>
+</div>
+
+<div class="col-md-12">
+  <%= f.input :other_requests ,label:"其它需求" ,as: :text%>
+</div>
+<div class="col-md-12">
+<%= f.submit "确定",class:'btn btn-success' %>
+<%= link_to("返回",:back,class:"btn btn-info") %>
+</div>
+
+<% end %>

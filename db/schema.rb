@@ -10,12 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319094347) do
+ActiveRecord::Schema.define(version: 20180321062727) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string   "name"
+    t.string   "country_code"
+    t.string   "job"
+    t.string   "email"
+    t.string   "wechat"
+    t.string   "phone"
+    t.string   "company"
+    t.string   "referrer"
+    t.string   "house_options"
+    t.string   "house_district"
+    t.string   "house_type"
+    t.string   "liked_estate"
+    t.string   "landscape"
+    t.string   "house_floor"
+    t.string   "house_parking"
+    t.string   "house_furnished"
+    t.string   "house_XIS"
+    t.date     "check_in_date"
+    t.string   "duration"
+    t.string   "budget"
+    t.string   "has_pet"
+    t.string   "want_buy"
+    t.string   "other_requests"
+    t.string   "status"
+    t.integer  "approach_id"
+    t.string   "approach"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "house_images", force: :cascade do |t|

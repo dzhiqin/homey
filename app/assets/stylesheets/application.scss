@@ -375,13 +375,21 @@
   color: #fff;
   background-color: #f5533d;
 }
-
+.backend-left ul li.active a::after{
+  color: #fff;
+  background-color: #f533d;
+}
 .backend-left ul{
   list-style: none;
 }
 .backend-right{
   margin-top: 10px;
-  border: solid 1px #ccc;
-  border-radius: 2px;
-  min-height: 600px;
+  // border: solid 1px #ccc;
+  // border-radius: 2px;
+  // height: 800px;
+}
+
+.backend-right .country-select select{
+  font-size: 11px;
+  height: 33px;
 }

@@ -1,0 +1,21 @@
+<h1>求租客信息管理</h1>
+<%= link_to("新增租客信息",new_backend_guest_path,:class=>"btn btn-primary") %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @guests.present?%>
+      <% @guests.each do |guest|%>
+        <tr>
+          <td>guest.name</td>
+          <td>edit</td>
+        </tr>
+      <% end %>
+    <% end %>
+
+  </tbody>
+</table>

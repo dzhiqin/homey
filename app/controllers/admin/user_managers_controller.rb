@@ -8,7 +8,7 @@ class Admin::UserManagersController < ApplicationController
       @users=User.where("created_at>=? and created_at <=?",params[:from_date],params[:to_date]).recent.page(params[:page]).per(per_page)
     elsif params[:user_email].present?
       @user_email=params[:user_email]
-      @users=User.where('email LIKE ?',"#{params[:user_email]}%").recent.page(params[:page]).per(per_page)
+      @users=User.where('email LIKE ?',"%#{params[:user_email]}%").recent.page(params[:page]).per(per_page)
     else
       @users=User.recent.page(params[:page]).per(per_page)
     end

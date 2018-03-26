@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+* 20180326-16:42
+* 1. 添加最佳尺寸提示
+* 2. 资管详情页面添加编辑按钮
+* 3. 更新权限对照表
+* 4. 根据id查找资管信息功能
+* 5. 资管信息分页
+* 

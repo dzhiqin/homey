@@ -252,7 +252,7 @@
 <%= f.nested_fields_for :house_images do |ff| %>
   <fieldset style="border-left: 5px solid #bbb;margin-bottom:10px;padding:10px">
     <div class="form-group">
-      <%= ff.label :image,"添加图片" %>
+      <%= ff.label :image,"添加图片(最佳尺寸:600px * 450px)" %>
       <%= ff.file_field :image,:class=>"form-control" %>
       <% if ff.object.image.present? %>
         已上传档案<%= link_to ff.object.image.file.filename,ff.object.image.url,:target=>"_blank" %>

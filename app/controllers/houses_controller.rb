@@ -4,7 +4,10 @@ class HousesController < ApplicationController
   before_action :employee_required
   load_and_authorize_resource
   def index
-    @houses=House.all
+    @houses=House.page(params[:page]).per(20)
+    if params[:filter_house_id].present?
+      @houses=House.where('house_id LIKE?',"%#{params[:filter_house_id]}%").page(params[:page]).per(20)
+    end
   end
   def show
     # @house=House.find(params[:id])

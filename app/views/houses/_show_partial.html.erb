@@ -57,6 +57,10 @@
 </table>
 
 <div class="col-md-8">
+  <% if current_user && (current_user.has_role?(:admin)||current_user.has_role?(:imanager)||current_user.has_role?(:imanager_p))%>
+    <%= link_to('编辑',edit_house_path(house),class:"btn btn-info") %>
+  <% end %>
+
   <% if !house.house_images.empty? %>
   <section class="slider">
     <div id="slider" class="flexslider">

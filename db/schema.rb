@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321062727) do
+ActiveRecord::Schema.define(version: 20180322095540) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -101,6 +101,14 @@ ActiveRecord::Schema.define(version: 20180321062727) do
     t.string   "cp_lng"
     t.string   "cp_lat"
     t.index ["district_id"], name: "index_houses_on_district_id"
+  end
+
+  create_table "refer_guests", force: :cascade do |t|
+    t.string   "name"
+    t.string   "contact"
+    t.integer  "guest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|

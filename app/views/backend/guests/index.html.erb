@@ -1,21 +1,77 @@
 <h1>求租客信息管理</h1>
 <%= link_to("新增租客信息",new_backend_guest_path,:class=>"btn btn-primary") %>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>名称</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @guests.present?%>
-      <% @guests.each do |guest|%>
-        <tr>
-          <td>guest.name</td>
-          <td>edit</td>
-        </tr>
-      <% end %>
-    <% end %>
+<% if @guests.present?%>
+<div class="panel-group">
+  <% @guests.each do |guest|%>
+    <!-- <tr>
+      <td>
+        <%=link_to guest.name,backend_guest_path(guest)%>
+      </td>
+      <td>
+        <%= link_to "edit",edit_backend_guest_path(guest) %>
+        <%= link_to "destroy",backend_guest_path(guest),method: :delete,data:{confirm:"确定要删除吗？"} %>
+      </td>
+    </tr> -->
 
-  </tbody>
-</table>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p class="panel-title">
+          <a href="#collapse-<%=guest.id%>" data-toggle="collapse">
+            <div class="col-md-3">
+              名称: <%= guest.name %>
+            </div>
+            <div class="col-md-3">
+              国籍: <%= guest.country_name(guest.country_code) %>
+            </div>
+            <div class="col-md-3">
+              工作: <%= guest.job %>
+            </div>
+
+            <div class="col-md-3">
+
+               <%= link_to "edit",edit_backend_guest_path(guest),class: "btn btn-xs btn-success" %>
+              <%= link_to "destroy",backend_guest_path(guest) ,method: :destroy,data:{confirm: "确定要删除吗?"},class: "btn btn-xs btn-danger"%>
+              <%= link_to "more",backend_guest_path(guest),class:"btn btn-xs btn-primary" %>
+            </div>
+            <!--  -->
+          </a>
+        </p>
+      </div>
+      <div class="panel-collapse collapse" id="collapse-<%=guest.id%>">
+        <div class="panel-body">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>需求类型:
+                  <% if guest.house_options.present? %>
+                    <%= guest.show_option(guest.house_options) %>
+                  <% end %>
+                </td>
+                <td>区域: <%=guest.house_district%></td>
+                <td>户型: <%=guest.house_type%></td>
+              </tr>
+              <tr>
+                <td>中意小区: <%=guest.liked_estate%></td>
+                <td>家具: <%= guest.house_furnished %></td>
+                <td>停车位: <%= guest.house_parking%></td>
+              </tr>
+              <tr>
+                <td>预计入住: <%= guest.check_in_date %></td>
+                <td>计划租期: <%=guest.duration%></td>
+                <td>预算: <%=guest.budget%></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+
+  <% end %>
+</div>
+
+<% end %>
+<script type="text/javascript">
+
+</script>

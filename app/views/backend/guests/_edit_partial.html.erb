@@ -44,8 +44,8 @@
   </div>
   <div class="panel-body">
     <div class="col-md-12">
-      <%= f.input :house_options ,collection:[["个人出租住宅",0],["品牌公寓",1],["别墅",2],["商铺",3],["车库",4]],label:"房屋类型",as: :check_boxes %>
-
+      <!-- <%= f.input :house_options ,collection:[["个人出租住宅",0],["品牌公寓",1],["别墅",2],["商铺",3],["车库",4]],label:"房屋类型",as: :check_boxes %> -->
+      <%= f.collection_check_boxes :option_ids,Option.all,:id,:id %>
     </div>
     <div class="col-md-3">
       <%= f.input :house_district ,label:"区域" %>

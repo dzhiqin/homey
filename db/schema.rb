@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322095540) do
+ActiveRecord::Schema.define(version: 20180326030923) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "guest_options", force: :cascade do |t|
+    t.integer  "guest_id"
+    t.integer  "option_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180322095540) do
     t.string   "approach"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "option_id"
   end
 
   create_table "house_images", force: :cascade do |t|
@@ -101,6 +109,12 @@ ActiveRecord::Schema.define(version: 20180322095540) do
     t.string   "cp_lng"
     t.string   "cp_lat"
     t.index ["district_id"], name: "index_houses_on_district_id"
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string   "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "refer_guests", force: :cascade do |t|

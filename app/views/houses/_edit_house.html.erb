@@ -13,7 +13,7 @@
     <tr>
       <td colspan="1">
         <div class="form-group <%=(f.object.errors[:house_id].any?)? "has-error" : ""%>">
-          <%= f.input :house_id ,label:'编号', required:true,placeholder:"必填",class:"required-label",disabled:true%>
+          <%= f.input :house_id ,label:'编号', required:true,placeholder:"必填",class:"required-label "%>
           <!-- <%if f.object.errors[:house_id]%>
             <span class="help-block">
               <%= safe_join(f.object.errors[:house_id],"、") %>
@@ -35,6 +35,7 @@
       </td>
       <td colspan="1">
         <div class="form-group <%= (f.object.errors[:district_id].any?)? "has-error" : ""%>">
+          <abbr title="required">*</abbr>
           <%= f.label :district_id ,"区域" %>
           <div class="">
             <%= f.select :district_id,District.all.map{|dis| [dis.name,dis.id]},prompt:"必选",required:true%>
@@ -85,6 +86,7 @@
     </tr>
     <tr>
       <td rowspan="1">
+        <abbr title="required">*</abbr>
         <%= f.label :floor_height ,"层高(m)"%>   |
         <%= f.check_box :is_duplex %>
         <%= f.label "是否为复式" %>
@@ -118,6 +120,7 @@
 
       <td>
         <div class="form-group <%=(f.object.errors[:gated_community].any?)? "has-error" : ""%>">
+          <abbr title="required">*</abbr>
           <%= f.label :gated_community ,"封闭式小区" %>
           <%=f.select :gated_community,{'否'=>0,'是'=>1},prompt:"必选",required:true%>
           <% if f.object.errors[:gated_community] %>
@@ -144,6 +147,7 @@
     <tr>
       <td>
         <div class="form-group <%= (f.object.errors[:house_upgrade].any?)? "has-error" : ""%>">
+          <abbr title="required">*</abbr>
           <%= f.label :house_upgrade,"套内硬装" %>
           <%=f.select :house_upgrade,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
           <% if f.object.errors[:house_upgrade]%>
@@ -160,6 +164,7 @@
       </td>
       <td>
         <div class="form-group <%= (f.object.errors[:gas_pipeline].any?)? "has-error" : ""%>">
+          <abbr title="required">*</abbr>
           <%= f.label :gas_pipeline,"燃气管道" %>
           <%=f.select :gas_pipeline,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
           <% if f.object.errors[:gas_pipeline]%>
@@ -172,6 +177,7 @@
       </td>
       <td>
         <div class="form-group <%= (f.object.errors[:elevator].any?)? "has-error" : ""%>">
+          <abbr title="required">*</abbr>
           <%= f.label :elevator,"电梯" %>
           <%=f.select :elevator,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
           <% if f.object.errors[:elevator]%>
@@ -184,6 +190,7 @@
       </td>
       <td>
         <div class="form-group <%= (f.object.errors[:charter_costs].any?)? "has-error" : ""%>">
+          <abbr title="required">*</abbr>
           <%= f.label :charter_costs,"包租成本" %>
           <%=f.select :charter_costs,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
           <% if f.object.errors[:charter_costs]%>
@@ -196,6 +203,7 @@
       </td>
       <td>
         <div class="form-group <%= (f.object.errors[:sercurity_service].any?)? "has-error" : ""%>">
+          <abbr title="required">*</abbr>
           <%= f.label :sercurity_service,"门禁安保服务" %>
           <%=f.select :sercurity_service,{'无'=>0,'有'=>1},prompt:"必选",required:true%>
           <% if f.object.errors[:sercurity_service]%>

@@ -28,4 +28,6 @@ Things you may want to cover:
 * 3. 更新权限对照表
 * 4. 根据id查找资管信息功能
 * 5. 资管信息分页
-* 
+* 20180326-19:52
+* 1. 修改使用collection_check_boxes
+*

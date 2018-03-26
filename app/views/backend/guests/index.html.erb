@@ -18,7 +18,7 @@
         <p class="panel-title">
           <a href="#collapse-<%=guest.id%>" data-toggle="collapse">
             <div class="col-md-3">
-              名称: <%= guest.name %>
+              <%= guest.name %>
             </div>
             <div class="col-md-3">
               国籍: <%= guest.country_name(guest.country_code) %>
@@ -42,9 +42,11 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>需求类型:
-                  <% if guest.house_options.present? %>
-                    <%= guest.show_option(guest.house_options) %>
+                <td>房屋类型:
+                  <% if guest.options.any? %>
+                    <% guest.options.each do |option|%>
+                      <%= option.content %>
+                    <% end %>
                   <% end %>
                 </td>
                 <td>区域: <%=guest.house_district%></td>
@@ -72,6 +74,3 @@
 </div>
 
 <% end %>
-<script type="text/javascript">
-
-</script>

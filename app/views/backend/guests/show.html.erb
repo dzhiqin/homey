@@ -48,9 +48,14 @@
   <div class="panel-body">
     <div class="col-md-12">
       <label>房屋类型:</label>
-      <% if @guest.house_options.present? %>
+      <% if @guest.options.any? %>
+        <% @guest.options.each do |option|%>
+          <%= option.content %>
+        <% end %>
+      <% end %>
+      <!-- <% if @guest.house_options.present? %>
         <%= @guest.show_option(@guest.house_options) %>
-      <%end%>
+      <%end%> -->
       <!-- <%= @guest.house_options %> -->
 
     </div>

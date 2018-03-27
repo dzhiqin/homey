@@ -1,38 +1,33 @@
 <h1>求租客信息管理</h1>
 <%= link_to("新增租客信息",new_backend_guest_path,:class=>"btn btn-primary") %>
+<button type="button" id="expand-button" class="btn btn-info">全部折叠</button>
+<button type="button" id="collapse-button" class="btn btn-warning">全部展开</button>
 <% if @guests.present?%>
 <div class="panel-group">
   <% @guests.each do |guest|%>
-    <!-- <tr>
-      <td>
-        <%=link_to guest.name,backend_guest_path(guest)%>
-      </td>
-      <td>
-        <%= link_to "edit",edit_backend_guest_path(guest) %>
-        <%= link_to "destroy",backend_guest_path(guest),method: :delete,data:{confirm:"确定要删除吗？"} %>
-      </td>
-    </tr> -->
-
     <div class="panel panel-default">
       <div class="panel-heading">
         <p class="panel-title">
-          <a href="#collapse-<%=guest.id%>" data-toggle="collapse">
-            <div class="col-md-3">
-              <%= guest.name %>
-            </div>
-            <div class="col-md-3">
-              国籍: <%= guest.country_name(guest.country_code) %>
-            </div>
-            <div class="col-md-3">
-              工作: <%= guest.job %>
+          <a href="#collapse-<%=guest.id%>" data-toggle="collapse" id="a-collapse-<%=guest.id%>" class="collapsed">
+            <div class="col-md-12">
+              <div class="col-md-3">
+                <%= guest.name %>
+              </div>
+              <div class="col-md-3">
+                国籍: <%= guest.country_name(guest.country_code) %>
+              </div>
+              <div class="col-md-3">
+                工作: <%= guest.job %>
+              </div>
+
+              <div class="col-md-3">
+
+                 <%= link_to "edit",edit_backend_guest_path(guest),class: "btn btn-xs btn-success" %>
+                <%= link_to "destroy",backend_guest_path(guest) ,method: :destroy,data:{confirm: "确定要删除吗?"},class: "btn btn-xs btn-danger"%>
+                <%= link_to "more",backend_guest_path(guest),class:"btn btn-xs btn-primary" %>
+              </div>
             </div>
 
-            <div class="col-md-3">
-
-               <%= link_to "edit",edit_backend_guest_path(guest),class: "btn btn-xs btn-success" %>
-              <%= link_to "destroy",backend_guest_path(guest) ,method: :destroy,data:{confirm: "确定要删除吗?"},class: "btn btn-xs btn-danger"%>
-              <%= link_to "more",backend_guest_path(guest),class:"btn btn-xs btn-primary" %>
-            </div>
             <!--  -->
           </a>
         </p>
@@ -74,3 +69,13 @@
 </div>
 
 <% end %>
+<%= paginate @guests %>
+<script type="text/javascript">
+  $("#expand-button").on('click',function(){
+    // $(".panel-heading .panel-title a").click();
+    $(".panel-heading .panel-title a").not(".collapsed").click();
+  });
+$("#collapse-button").on('click',function(){
+  $(".panel-heading .panel-title a").filter(".collapsed").click();
+});
+</script>

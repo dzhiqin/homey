@@ -31,3 +31,5 @@ Things you may want to cover:
 * 20180326-19:52
 * 1. 修改使用collection_check_boxes
 *
+20180327-13:42
+1. 租客信息页面增加折叠和展开按钮

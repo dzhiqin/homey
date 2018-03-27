@@ -2,7 +2,7 @@ class Backend::GuestsController < ApplicationController
   layout 'backend'
   before_action :authenticate_user!
   def index
-    @guests=Guest.all
+    @guests=Guest.page(params[:page]).per(20)
   end
   def show
     @guest=Guest.find(params[:id])
@@ -39,6 +39,7 @@ class Backend::GuestsController < ApplicationController
     flash[:alert]="已删除此条信息!"
     redirect_to backend_guests_path
   end
+
   private
   def guest_params
     params.require(:guest).permit(:name,:country_code,:status,:job,:email,:wechat,:phone,:company,:referrer,:approach,:house_district,:house_type,:liked_estate,:landscape,:house_floor,:house_parking,:house_furnished,:house_XIS,:check_in_date,:duration,:budget,:has_pet,:want_buy,:other_requests,:option_ids=>[],:refer_guests_attributes=>[:id,:name,:contact,:_destroy])

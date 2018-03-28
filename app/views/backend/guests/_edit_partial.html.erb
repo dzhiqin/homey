@@ -26,7 +26,7 @@
       <%= f.input :phone ,label:"电话",as: :tel %>
     </div>
     <div class="col-md-3">
-      <%= f.input :status ,collection:["求租","在租","退租"],label:"租赁状态" %>
+      <%= f.input :status ,collection:[["求租",0],["在租",1],["退租",2]],label:"租赁状态" %>
     </div>
     <div class="col-md-3">
       <%= f.input :referrer ,label:"推荐人" %>
@@ -34,6 +34,12 @@
 
     <div class="col-md-3">
       <%= f.input :approach ,collection:["官网","客户推荐","relocation suppliers","高校/外企人事部","广告","其它"],label:"获取途径" %>
+    </div>
+    <div class="col-md-3">
+
+
+      <!-- <%= f.collection_check_boxes :user_ids,User.all,:id,:email %> -->
+
     </div>
   </div>
 </div>
@@ -107,29 +113,51 @@
   </div>
 </div>
 
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4>跟进信息</h4>
+  </div>
+  <div class="panel-body">
+    <%= f.nested_fields_for :follows do |ff| %>
+      <fieldset>
+        <%= ff.label :user_id,"跟进人" %>
+        <%= ff.select :user_id,salesman_users.map{|u| [u.email,u.id]},prompt:"选择跟进人"%>
+        <%= ff.remove_nested_fields_link "删除此条",class: "btn btn-danger btn-xs" %>
+        <%= ff.input :memo,label:"备注" ,as: :text %>
+      </fieldset>
 
+    <% end %>
+    <%= f.add_nested_fields_link :follows ,"增加跟进人",:class=>"btn btn-default" %>
+  </div>
+</div>
 
 
 <h3 class="col-md-12">裙带客源</h3>
-<%= f.fields_for :refer_guests do |ff| %>
-  <fieldset style="border-left: 5px solid #bbb;margin-bottom:10px;padding:10px;">
-    <div class="col-md-3">
-      <%= ff.input :name %>
-    </div>
-    <div class="col-md-3">
-      <%= ff.input :contact %>
-    </div>
-  </fieldset>
-<% end %>
 <div class="col-md-12">
-<%= f.submit "确定",class:'btn btn-success' %>
-<%= link_to("返回",:back,class:"btn btn-info") %>
+  <%= f.nested_fields_for :refer_guests do |ff| %>
+    <fieldset style="border-left: 5px solid #bbb;margin-bottom:10px;padding:10px;">
+      <div class="col-md-3">
+        <%= ff.input :name %>
+      </div>
+      <div class="col-md-3">
+        <%= ff.input :contact %>
+      </div>
+      <%= ff.remove_nested_fields_link "删除此条",class: "btn btn-danger btn-xs" %>
+    </fieldset>
+
+  <% end %>
+  <%= f.add_nested_fields_link :refer_guests ,"增加联系人",:class=>"btn btn-default" %>
+</div>
+
+<div class="col-md-12">
+
+<%= f.submit "确定",class:'btn btn-success pull-right btn-nav' %>
+<%= link_to("返回",:back,class:"btn btn-info pull-right btn-nav") %>
 </div>
 
 <% end %>
 <script type="text/javascript">
-
-  $(".check_boxes").on('click',function(){
-
+  $(".remove_nested_fields_link").on('click',function(){
+    return confirm("确定要删除此条信息?");
   })
 </script>

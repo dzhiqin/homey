@@ -5,7 +5,7 @@
 <% if @guests.present?%>
 <div class="panel-group">
   <% @guests.each do |guest|%>
-    <div class="panel panel-default">
+    <div class="panel <%= (guest.status == "0")? "panel-info" : "panel-default"%>">
       <div class="panel-heading">
         <p class="panel-title">
           <a href="#collapse-<%=guest.id%>" data-toggle="collapse" id="a-collapse-<%=guest.id%>" class="collapsed">
@@ -37,25 +37,33 @@
           <table class="table">
             <tbody>
               <tr>
-                <td>房屋类型:
+                <td colspan="1">房屋类型:
                   <% if guest.options.any? %>
                     <% guest.options.each do |option|%>
                       <%= option.content %>
                     <% end %>
                   <% end %>
                 </td>
-                <td>区域: <%=guest.house_district%></td>
-                <td>户型: <%=guest.house_type%></td>
+                <td colspan="1">区域: <%=guest.house_district%></td>
+                <td colspan="1">户型: <%=guest.house_type%></td>
               </tr>
               <tr>
-                <td>中意小区: <%=guest.liked_estate%></td>
-                <td>家具: <%= guest.house_furnished %></td>
-                <td>停车位: <%= guest.house_parking%></td>
+                <td colspan="1">中意小区: <%=guest.liked_estate%></td>
+                <td colspan="1">家具: <%= guest.house_furnished %></td>
+                <td colspan="1">停车位: <%= guest.house_parking%></td>
               </tr>
               <tr>
-                <td>预计入住: <%= guest.check_in_date %></td>
-                <td>计划租期: <%=guest.duration%></td>
-                <td>预算: <%=guest.budget%></td>
+                <td colspan="1">预计入住: <%= guest.check_in_date %></td>
+                <td colspan="1">计划租期: <%=guest.duration%></td>
+                <td colspan="1">预算: <%=guest.budget%></td>
+              </tr>
+              <tr>
+                <td colspan="1">
+                  当前跟进人: <%= show_follower(guest) %>
+                </td>
+                <td colspan="1">
+                  跟进时间: <%= show_last_update_time(guest) %>
+                </td>
               </tr>
             </tbody>
           </table>

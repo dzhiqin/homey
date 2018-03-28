@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326030923) do
+ActiveRecord::Schema.define(version: 20180327114803) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "guest_id"
+    t.integer  "user_id"
+    t.date     "last_follow_date"
+    t.string   "memo"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "name"
   end
 
   create_table "guest_options", force: :cascade do |t|
@@ -54,7 +64,6 @@ ActiveRecord::Schema.define(version: 20180326030923) do
     t.string   "approach"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "option_id"
   end
 
   create_table "house_images", force: :cascade do |t|

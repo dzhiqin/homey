@@ -2,8 +2,8 @@
 <hr>
 
 
-<div class="panel panel-primary">
-  <div class="panel-heading"><h4>个人信息</h4>
+<div class="panel panel-info">
+  <div class="panel-heading"><h5>个人信息</h5>
   </div>
   <div class="panel-body">
     <div class="col-md-3">
@@ -29,7 +29,7 @@
       <label>电话:</label> <%= @guest.phone %>
     </div>
     <div class="col-md-3">
-      <label>租赁状态:</label> <%= @guest.status %>
+      <label>租赁状态:</label> <%= @guest.show_status %>
     </div>
     <div class="col-md-3">
       <label>推荐人:</label> <%= @guest.referrer %>
@@ -41,9 +41,9 @@
   </div>
 </div>
 
-<div class="panel panel-primary">
+<div class="panel panel-info">
   <div class="panel-heading">
-    <h4>房屋需求</h4>
+    <h5>房屋需求</h5>
   </div>
   <div class="panel-body">
     <div class="col-md-12">
@@ -53,11 +53,6 @@
           <%= option.content %>
         <% end %>
       <% end %>
-      <!-- <% if @guest.house_options.present? %>
-        <%= @guest.show_option(@guest.house_options) %>
-      <%end%> -->
-      <!-- <%= @guest.house_options %> -->
-
     </div>
     <div class="col-md-3">
       <label>区域:</label> <%= @guest.house_district %>
@@ -87,9 +82,9 @@
   </div>
 </div>
 
-<div class="panel panel-primary">
+<div class="panel panel-info">
   <div class="panel-heading">
-    <h4>个人需求</h4>
+    <h5>个人需求</h5>
   </div>
   <div class="panel-body">
     <div class="col-md-3">
@@ -113,6 +108,34 @@
     </div>
   </div>
 </div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h5>跟进信息</h5>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>跟进人</th>
+          <th>上次跟进时间</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% if @guest.follows.any? %>
+        <% @guest.follows.each do |follow|%>
+          <tr>
+            <td><%=User.find(follow.user_id).email%></td>
+            <td><%=follow.updated_at.strftime("%F %H:%M")%></td>
+            <td><%=follow.memo%></td>
+          </tr>
+        <% end %>
+      <%end%>
+
+      </tbody>
+    </table>
+  </div>
+</div>
 
 
 
@@ -132,5 +155,5 @@
 <% end %>
 <div class="col-md-12">
 
-<%= link_to("返回",:back,class:"btn btn-info") %>
+<%= link_to("返回",:back,class:"btn btn-info pull-right btn-nav") %>
 </div>

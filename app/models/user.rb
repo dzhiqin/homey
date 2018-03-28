@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   scope :recent, -> {order('created_at DESC')}
-
+  has_many :follows
+  has_many :guests,through: :follows
   def add_a_role(role)
     self.add_role role
   end

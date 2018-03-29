@@ -2,6 +2,7 @@
 <%= link_to("新增租客信息",new_backend_guest_path,:class=>"btn btn-primary") %>
 <button type="button" id="expand-button" class="btn btn-info">全部折叠</button>
 <button type="button" id="collapse-button" class="btn btn-warning">全部展开</button>
+<%= link_to("客户来源占比图",backend_path,:class=>"btn btn-primary") %>
 <% if @guests.present?%>
 <div class="panel-group">
   <% @guests.each do |guest|%>

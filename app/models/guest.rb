@@ -32,4 +32,20 @@ class Guest < ApplicationRecord
     else
     end
   end
+  def show_approach
+    if self.approach == "0"
+      "官网"
+    elsif self.approach == "1"
+      "客户推荐"
+    elsif self.approach == "2"
+      "relocation suppliers"
+    elsif self.approach == "3"
+      "高校/外企人事部"
+    elsif self.approach == "4"
+      "广告"
+    elsif self.approach == "5"
+      "其它"
+    else
+    end
+  end
 end

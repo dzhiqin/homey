@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'about_us',to: "welcome#about_us"
   get 'backend',to: "backend/base#index"
+  get 'backend/pie'=>"backend/base#pie",:as=>:pie
   namespace :employee do
     resources :houses
   end
@@ -39,6 +40,6 @@ Rails.application.routes.draw do
     resources :messages
     resources :subleases
     resources :renters
-    resources :guests 
+    resources :guests
   end
 end

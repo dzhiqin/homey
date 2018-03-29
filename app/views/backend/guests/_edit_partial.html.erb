@@ -33,7 +33,7 @@
     </div>
 
     <div class="col-md-3">
-      <%= f.input :approach ,collection:["官网","客户推荐","relocation suppliers","高校/外企人事部","广告","其它"],label:"获取途径" %>
+      <%= f.input :approach ,collection:[["官网",0],["客户推荐",1],["relocation suppliers",2],["高校/外企人事部",3],["广告",4],["其它",5]],label:"获取途径",selected: 5 %>
     </div>
     <div class="col-md-3">
 

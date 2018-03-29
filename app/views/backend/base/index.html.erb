@@ -1,0 +1,71 @@
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: auto"></div>
+
+
+<script type="text/javascript">
+$.ajax({
+  url: "/backend/pie",
+  method: 'GET',
+  dataType: 'json',
+  success: function(data){
+    window.ser_data=data
+    pie();
+  }
+});
+function pie(){
+  Highcharts.chart('container', {
+
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: '客户来源占比图'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+            }
+        }
+    },
+
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+
+        data: [{
+            name: '官网',
+            y: ser_data["website"],
+            sliced: true,
+            selected: true
+        }, {
+            name: '客户推荐',
+            y: ser_data["referrence"]
+        }, {
+            name: 'relocation suppliers',
+            y: ser_data["relocation"]
+        }, {
+            name: '高校/外企人事部',
+            y: ser_data["hr"]
+        }, {
+            name: '广告',
+            y: ser_data["ad"]
+        }, {
+            name: '其它',
+            y: ser_data["others"]
+        }]
+    }]
+  });
+}
+</script>

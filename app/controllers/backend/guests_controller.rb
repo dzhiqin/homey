@@ -3,6 +3,7 @@ class Backend::GuestsController < ApplicationController
   before_action :authenticate_user!
   def index
     @guests=Guest.order("status").page(params[:page]).per(20)
+
   end
   def show
     @guest=Guest.find(params[:id])
@@ -30,16 +31,6 @@ class Backend::GuestsController < ApplicationController
   end
   def update
     @guest=Guest.find(params[:id])
-    # if params[:guest][:user_ids].present?
-    #   binding.pry
-    #   # @guest.users << User.find(params[:guest][:user_ids])
-    #   @guest.follows.build(
-    #     :user_id=>params[:guest][:user_ids],
-    #     :name=>User.find(params[:guest][:user_ids]).email.split("@")[0],
-    #     :last_follow_date=>Time.now().strftime('%F %H:%M')
-    #   )
-    #
-    # end
     if @guest.update(guest_params)
       redirect_to backend_guests_path
     else

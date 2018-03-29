@@ -21,13 +21,19 @@
         <div class="col-md-2">
           <div class="backend-left">
             <ul>
+
               <li id="requests"><%=link_to("委托求租",backend_requests_path)%></li>
               <li id="inquiries"><%=link_to("平台求租")%></li>
               <li id="messages"><%=link_to("站内信息")%></li>
               <li id="resources"><%=link_to("生活资讯")%></li>
               <li id="subleases"><%=link_to("分租信息")%></li>
+              <li id="subleases"><%=link_to("建材清单")%></li>
+              <li id="subleases"><%=link_to("装修设计图")%></li>
               <li id="renters"><%=link_to("在租客信息")%></li>
+
+              <% if can? :read,Guest%>
               <li id="guests"><%=link_to("求租客信息",backend_guests_path)%></li>
+              <%end%>
             </ul>
           </div>
 

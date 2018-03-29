@@ -1,3 +1,10 @@
+<% if guest.errors.any? %>
+  <ul>
+    <%guest.errors.full_messages.each do |error|%>
+      <li><%=error%></li>
+    <%end%>
+  </ul>
+<% end %>
 <%= simple_form_for [:backend,guest] do |f| %>
 <div class="panel panel-primary">
   <div class="panel-heading"><h4>个人信息</h4>

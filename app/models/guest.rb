@@ -9,6 +9,7 @@ class Guest < ApplicationRecord
   has_many :users ,through: :follows
   accepts_nested_attributes_for :refer_guests,:allow_destroy=>true,:reject_if=>:all_blank
   accepts_nested_attributes_for :follows,:allow_destroy=>true,:reject_if=>:all_blank
+  validates_presence_of :name
   def country_name(country_code)
     # country_select is used with Guest attribute `country_code`
     # This will attempt to translate the country name and use the default

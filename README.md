@@ -41,3 +41,5 @@ Things you may want to cover:
 5. 求租和在租、退租状态区分
 20180329-11:22
 1. 客户来源占比饼状图
+2. 对Guest分配用户权限
+3. 跳转navbar选项

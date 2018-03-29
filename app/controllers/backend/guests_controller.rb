@@ -1,23 +1,24 @@
 class Backend::GuestsController < ApplicationController
   layout 'backend'
   before_action :authenticate_user!
+  load_and_authorize_resource
   def index
     @guests=Guest.order("status").page(params[:page]).per(20)
 
   end
   def show
-    @guest=Guest.find(params[:id])
+    # @guest=Guest.find(params[:id])
     if @guest.follows.any?
       @guest.follows.last.last_follow_date=Time.now() if @guest.follows.last.user_id=current_user.id
     end
   end
   def new
-    @guest=Guest.new
+    # @guest=Guest.new
     @guest.refer_guests.build
     @guest.follows.build
   end
   def edit
-    @guest=Guest.find(params[:id])
+    # @guest=Guest.find(params[:id])
     @guest.refer_guests.build if @guest.refer_guests.empty?
     @guest.follows.build if @guest.follows.empty?
   end
@@ -30,7 +31,7 @@ class Backend::GuestsController < ApplicationController
     end
   end
   def update
-    @guest=Guest.find(params[:id])
+    # @guest=Guest.find(params[:id])
     if @guest.update(guest_params)
       redirect_to backend_guests_path
     else
@@ -38,7 +39,7 @@ class Backend::GuestsController < ApplicationController
     end
   end
   def destroy
-    @guest=Guest.find(params[:id])
+    # @guest=Guest.find(params[:id])
     @guest.destroy
     flash[:alert]="已删除此条信息!"
     redirect_to backend_guests_path

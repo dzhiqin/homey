@@ -410,3 +410,10 @@
   margin: 10px;
   min-width: 100px;
 }
+#permission-index td{
+  padding: 0;
+}
+#permission-index tr:hover{
+  background-color: #00ffff;
+  font-weight: bold;
+}

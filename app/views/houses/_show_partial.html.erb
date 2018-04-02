@@ -7,16 +7,17 @@
       <td colspan="1">录入时间: <%= house.created_at.strftime('%F %H:%M') %></td>
 
       <td colspan="1">上次登录: <%if current_user%> <%= current_user.last_sign_in_at.strftime('%F %H:%M') %> <%end%></td>
-      <td colspan="1">景观: <%= house.landscape %></td>
-      <td colspan="1">看房热线 <%= house.contact_phone %></td>
 
+      <td colspan="1">看房热线 <%= house.contact_phone %></td>
+      <td colspan="1">联系人: <%= house.contact_name %></td>
     </tr>
 
     <tr>
       <td colspan="1">区域: <%= house.district.name %></td>
       <td colspan="2">产权地址: <%= house.address %></td>
       <td colspan="1">绿化: <%= house.greening %></td>
-      <td colspan="1">竣工时间 <%= house.completion_date %></td>
+      <td colspan="1">景观: <%= house.landscape %></td>
+
     </tr>
 
     <tr>
@@ -28,7 +29,8 @@
     </tr>
     <tr>
       <td colspan="1">结构: <%= house.structure %></td>
-      <td colspan="2">空间规划: <%= house.spatial_planning %></td>
+      <td colspan="1">竣工时间 <%= house.completion_date %></td>
+      <td colspan="1">空间规划: <%= house.spatial_planning %></td>
       <td>套内硬装: <%= render_with_or_without(house.house_upgrade) %></td>
       <td>套内软装: <%= render_with_or_without(house.house_furnishings) %></td>
     </tr>

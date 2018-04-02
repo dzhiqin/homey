@@ -34,6 +34,17 @@
 
       </td>
       <td colspan="1">
+        <div class="form-group <%= (f.object.errors[:contact_phone].any?)? "has-error" : ""%>">
+          <%= f.input :contact_name,label:'联系人' ,required:true,placeholder:"必填"%>
+          <!-- <% if f.object.errors[:contact_phone]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:contact_phone],"、") %>
+            </span>
+          <% end %> -->
+        </div>
+
+      </td>
+      <td colspan="1">
         <div class="form-group <%= (f.object.errors[:district_id].any?)? "has-error" : ""%>">
           <abbr title="required">*</abbr>
           <%= f.label :district_id ,"区域" %>
@@ -48,6 +59,23 @@
         </div>
 
       </td>
+      <td colspan="2">
+        <div class="form-group <%= (f.object.errors[:spatial_planning].any?)? "has-error" : ""%>">
+          <%= f.input :spatial_planning,label:'空间规划',required:true,placeholder:"必填"%>
+          <!-- <%if f.object.errors[:spatial_planning]%>
+            <span class="help-block">
+              <%= safe_join(f.object.errors[:spatial_planning],"、") %>
+            </span>
+          <%end%> -->
+        </div>
+      </td>
+    </tr>
+
+    
+    <tr>
+      <td colspan="1"><%= f.input :landscape,label:'景观' %></td>
+      <td colspan="1"><%= f.input :greening,label:'绿化' %></td>
+      <td colspan="1"><%= f.input :structure,label:'结构' %></td>
       <td colspan="3">
         <div class="form-group <%= (f.object.errors[:address].any?)? "has-error" : ""%>">
           <%= f.input :address ,label:'产权地址',required:true,placeholder:"必填"%>
@@ -59,25 +87,7 @@
         </div>
 
       </td>
-    </tr>
 
-    <!-- <tr>
-      <td colspan="4"></td>
-    </tr> -->
-    <tr>
-      <td colspan="1"><%= f.input :landscape,label:'景观' %></td>
-      <td colspan="1"><%= f.input :greening,label:'绿化' %></td>
-      <td colspan="1"><%= f.input :structure,label:'结构' %></td>
-      <td colspan="3">
-        <div class="form-group <%= (f.object.errors[:spatial_planning].any?)? "has-error" : ""%>">
-          <%= f.input :spatial_planning,label:'空间规划',required:true,placeholder:"必填"%>
-          <!-- <%if f.object.errors[:spatial_planning]%>
-            <span class="help-block">
-              <%= safe_join(f.object.errors[:spatial_planning],"、") %>
-            </span>
-          <%end%> -->
-        </div>
-      </td>
 
     </tr>
     <tr>

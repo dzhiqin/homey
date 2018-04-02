@@ -5,12 +5,12 @@ class Admin::UserManagersController < ApplicationController
     if params[:from_date].present?
       @from_date=params[:from_date]
       @to_date=params[:to_date]
-      @users=User.where("created_at>=? and created_at <=?",params[:from_date],params[:to_date]).recent.page(params[:page]).per(per_page)
+      @users=User.includes(:roles).where("created_at>=? and created_at <=?",params[:from_date],params[:to_date]).recent.page(params[:page]).per(per_page)
     elsif params[:user_email].present?
       @user_email=params[:user_email]
-      @users=User.where('email LIKE ?',"%#{params[:user_email]}%").recent.page(params[:page]).per(per_page)
+      @users=User.includes(:roles).where('email LIKE ?',"%#{params[:user_email]}%").recent.page(params[:page]).per(per_page)
     else
-      @users=User.recent.page(params[:page]).per(per_page)
+      @users=User.includes(:roles).includes(:users_roles).recent.page(params[:page]).per(per_page)
     end
   end
   def art_designer

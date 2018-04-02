@@ -441,14 +441,17 @@
 
 
 <script type="text/javascript">
- $("#user-table").on("change",".change_role",function(){
-  
+ $("#user-table").on("change",".change_role",function(evt){
    var url=$(this).data("url");
-
-   $.ajax({
-     url: url,
-     method: "POST",
-     datatype: "json",
-   });
+   flag=confirm("确定要进行权限设置吗?")
+   if (flag) {
+     $.ajax({
+       url: url,
+       method: "POST",
+       datatype: "json",
+     });
+   }else {
+     this.checked=!this.checked
+   }
  })
 </script>

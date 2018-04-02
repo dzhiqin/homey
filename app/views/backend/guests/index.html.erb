@@ -29,7 +29,7 @@
                   <%= link_to "edit",edit_backend_guest_path(guest),class: "btn btn-xs btn-success" %>
                 <%end%>
                 <% if can? :destroy,guest%>
-                  <%= link_to "destroy",backend_guest_path(guest) ,method: :destroy,data:{confirm: "确定要删除吗?"},class: "btn btn-xs btn-danger"%>
+                  <%= link_to "destroy",backend_guest_path(guest) ,method: :delete,data:{confirm: "确定要删除吗?"},class: "btn btn-xs btn-danger"%>
                 <% end%>
                 <%= link_to "more",backend_guest_path(guest),class:"btn btn-xs btn-primary" %>
               </div>

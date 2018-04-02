@@ -33,6 +33,7 @@ class Backend::GuestsController < ApplicationController
   end
   def update
     # @guest=Guest.find(params[:id])
+    @guest.follows.build if @guest.follows.empty?
     if @guest.update(guest_params)
       redirect_to backend_guests_path
     else
@@ -41,6 +42,7 @@ class Backend::GuestsController < ApplicationController
   end
   def destroy
     # @guest=Guest.find(params[:id])
+
     @guest.destroy
     flash[:alert]="已删除此条信息!"
     redirect_to backend_guests_path

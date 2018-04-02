@@ -21,7 +21,7 @@ class Backend::GuestsController < ApplicationController
   def edit
     # @guest=Guest.find(params[:id])
     @guest.refer_guests.build if @guest.refer_guests.empty?
-    @guest.follows.build if @guest.follows.empty?
+    @guest.follows.build(:user_id=>current_user.id) if @guest.follows.empty?
   end
   def create
     @guest=Guest.new(guest_params)
@@ -33,7 +33,6 @@ class Backend::GuestsController < ApplicationController
   end
   def update
     # @guest=Guest.find(params[:id])
-    @guest.follows.build if @guest.follows.empty?
     if @guest.update(guest_params)
       redirect_to backend_guests_path
     else

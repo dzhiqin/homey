@@ -13,9 +13,12 @@
     <div class="col-md-3">
       <%= f.input :name,:label=>"名称" %>
     </div>
-    <div class="col-md-3 country-select">
-      <%= f.label :country, "国籍" %>
-      <%= f.country_select :country_code ,priority_countries:["US","IT","RU","MY","GB"],locale:'en'%>
+    <div class="col-md-6 country-select">
+      <%= f.label :country, "国籍" %><br>
+      <%= f.country_select :country_code ,priority_countries:["US","IT","RU","MY","GB"],class:"form-control",locale:'en'%>
+    </div>
+    <div class="col-md-3">
+      <%= f.input :status ,collection:[["求租",0],["在租",1],["退租",2]],label:"租赁状态" %>
     </div>
     <div class="col-md-3">
       <%= f.input :job, label:"工作" %>
@@ -32,9 +35,7 @@
     <div class="col-md-3">
       <%= f.input :phone ,label:"电话",as: :tel %>
     </div>
-    <div class="col-md-3">
-      <%= f.input :status ,collection:[["求租",0],["在租",1],["退租",2]],label:"租赁状态" %>
-    </div>
+
     <div class="col-md-3">
       <%= f.input :referrer ,label:"推荐人" %>
     </div>

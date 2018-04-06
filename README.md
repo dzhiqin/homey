@@ -52,3 +52,6 @@ Things you may want to cover:
 4. 提升数据库效率
 5. 修改新增求租客时必须先保存才能添加跟进人的bug
 6. 修改求租客信息无法删除的bug
+20180404
+1. 调整country_code栏位宽度
+2. 

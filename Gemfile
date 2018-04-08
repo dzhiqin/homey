@@ -50,7 +50,7 @@ gem 'figaro'
 gem 'kaminari'
 gem 'mysql2'
 gem 'fog'
-
+gem 'ranked-model'
 gem 'country_select'
 gem 'letter_opener',group: :development
 group :development, :test do

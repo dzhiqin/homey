@@ -4,7 +4,7 @@ class Backend::GuestsController < ApplicationController
   load_and_authorize_resource
   def index
 
-    @guests=Guest.includes(:follows).includes(:guest_options).includes(:options).order("status DESC").order("follows.updated_at DESC").page(params[:page]).per(20)
+    @guests=Guest.includes(:follows).includes(:users).includes(:options).order("status DESC").rank(:row_order).page(params[:page]).per(20)
 
   end
   def show
@@ -34,7 +34,10 @@ class Backend::GuestsController < ApplicationController
   def update
     # @guest=Guest.find(params[:id])
     if @guest.update(guest_params)
+      @guest.row_order_position=:first
+      @guest.save!
       redirect_to backend_guests_path
+
     else
       render :edit
     end

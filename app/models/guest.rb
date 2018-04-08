@@ -14,6 +14,9 @@ class Guest < ApplicationRecord
   validates_inclusion_of :status,:in=>STATUS
   validates_inclusion_of :approach,:in=>APPROACH
   validates_presence_of :name
+
+  include RankedModel
+  ranks :row_order
   def country_name(country_code)
     # country_select is used with Guest attribute `country_code`
     # This will attempt to translate the country name and use the default

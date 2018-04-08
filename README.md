@@ -60,3 +60,4 @@ Things you may want to cover:
 3. 求租客信息去掉删除按钮
 4. 修改求租客status获得和显示方式，更新status排序
 5. 修改求租客途径approach的获得和显示
+6. guest 添加rank-model排序，替代按follow修改时间排序

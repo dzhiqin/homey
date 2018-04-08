@@ -128,7 +128,7 @@
           <tr>
             <td><%=User.find(follow.user_id).email%></td>
             <td><%=follow.updated_at.strftime("%F %H:%M")%></td>
-            <td><%=follow.memo%></td>
+            <td><%=sanitize follow.memo%></td>
           </tr>
         <% end %>
       <%end%>

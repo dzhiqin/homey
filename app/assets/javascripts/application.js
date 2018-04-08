@@ -20,3 +20,4 @@
 //= require bootstrap-sprockets
 //= require jquery.flexslider
 //= require jquery.SuperSlide.2.1.1
+//= require ckeditor/init

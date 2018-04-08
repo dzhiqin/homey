@@ -18,9 +18,6 @@
         <%= f.label :country, "国籍" %><br>
         <%= f.country_select :country_code ,priority_countries:["US","IT","RU","MY","GB"],class:"form-control",locale:'en'%>
       </div>
-      <!-- <div class="col-md-3">
-        <%= f.input :status ,collection:[["求租",0],["在租",1],["退租",2]],label:"租赁状态" %>
-      </div> -->
       <div class="col-md-3">
         <%= f.label :status,"租赁状态" %>
         <%= f.select :status, Guest::STATUS.map{|s| [t(s,:scope=>"guest.status"),s]},{},class:"form-control"%>
@@ -146,7 +143,7 @@
         <%= ff.label :user_id,"跟进人" %>
         <%= ff.select :user_id,salesman_users.map{|u| [u.email,u.id]},prompt:"选择跟进人"%>
         <%= ff.remove_nested_fields_link "删除此条",class: "btn btn-danger btn-xs" %>
-        <%= ff.input :memo,label:"备注" ,as: :text %>
+        <%= ff.cktext_area :memo ,ckeditor:{toolbar:'mini',language:'zh-CN'} %>
       </fieldset>
 
     <% end %>

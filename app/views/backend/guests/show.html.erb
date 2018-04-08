@@ -29,14 +29,15 @@
       <label>电话:</label> <%= @guest.phone %>
     </div>
     <div class="col-md-3">
-      <label>租赁状态:</label> <%= @guest.show_status %>
+      <label>租赁状态:</label>
+      <%= t(@guest.status,:scope=>"guest.status") %>
     </div>
     <div class="col-md-3">
       <label>推荐人:</label> <%= @guest.referrer %>
     </div>
 
     <div class="col-md-3">
-      <label>途径:</label> <%= @guest.show_approach %>
+      <label>途径:</label> <%= t(@guest.approach,:scope=>"guest.approach") %>
     </div>
   </div>
 </div>

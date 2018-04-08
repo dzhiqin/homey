@@ -10,45 +10,60 @@
   <div class="panel-heading"><h4>个人信息</h4>
   </div>
   <div class="panel-body">
-    <div class="col-md-3">
-      <%= f.input :name,:label=>"名称" %>
+    <div class="col-md-12" style="padding:0">
+      <div class="col-md-3">
+        <%= f.input :name,:label=>"名称" %>
+      </div>
+      <div class="col-md-6 country-select">
+        <%= f.label :country, "国籍" %><br>
+        <%= f.country_select :country_code ,priority_countries:["US","IT","RU","MY","GB"],class:"form-control",locale:'en'%>
+      </div>
+      <!-- <div class="col-md-3">
+        <%= f.input :status ,collection:[["求租",0],["在租",1],["退租",2]],label:"租赁状态" %>
+      </div> -->
+      <div class="col-md-3">
+        <%= f.label :status,"租赁状态" %>
+        <%= f.select :status, Guest::STATUS.map{|s| [t(s,:scope=>"guest.status"),s]},{},class:"form-control"%>
+      </div>
     </div>
-    <div class="col-md-6 country-select">
-      <%= f.label :country, "国籍" %><br>
-      <%= f.country_select :country_code ,priority_countries:["US","IT","RU","MY","GB"],class:"form-control",locale:'en'%>
+    <div class="col-md-12" style="padding:0">
+      <div class="col-md-3">
+        <%= f.input :job, label:"工作" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.input :company ,label:"公司信息" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.input :email ,label:"电子邮件",as: :email %>
+      </div>
+      <div class="col-md-3">
+        <%= f.input :wechat ,label:"微信" %>
+      </div>
     </div>
-    <div class="col-md-3">
-      <%= f.input :status ,collection:[["求租",0],["在租",1],["退租",2]],label:"租赁状态" %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :job, label:"工作" %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :company ,label:"公司信息" %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :email ,label:"电子邮件",as: :email %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :wechat ,label:"微信" %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :phone ,label:"电话",as: :tel %>
+    <div class="col-md-12" style="padding:0">
+      <div class="col-md-3">
+        <%= f.input :phone ,label:"电话",as: :tel %>
+      </div>
+
+      <div class="col-md-3">
+        <%= f.input :referrer ,label:"推荐人" %>
+      </div>
+
+      <!-- <div class="col-md-3">
+        <%= f.input :approach ,collection:[["官网",0],["客户推荐",1],["relocation suppliers",2],["高校/外企人事部",3],["广告",4],["其它",5]],label:"获取途径",selected: 5 %>
+      </div> -->
+      <div class="col-md-3">
+        <%= f.label :approach,"途径" %>
+        <%= f.select :approach,Guest::APPROACH.map{|p| [t(p,:scope=>"guest.approach"),p]},{},class:"form-control" %>
+      </div>
+      <div class="col-md-3">
+
+
+        <!-- <%= f.collection_check_boxes :user_ids,User.all,:id,:email %> -->
+
+      </div>
     </div>
 
-    <div class="col-md-3">
-      <%= f.input :referrer ,label:"推荐人" %>
-    </div>
-
-    <div class="col-md-3">
-      <%= f.input :approach ,collection:[["官网",0],["客户推荐",1],["relocation suppliers",2],["高校/外企人事部",3],["广告",4],["其它",5]],label:"获取途径",selected: 5 %>
-    </div>
-    <div class="col-md-3">
-
-
-      <!-- <%= f.collection_check_boxes :user_ids,User.all,:id,:email %> -->
-
-    </div>
   </div>
 </div>
 

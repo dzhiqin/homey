@@ -18,3 +18,19 @@ zh-CN:
   log in: "登录"
   log out: "退出"
   change password: "修改密码"
+  house:
+    status:
+      valid: "生效"
+      invalid: "失效"
+  guest:
+    status:
+      request: "求租"
+      checkin: "在租"
+      checkout: "退租"
+    approach:
+      official: "官网"
+      reference: "客户推荐"
+      relocation: "relocation suppliers"
+      hr: "高校/外企人事部"
+      advertise: "广告"
+      others: "其它"

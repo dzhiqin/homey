@@ -54,4 +54,9 @@ Things you may want to cover:
 6. 修改求租客信息无法删除的bug
 20180404
 1. 调整country_code栏位宽度
-2. 
+20180408 dev-asset分支
+1. 资管信息添加status栏位，并按其排序
+2. 失效的资管信息行改变背景色
+3. 求租客信息去掉删除按钮
+4. 修改求租客status获得和显示方式，更新status排序
+5. 修改求租客途径approach的获得和显示

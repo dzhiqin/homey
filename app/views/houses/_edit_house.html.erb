@@ -71,12 +71,17 @@
       </td>
     </tr>
 
-    
+
     <tr>
       <td colspan="1"><%= f.input :landscape,label:'景观' %></td>
       <td colspan="1"><%= f.input :greening,label:'绿化' %></td>
       <td colspan="1"><%= f.input :structure,label:'结构' %></td>
-      <td colspan="3">
+      <td colspan="1">
+        <!-- <%= f.input :status,label:'状态' %> -->
+        <%= f.label :status,"状态" %>
+        <%= f.select :status,House::STATUS.map{|s| [t(s,:scope=>"house.status"),s]},{},class:"form-control" %>
+      </td>
+      <td colspan="2">
         <div class="form-group <%= (f.object.errors[:address].any?)? "has-error" : ""%>">
           <%= f.input :address ,label:'产权地址',required:true,placeholder:"必填"%>
           <!-- <% if f.object.errors[:address] %>

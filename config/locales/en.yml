@@ -40,3 +40,19 @@ en:
   log in: "Log in"
   log out: "Log out"
   change password: "Change Password"
+  house:
+    status:
+      valid: "Valid"
+      invalid: "Invalid"
+  guest:
+    status:
+      request: "Request"
+      checkin: "Check in"
+      checkout: "Check out"
+    approach:
+      official: "Official Website"
+      reference: "Customer References"
+      relocation: "Relocation Suppliers"
+      hr: "College/Company HR"
+      advertise: "Advertise"
+      others: "Others"

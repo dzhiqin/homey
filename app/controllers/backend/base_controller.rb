@@ -5,14 +5,14 @@ class Backend::BaseController < ApplicationController
 
   end
   def pie
-    website_num=Guest.where("approach=?","0").count
-    refer_num=Guest.where("approach=?","1").count
-    relocation_num=Guest.where("approach=?","2").count
-    hr_num=Guest.where("approach=?","3").count
-    ad_num=Guest.where("approach=?","4").count
-    others_num=Guest.where("approach=?","5").count
+    official_num=Guest.where("approach=?","official").count
+    refer_num=Guest.where("approach=?","reference").count
+    relocation_num=Guest.where("approach=?","relocation").count
+    hr_num=Guest.where("approach=?","hr").count
+    ad_num=Guest.where("approach=?","advertise").count
+    others_num=Guest.where("approach=?","others").count
     render :json=>{
-      :website=>website_num,
+      :official=>official_num,
       :referrence=>refer_num,
       :relocation=>relocation_num,
       :hr=>hr_num,

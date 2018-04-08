@@ -9,7 +9,7 @@
 <% if @guests.present?%>
 <div class="panel-group">
   <% @guests.each do |guest|%>
-    <div class="panel <%= (guest.status == "0")? "panel-info" : "panel-default"%>">
+    <div class="panel <%= (guest.status == "request")? "panel-info" : "panel-default"%>">
       <div class="panel-heading">
         <p class="panel-title">
           <a href="#collapse-<%=guest.id%>" data-toggle="collapse" id="a-collapse-<%=guest.id%>" class="collapsed">
@@ -28,9 +28,9 @@
                 <% if can? :edit,guest%>
                   <%= link_to "edit",edit_backend_guest_path(guest),class: "btn btn-xs btn-success" %>
                 <%end%>
-                <% if can? :destroy,guest%>
+                <!-- <% if can? :destroy,guest%>
                   <%= link_to "destroy",backend_guest_path(guest) ,method: :delete,data:{confirm: "确定要删除吗?"},class: "btn btn-xs btn-danger"%>
-                <% end%>
+                <% end%> -->
                 <%= link_to "more",backend_guest_path(guest),class:"btn btn-xs btn-primary" %>
               </div>
             </div>

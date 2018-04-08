@@ -4,7 +4,7 @@ class Backend::GuestsController < ApplicationController
   load_and_authorize_resource
   def index
 
-    @guests=Guest.includes(:follows).includes(:guest_options).includes(:options).order("status").order("follows.updated_at DESC").page(params[:page]).per(20)
+    @guests=Guest.includes(:follows).includes(:guest_options).includes(:options).order("status DESC").order("follows.updated_at DESC").page(params[:page]).per(20)
 
   end
   def show

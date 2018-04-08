@@ -9,6 +9,10 @@ class Guest < ApplicationRecord
   has_many :users ,through: :follows
   accepts_nested_attributes_for :refer_guests,:allow_destroy=>true,:reject_if=>:all_blank
   accepts_nested_attributes_for :follows,:allow_destroy=>true,:reject_if=>:all_blank
+  STATUS=["request","checkin","checkout"]
+  APPROACH=["official","reference","relocation","hr","advertise","others"]
+  validates_inclusion_of :status,:in=>STATUS
+  validates_inclusion_of :approach,:in=>APPROACH
   validates_presence_of :name
   def country_name(country_code)
     # country_select is used with Guest attribute `country_code`
@@ -17,32 +21,5 @@ class Guest < ApplicationRecord
     country = ISO3166::Country[country_code]
     country.translations[I18n.locale.to_s] || country.name
   end
-  
-  def show_status
 
-    if self.status == "0"
-      "求租"
-    elsif self.status =="1"
-      "在租"
-    elsif self.status =="2"
-      "退租"
-    else
-    end
-  end
-  def show_approach
-    if self.approach == "0"
-      "官网"
-    elsif self.approach == "1"
-      "客户推荐"
-    elsif self.approach == "2"
-      "relocation suppliers"
-    elsif self.approach == "3"
-      "高校/外企人事部"
-    elsif self.approach == "4"
-      "广告"
-    elsif self.approach == "5"
-      "其它"
-    else
-    end
-  end
 end

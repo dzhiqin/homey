@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <% @houses.each do |house|%>
-      <tr>
+      <tr bgcolor=<%= (house.status=="invalid")? "#ececec" : ""%>>
         <td><%= link_to(house.house_id,admin_house_path(house))  %></td>
         <td><%= house.address %></td>
         <td><%= house.created_at %></td>

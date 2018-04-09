@@ -25,33 +25,97 @@
       <td>产权面积: <%= house.property_area %>(㎡)</td>
       <td>公摊面积: <%= house.public_area %>(㎡)</td>
       <td>实际使用面积: <%= house.actual_area %>(㎡)</td>
-      <td>公共通道: <%= render_passage_level(house.public_passage) %></td>
+      <td>公共通道:
+        <% if house.public_passage.present? %>
+        <%= t(house.public_passage,:scope=>"house.level.narrow") %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <td colspan="1">结构: <%= house.structure %></td>
       <td colspan="1">竣工时间 <%= house.completion_date %></td>
       <td colspan="1">空间规划: <%= house.spatial_planning %></td>
-      <td>套内硬装: <%= render_with_or_without(house.house_upgrade) %></td>
-      <td>套内软装: <%= render_with_or_without(house.house_furnishings) %></td>
+      <td>套内硬装:
+        <% if house.house_upgrade.present? %>
+        <%= t(house.house_upgrade,:scope=>"house.flag.you_wu") %>
+        <% end %>
+      </td>
+      <td>套内软装:
+        <% if house.house_furnishings.present?%>
+        <%= t(house.house_furnishings,:scope=>"house.flag.you_wu") %>
+        <% end %>
+      </td>
+
     </tr>
     <tr>
-      <td>停车位: <%= render_with_or_without(house.parking_space) %></td>
-      <td>封闭式小区: <%= render_yes_or_no(house.gated_community) %></td>
-      <td>燃气管道: <%= render_with_or_without(house.gas_pipeline) %></td>
-      <td>电梯: <%= render_with_or_without(house.elevator) %></td>
-      <td>包租成本: <%= render_with_or_without(house.charter_costs) %></td>
+
+      <td>停车位:
+        <% if house.parking_space.present? %>
+        <%= t(house.parking_space,:scope=>"house.flag.you_wu") %>
+        <% end %>
+      </td>
+      <td>封闭式小区:
+        <% if house.gated_community.present?%>
+        <%= t(house.gated_community,:scope=>"house.flag.shi_fou") %>
+        <% end %>
+      </td>
+      <td>燃气管道:
+        <%if house.gas_pipeline.present?%>
+        <%= t(house.gas_pipeline,:scope=>"house.flag.you_wu") %>
+        <% end %>
+      </td>
+      <td>电梯:
+        <% if house.elevator.present?%>
+        <%= t(house.elevator,:scope=>"house.flag.you_wu") %>
+        <% end %>
+      </td>
+      <td>包租成本:
+        <% if house.charter_costs.present? %>
+        <%= t(house.charter_costs,:scope=>"house.flag.you_wu") %>
+        <% end %>
+      </td>
     </tr>
     <tr>
-      <td>门禁安保服务: <%= render_with_or_without(house.sercurity_service) %></td>
-      <td>套内墙体可塑性: <%= render_malleability_degree(house.wall_malleability) %></td>
-      <td>涉品公寓可塑性: <%= render_malleability_degree(house.house_malleability) %></td>
-      <td>教育资源: <%= render_education_resources_degree(house.education_resources) %></td>
+
+      <td>门禁安保服务:
+        <% if house.sercurity_service.present? %>
+        <%= t(house.sercurity_service,:scope=>"house.flag.you_wu") %>
+        <% end %>
+      </td>
+      <td>套内墙体可塑性:
+        <% if house.wall_malleability.present? %>
+        <%= t(house.wall_malleability,:scope=>"house.level.weak") %>
+        <% end %>
+      </td>
+      <td>涉品公寓可塑性:
+        <% if house.house_malleability.present? %>
+        <%= t(house.house_malleability,:scope=>"house.level.weak") %>
+        <% end %>
+      </td>
+      <td>教育资源:
+        <% if house.education_resources.present? %>
+        <%= t(house.education_resources,:scope=>"house.level.rare") %>
+        <% end %>
+      </td>
       <td>运营前市价: <%= house.price_before_operation %>(¥)</td>
     </tr>
     <tr>
-      <td>出入便利性: <%= render_convenience_level(house.transportation_convenience) %></td>
-      <td>购物便利性: <%= render_convenience_level(house.shopping_convenience) %></td>
-      <td>医疗便利性: <%= render_convenience_level(house.medical_convenience) %></td>
+
+      <td>出入便利性:
+        <% if house.transportation_convenience.present? %>
+        <%= t(house.transportation_convenience,:scope=>"house.level.low") %>
+        <% end %>
+      </td>
+      <td>购物便利性:
+        <% if house.shopping_convenience.present? %>
+        <%= t(house.shopping_convenience,:scope=>"house.level.low") %>
+        <% end %>
+      </td>
+      <td>医疗便利性:
+        <% if house.medical_convenience.present? %>
+        <%= t(house.medical_convenience,:scope=>"house.level.low") %>
+        <% end %>
+      </td>
       <td>月租金: <%= house.monthly_rent %>(¥)</td>
       <td>支付方式: <%= house.payment_method %></td>
     </tr>

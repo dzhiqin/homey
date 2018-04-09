@@ -418,3 +418,13 @@
   background-color: #00ffff;
   font-weight: bold;
 }
+//嵌套内容
+.nested_field{
+  border: 5px solid #bbb;
+  margin-bottom:10px;
+  padding:10px
+}
+.nested_field img{
+  margin: auto;
+  width: 100%;
+}

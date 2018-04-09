@@ -1,19 +1,7 @@
 zh-CN:
-  my_yes: "是"
-  my_no: "否"
   welcome: "欢迎你"
   is_duplex: "复式"
   is_single: "单层"
-  my_with: "有"
-  my_without: "无"
-  low: "低"
-  middle: "中"
-  high: "高"
-  rare: "稀少"
-  medium: "适中"
-  plenty: "丰富"
-  narrow: "窄"
-  wide: "宽"
   sign in: "注册"
   log in: "登录"
   log out: "退出"
@@ -22,6 +10,31 @@ zh-CN:
     status:
       valid: "生效"
       invalid: "失效"
+    flag:
+      shi_fou:
+        you: "是"
+        wu: "否"
+      you_wu:
+        you: "有"
+        wu: "无"
+    level:
+      low:
+        low: "低"
+        middle: "中"
+        high: "高"
+      narrow:
+        low: "窄"
+        middle: "适中"
+        high: "宽"
+      rare:
+        low: "稀少"
+        middle: "适中"
+        high: "丰富"
+      weak:
+        low: "弱"
+        middle: "中"
+        high: "强"
+
   guest:
     status:
       request: "求租"

@@ -22,20 +22,8 @@
 en:
   hello: "Hello world"
   welcome: "Welcome"
-  my_yes: "Yes"
-  my_no: "No"
   is_duplex: "Duplex"
   is_single: "Single"
-  my_with: "Yes"
-  my_without: "No"
-  low: "Low"
-  middle: "Middle"
-  high: "High"
-  rare: "Rare"
-  medium: "Medium"
-  plenty: "Plenty"
-  narrow: "Narrow"
-  wide: "Wide"
   sign in: "Sign in"
   log in: "Log in"
   log out: "Log out"
@@ -44,6 +32,30 @@ en:
     status:
       valid: "Valid"
       invalid: "Invalid"
+    flag:
+      shi_fou:
+        you: "Yes"
+        wu: "No"
+      you_wu:
+        you: "Yes"
+        wu: "No"
+    level:
+      low:
+        low: "Low"
+        middle: "Middle"
+        high: "High"
+      narrow:
+        low: "Narrow"
+        middle: "Medium"
+        high: "Wide"
+      rare:
+        low: "Rare"
+        middle: "Medium"
+        high: "Plenty"
+      weak:
+        low: "Weak"
+        middle: "Medium"
+        high: "Strong"
   guest:
     status:
       request: "Request"

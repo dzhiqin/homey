@@ -1,31 +1,36 @@
-<h1>房屋资产信息列表</h1>
-<%= form_tag admin_houses_path,method: :get do  %>
-  <%= text_field_tag 'filter_house_id' ,nil,placeholder:"请输入ID" %>
-  <%= submit_tag '按ID查找' %>
-<% end %>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>address</th>
-      <th>created_at</th>
-      <th>options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @houses.each do |house|%>
-      <tr bgcolor=<%= (house.status=="invalid")? "#ececec" : ""%>>
-        <td><%= link_to(house.house_id,admin_house_path(house))  %></td>
-        <td><%= house.address %></td>
-        <td><%= house.created_at %></td>
-        <td>
-          <%= link_to('edit',edit_admin_house_path(house),class:"btn btn-info") %>
-          <%= link_to('destroy',admin_house_path(house),method: :delete,data:{confirm:"are you sure?"},class:"btn btn-danger") %>
-        </td>
+<h1 class="seperate-title">房屋资产信息列表</h1>
+<hr class="seperate-line">
+<div class="container">
+  <%= form_tag admin_houses_path,method: :get do  %>
+    <%= text_field_tag 'filter_house_id' ,nil,placeholder:"请输入ID" %>
+    <%= submit_tag '按ID查找' %>
+  <% end %>
+  <p class="text-right">
+    <%= link_to '返回',:back,:class=>"btn btn-default" %>
+    <%= link_to '新增房源信息',new_admin_house_path,:class=>"btn btn-primary" %>
+  </p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>address</th>
+        <th>created_at</th>
+        <th>options</th>
       </tr>
-    <%end%>
-  </tbody>
-</table>
-<%= link_to '返回',:back,:class=>"btn btn-default" %>
-<%= link_to '新增房源信息',new_admin_house_path,:class=>"btn btn-primary" %>
-<%= paginate @houses %>
+    </thead>
+    <tbody>
+      <% @houses.each do |house|%>
+        <tr bgcolor=<%= (house.status=="invalid")? "#ececec" : ""%>>
+          <td><%= link_to(house.house_id,admin_house_path(house))  %></td>
+          <td><%= house.address %></td>
+          <td><%= house.created_at.strftime('%F') %></td>
+          <td>
+            <%= link_to('edit',edit_admin_house_path(house),class:"btn btn-info") %>
+            <%= link_to('destroy',admin_house_path(house),method: :delete,data:{confirm:"are you sure?"},class:"btn btn-danger") %>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <%= paginate @houses %>
+</div>

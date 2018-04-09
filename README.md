@@ -54,7 +54,7 @@ Things you may want to cover:
 6. 修改求租客信息无法删除的bug
 20180404
 1. 调整country_code栏位宽度
-20180408 
+20180408
 1. 资管信息添加status栏位，并按其排序
 2. 失效的资管信息行改变背景色
 3. 求租客信息去掉删除按钮
@@ -62,3 +62,7 @@ Things you may want to cover:
 5. 修改求租客途径approach的获得和显示
 6. guest 添加rank-model排序，替代按follow修改时间排序
 7. follow备忘栏使用富文本编辑
+20180409
+1. 修改资管信息下拉栏位的赋值和显示
+2. 修改资管信息编辑页面
+3. 修改资管图片的编辑页面，增加已有图片预览

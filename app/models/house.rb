@@ -6,6 +6,9 @@ class House < ApplicationRecord
 
   belongs_to :district
   STATUS=["valid","invalid"]
+  LEVEL=["low","middle","high"]
+  FLAG=["you","wu"]
+  validates_inclusion_of :gated_community,:in=>FLAG
   validates_inclusion_of :status,:in=>STATUS
   mount_uploader :logo, LogoUploader
   has_many :house_images,:dependent=>:destroy

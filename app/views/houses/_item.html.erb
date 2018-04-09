@@ -39,7 +39,10 @@
               <i class="fa fa-home"></i>
             </div>
             <div class="meta-data" >
-              软装: <%= render_with_or_without(house.house_furnishings) %>
+              软装:
+              <% if house.house_furnishings.present? %>
+              <%= t(house.house_furnishings,:scope=>"house.flag.you_wu") %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -50,7 +53,10 @@
               <i class="fa fa-arrow-up"></i>
             </div>
             <div class="meta-data" >
-              电梯: <%= render_with_or_without(house.elevator) %>
+              电梯:
+              <% if house.elevator.present? %>
+              <%= t(house.elevator,:scope=>"house.flag.you_wu") %>
+              <% end %>
             </div>
           </div>
 
@@ -59,7 +65,10 @@
               <i class="fa fa-shield"></i>
             </div>
             <div class="meta-data" >
-              安保: <%= render_with_or_without(house.sercurity_service) %>
+              安保: 
+              <% if house.sercurity_service.present? %>
+              <%= t(house.sercurity_service,:scope=>"house.flag.you_wu") %>
+              <% end %>
             </div>
           </div>
         </div>

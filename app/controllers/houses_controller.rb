@@ -4,9 +4,9 @@ class HousesController < ApplicationController
   before_action :employee_required
   load_and_authorize_resource
   def index
-    @houses=House.order("status DESC").page(params[:page]).per(20)
+    @houses=House.order("status DESC").order("updated_at DESC").page(params[:page]).per(20)
     if params[:filter_house_id].present?
-      @houses=House.where('house_id LIKE?',"%#{params[:filter_house_id]}%").order("status DESC").page(params[:page]).per(20)
+      @houses=House.where('house_id LIKE?',"%#{params[:filter_house_id]}%").order("status DESC").order("updated_at DESC").page(params[:page]).per(20)
     end
   end
   def show

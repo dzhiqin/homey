@@ -2,9 +2,9 @@ class Admin::HousesController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_required
   def index
-    @houses=House.order("status DESC").page(params[:page]).per(20)
+    @houses=House.order("status DESC").order("updated_at DESC").page(params[:page]).per(20)
     if params[:filter_house_id].present?
-      @houses=House.where('house_id LIKE?',"%#{params[:filter_house_id]}%").order("status DESC").page(params[:page]).per(20)
+      @houses=House.where('house_id LIKE?',"%#{params[:filter_house_id]}%").order("status DESC").order("updated_at DESC").page(params[:page]).per(20)
     end
   end
   def new

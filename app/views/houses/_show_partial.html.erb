@@ -1,158 +1,322 @@
-<table class="table table-bordered table-striped table-hover table-responsive">
-  <thead>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="1">编号:<%= house.house_id %></td>
-      <td colspan="1">录入时间: <%= house.created_at.strftime('%F %H:%M') %></td>
 
-      <td colspan="1">上次登录: <%if current_user%> <%= current_user.last_sign_in_at.strftime('%F %H:%M') %> <%end%></td>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-12 bhoechie-tab-container">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+        <div class="list-group">
+          <a href="#" class="list-group-item active text-center">
+            <h4 class="glyphicon glyphicon-earphone"></h4><br>基础信息
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-home"></h4><br>房屋信息
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-shopping-cart"></h4><br>周边配套
+          </a>
+          <a href="#" class="list-group-item text-center">
+            <h4 class="glyphicon glyphicon-yen"></h4><br>租金相关
+          </a>
+        </div>
+      </div>
 
-      <td colspan="1">看房热线 <%= house.contact_phone %></td>
-      <td colspan="1">联系人: <%= house.contact_name %></td>
-    </tr>
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 col-xs-9 bhoechie-tab">
+        <div class="bhoechie-tab-content active">
+          <center>
+            <ul class="list-group">
+              <li class="list-group-item">编号:<%= house.house_id %></li>
+              <li class="list-group-item">录入时间: <%= house.created_at.strftime('%F %H:%M') %></li>
+              <li class="list-group-item">上次登录: <%if current_user%> <%= current_user.last_sign_in_at.strftime('%F %H:%M') %> <%end%></li>
+              <li class="list-group-item">看房热线 <%= house.contact_phone %></li>
+              <li class="list-group-item">联系人: <%= house.contact_name %></li>
+              <li class="list-group-item">区域: <%= house.district.name %></li>
+              <li class="list-group-item">产权地址: <%= house.address %></li>
+              <li class="list-group-item">绿化: <%= house.greening %></li>
+              <li class="list-group-item">景观: <%= house.landscape %></li>
+            </ul>
+          </center>
+        </div>
+        <div class="bhoechie-tab-content">
+          <center>
+            <ul class="list-group">
+              <li class="list-group-item">层高(<%= render_single_or_deplex(house) %>): <%= house.floor_height %>(m)</li>
+              <li class="list-group-item">产权面积: <%= house.property_area %>(㎡)</li>
+              <li class="list-group-item">公摊面积: <%= house.public_area %>(㎡)</li>
+              <li class="list-group-item">实际使用面积: <%= house.actual_area %>(㎡)</li>
+              <li class="list-group-item">
+                公共通道:
+                <% if house.public_passage.present? %>
+                <%= t(house.public_passage,:scope=>"house.level.narrow") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">套内硬装:
+                <% if house.house_upgrade.present? %>
+                <%= t(house.house_upgrade,:scope=>"house.flag.you_wu") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">套内软装:
+                <% if house.house_furnishings.present?%>
+                <%= t(house.house_furnishings,:scope=>"house.flag.you_wu") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">套内墙体可塑性:
+                <% if house.wall_malleability.present? %>
+                <%= t(house.wall_malleability,:scope=>"house.level.weak") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">涉品公寓可塑性:
+                <% if house.house_malleability.present? %>
+                <%= t(house.house_malleability,:scope=>"house.level.weak") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">结构: <%= house.structure %></li>
+              <li class="list-group-item">竣工时间 <%= house.completion_date %></li>
+            </ul>
+          </center>
+        </div>
+        <div class="bhoechie-tab-content">
+          <center>
+            <ul class="list-group">
+              <li class="list-group-item">封闭式小区:
+                <% if house.gated_community.present?%>
+                <%= t(house.gated_community,:scope=>"house.flag.shi_fou") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">停车位:
+                <% if house.parking_space.present? %>
+                <%= t(house.parking_space,:scope=>"house.flag.you_wu") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">燃气管道:
+                <%if house.gas_pipeline.present?%>
+                <%= t(house.gas_pipeline,:scope=>"house.flag.you_wu") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">电梯:
+                <% if house.elevator.present?%>
+                <%= t(house.elevator,:scope=>"house.flag.you_wu") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">门禁安保服务:
+                <% if house.sercurity_service.present? %>
+                <%= t(house.sercurity_service,:scope=>"house.flag.you_wu") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">教育资源:
+                <% if house.education_resources.present? %>
+                <%= t(house.education_resources,:scope=>"house.level.rare") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">出入便利性:
+                <% if house.transportation_convenience.present? %>
+                <%= t(house.transportation_convenience,:scope=>"house.level.low") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">购物便利性:
+                <% if house.shopping_convenience.present? %>
+                <%= t(house.shopping_convenience,:scope=>"house.level.low") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">
+                医疗便利性:
+                  <% if house.medical_convenience.present? %>
+                  <%= t(house.medical_convenience,:scope=>"house.level.low") %>
+                  <% end %>
+              </li>
+            </ul>
+          </center>
+        </div>
+        <div class="bhoechie-tab-content">
+          <center>
+            <ul class="list-group">
+              <li class="list-group-item">包租成本:
+                <% if house.charter_costs.present? %>
+                <%= t(house.charter_costs,:scope=>"house.flag.you_wu") %>
+                <% end %>
+              </li>
+              <li class="list-group-item">运营前市价: <%= house.price_before_operation %>(¥)</li>
+              <li class="list-group-item">月租金: <%= house.monthly_rent %>(¥)</li>
+              <li class="list-group-item">支付方式: <%= house.payment_method %></li>
 
-    <tr>
-      <td colspan="1">区域: <%= house.district.name %></td>
-      <td colspan="2">产权地址: <%= house.address %></td>
-      <td colspan="1">绿化: <%= house.greening %></td>
-      <td colspan="1">景观: <%= house.landscape %></td>
+            </ul>
+          </center>
+        </div>
+      </div>
 
-    </tr>
 
-    <tr>
-      <td >层高(<%= render_single_or_deplex(house) %>): <%= house.floor_height %>(m)</td>
-      <td>产权面积: <%= house.property_area %>(㎡)</td>
-      <td>公摊面积: <%= house.public_area %>(㎡)</td>
-      <td>实际使用面积: <%= house.actual_area %>(㎡)</td>
-      <td>公共通道:
-        <% if house.public_passage.present? %>
-        <%= t(house.public_passage,:scope=>"house.level.narrow") %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="1">结构: <%= house.structure %></td>
-      <td colspan="1">竣工时间 <%= house.completion_date %></td>
-      <td colspan="1">空间规划: <%= house.spatial_planning %></td>
-      <td>套内硬装:
-        <% if house.house_upgrade.present? %>
-        <%= t(house.house_upgrade,:scope=>"house.flag.you_wu") %>
-        <% end %>
-      </td>
-      <td>套内软装:
-        <% if house.house_furnishings.present?%>
-        <%= t(house.house_furnishings,:scope=>"house.flag.you_wu") %>
-        <% end %>
-      </td>
-
-    </tr>
-    <tr>
-
-      <td>停车位:
-        <% if house.parking_space.present? %>
-        <%= t(house.parking_space,:scope=>"house.flag.you_wu") %>
-        <% end %>
-      </td>
-      <td>封闭式小区:
-        <% if house.gated_community.present?%>
-        <%= t(house.gated_community,:scope=>"house.flag.shi_fou") %>
-        <% end %>
-      </td>
-      <td>燃气管道:
-        <%if house.gas_pipeline.present?%>
-        <%= t(house.gas_pipeline,:scope=>"house.flag.you_wu") %>
-        <% end %>
-      </td>
-      <td>电梯:
-        <% if house.elevator.present?%>
-        <%= t(house.elevator,:scope=>"house.flag.you_wu") %>
-        <% end %>
-      </td>
-      <td>包租成本:
-        <% if house.charter_costs.present? %>
-        <%= t(house.charter_costs,:scope=>"house.flag.you_wu") %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-
-      <td>门禁安保服务:
-        <% if house.sercurity_service.present? %>
-        <%= t(house.sercurity_service,:scope=>"house.flag.you_wu") %>
-        <% end %>
-      </td>
-      <td>套内墙体可塑性:
-        <% if house.wall_malleability.present? %>
-        <%= t(house.wall_malleability,:scope=>"house.level.weak") %>
-        <% end %>
-      </td>
-      <td>涉品公寓可塑性:
-        <% if house.house_malleability.present? %>
-        <%= t(house.house_malleability,:scope=>"house.level.weak") %>
-        <% end %>
-      </td>
-      <td>教育资源:
-        <% if house.education_resources.present? %>
-        <%= t(house.education_resources,:scope=>"house.level.rare") %>
-        <% end %>
-      </td>
-      <td>运营前市价: <%= house.price_before_operation %>(¥)</td>
-    </tr>
-    <tr>
-
-      <td>出入便利性:
-        <% if house.transportation_convenience.present? %>
-        <%= t(house.transportation_convenience,:scope=>"house.level.low") %>
-        <% end %>
-      </td>
-      <td>购物便利性:
-        <% if house.shopping_convenience.present? %>
-        <%= t(house.shopping_convenience,:scope=>"house.level.low") %>
-        <% end %>
-      </td>
-      <td>医疗便利性:
-        <% if house.medical_convenience.present? %>
-        <%= t(house.medical_convenience,:scope=>"house.level.low") %>
-        <% end %>
-      </td>
-      <td>月租金: <%= house.monthly_rent %>(¥)</td>
-      <td>支付方式: <%= house.payment_method %></td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="col-md-8">
-  <% if current_user && (current_user.has_role?(:admin)||current_user.has_role?(:imanager)||current_user.has_role?(:imanager_p))%>
-    <%= link_to('编辑',edit_house_path(house),class:"btn btn-info") %>
-  <% end %>
-
-  <% if !house.house_images.empty? %>
-  <section class="slider">
-    <div id="slider" class="flexslider">
-      <ul class="slides">
-        <% house.house_images.each do |house_image| %>
-        <li>
-          <%= image_tag(house_image.image.url) %>
-        </li>
-        <% end %>
-      </ul>
     </div>
-    <div id="carousel" class="flexslider">
-      <ul class="slides">
-        <% house.house_images.each do |house_image| %>
-        <li>
-          <%= image_tag(house_image.image.medium.url) %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-  </section>
-  <% else %>
-    <h4>暂未上传图片</h4>
-  <% end %>
-</div>
-<div class="col-md-4 col-lg-4">
 
-  <%= render "common/baidumap_2" %>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+      <% if !house.house_images.empty? %>
+      <section class="slider">
+        <div id="slider" class="flexslider">
+          <ul class="slides">
+            <% house.house_images.each do |house_image| %>
+            <li>
+              <%= image_tag(house_image.image.url) %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <div id="carousel" class="flexslider">
+          <ul class="slides">
+            <% house.house_images.each do |house_image| %>
+            <li>
+              <%= image_tag(house_image.image.medium.url) %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </section>
+      <% else %>
+        <h4>暂未上传图片</h4>
+      <% end %>
+    </div>
+  </div>
+
+  <table class="table table-bordered table-striped table-hover table-responsive">
+    <tbody>
+      <tr>
+        <td colspan="1">编号:<%= house.house_id %></td>
+        <td colspan="1">录入时间: <%= house.created_at.strftime('%F %H:%M') %></td>
+
+        <td colspan="1">上次登录: <%if current_user%> <%= current_user.last_sign_in_at.strftime('%F %H:%M') %> <%end%></td>
+
+        <td colspan="1">看房热线 <%= house.contact_phone %></td>
+        <td colspan="1">联系人: <%= house.contact_name %></td>
+      </tr>
+
+      <tr>
+        <td colspan="1">区域: <%= house.district.name %></td>
+        <td colspan="2">产权地址: <%= house.address %></td>
+        <td colspan="1">绿化: <%= house.greening %></td>
+        <td colspan="1">景观: <%= house.landscape %></td>
+
+      </tr>
+
+      <tr>
+        <td >层高(<%= render_single_or_deplex(house) %>): <%= house.floor_height %>(m)</td>
+        <td>产权面积: <%= house.property_area %>(㎡)</td>
+        <td>公摊面积: <%= house.public_area %>(㎡)</td>
+        <td>实际使用面积: <%= house.actual_area %>(㎡)</td>
+        <td>公共通道:
+          <% if house.public_passage.present? %>
+          <%= t(house.public_passage,:scope=>"house.level.narrow") %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">结构: <%= house.structure %></td>
+        <td colspan="1">竣工时间 <%= house.completion_date %></td>
+        <td colspan="1">空间规划: <%= house.spatial_planning %></td>
+        <td>套内硬装:
+          <% if house.house_upgrade.present? %>
+          <%= t(house.house_upgrade,:scope=>"house.flag.you_wu") %>
+          <% end %>
+        </td>
+        <td>套内软装:
+          <% if house.house_furnishings.present?%>
+          <%= t(house.house_furnishings,:scope=>"house.flag.you_wu") %>
+          <% end %>
+        </td>
+
+      </tr>
+      <tr>
+
+        <td>停车位:
+          <% if house.parking_space.present? %>
+          <%= t(house.parking_space,:scope=>"house.flag.you_wu") %>
+          <% end %>
+        </td>
+        <td>封闭式小区:
+          <% if house.gated_community.present?%>
+          <%= t(house.gated_community,:scope=>"house.flag.shi_fou") %>
+          <% end %>
+        </td>
+        <td>燃气管道:
+          <%if house.gas_pipeline.present?%>
+          <%= t(house.gas_pipeline,:scope=>"house.flag.you_wu") %>
+          <% end %>
+        </td>
+        <td>电梯:
+          <% if house.elevator.present?%>
+          <%= t(house.elevator,:scope=>"house.flag.you_wu") %>
+          <% end %>
+        </td>
+        <td>包租成本:
+          <% if house.charter_costs.present? %>
+          <%= t(house.charter_costs,:scope=>"house.flag.you_wu") %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+
+        <td>门禁安保服务:
+          <% if house.sercurity_service.present? %>
+          <%= t(house.sercurity_service,:scope=>"house.flag.you_wu") %>
+          <% end %>
+        </td>
+        <td>套内墙体可塑性:
+          <% if house.wall_malleability.present? %>
+          <%= t(house.wall_malleability,:scope=>"house.level.weak") %>
+          <% end %>
+        </td>
+        <td>涉品公寓可塑性:
+          <% if house.house_malleability.present? %>
+          <%= t(house.house_malleability,:scope=>"house.level.weak") %>
+          <% end %>
+        </td>
+        <td>教育资源:
+          <% if house.education_resources.present? %>
+          <%= t(house.education_resources,:scope=>"house.level.rare") %>
+          <% end %>
+        </td>
+        <td>运营前市价: <%= house.price_before_operation %>(¥)</td>
+      </tr>
+      <tr>
+
+        <td>出入便利性:
+          <% if house.transportation_convenience.present? %>
+          <%= t(house.transportation_convenience,:scope=>"house.level.low") %>
+          <% end %>
+        </td>
+        <td>购物便利性:
+          <% if house.shopping_convenience.present? %>
+          <%= t(house.shopping_convenience,:scope=>"house.level.low") %>
+          <% end %>
+        </td>
+        <td>医疗便利性:
+          <% if house.medical_convenience.present? %>
+          <%= t(house.medical_convenience,:scope=>"house.level.low") %>
+          <% end %>
+        </td>
+        <td>月租金: <%= house.monthly_rent %>(¥)</td>
+        <td>支付方式: <%= house.payment_method %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        地图信息
+      </h4>
+    </div>
+    <div class="panel-body">
+      <%= render "common/baidumap_2" %>
+    </div>
+  </div>
+
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+    e.preventDefault();
+    $(this).siblings('a.active').removeClass("active");
+    $(this).addClass("active");
+    var index = $(this).index();
+    $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+    $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+});
+});
+</script>

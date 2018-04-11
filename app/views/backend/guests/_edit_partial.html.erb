@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-6 country-select">
         <%= f.label :country, "国籍" %><br>
-        <%= f.country_select :country_code ,priority_countries:["US","IT","RU","MY","GB"],class:"form-control",locale:'en'%>
+        <%= f.country_select :country_code ,priority_countries:["US","IT","RU","MY","GB"],include_blank:true,class:"form-control",locale:'en'%>
       </div>
       <div class="col-md-3">
         <%= f.label :status,"租赁状态" %>

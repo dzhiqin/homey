@@ -18,7 +18,12 @@
                 <%= guest.name %>
               </div>
               <div class="col-md-3">
-                国籍: <%= guest.country_name(guest.country_code) %>
+                国籍:
+                <% if guest.country_code.present? %>
+                <%= guest.country_name(guest.country_code) %>
+                <% else %>
+                unkwon
+                <% end %>
               </div>
               <div class="col-md-3">
                 工作: <%= guest.job %>

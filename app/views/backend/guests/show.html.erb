@@ -10,8 +10,12 @@
       <label>名称:</label> <%= @guest.name %>
     </div>
     <div class="col-md-3 country-select">
-      <label>国籍:</label> <%= @guest.country_name(@guest.country_code) %>
-
+      <label>国籍:</label>
+      <% if @guest.country_code.present? %>
+        <%= @guest.country_name(@guest.country_code) %>
+      <% else %>
+        unkown
+      <% end %>
     </div>
     <div class="col-md-3">
       <label>工作:</label> <%= @guest.job %>

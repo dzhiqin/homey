@@ -2,8 +2,8 @@
 <%= simple_form_for (current_user.has_role?(:admin)? [:admin,house] : house)  do |f|%>
   <div class="container">
     <p class="text-right">
-      <%= link_to "取消",:back,class: "btn btn-warning" %>
-      <%= f.submit '确定',class: "btn btn-success"%>
+      <%= link_to "取消",:back,class: "btn btn-warning common-btn" %>
+      <%= f.submit '确定',class: "btn btn-success common-btn"%>
     </p>
     <div class="panel panel-danger">
       <div class="panel-heading">

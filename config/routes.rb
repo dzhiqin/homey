@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :houses
-    resources :user_managers do
+    resources :users do
+      collection do
+        post :bulk_update
+      end
       member do
         post :art_designer
         post :housekeeper

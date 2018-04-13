@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180408041814) do
+ActiveRecord::Schema.define(version: 20180413024531) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -150,22 +150,39 @@ ActiveRecord::Schema.define(version: 20180408041814) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.boolean  "is_deployee",            default: false
+    t.boolean  "is_admin",               default: false
+    t.boolean  "is_employee",            default: false
+    t.boolean  "is_art",                 default: false
+    t.boolean  "is_housekeeper",         default: false
+    t.boolean  "is_cmanager",            default: false
+    t.boolean  "is_overseer",            default: false
+    t.boolean  "is_salesman",            default: false
+    t.boolean  "is_salesman_p",          default: false
+    t.boolean  "is_imanager",            default: false
+    t.boolean  "is_imanager_p",          default: false
+    t.boolean  "is_acc",                 default: false
+    t.boolean  "is_hr",                  default: false
+    t.boolean  "is_design_director",     default: false
+    t.boolean  "is_design_assitant",     default: false
+    t.boolean  "is_rental_user",         default: false
+    t.boolean  "is_asset_user",          default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -1,12 +1,85 @@
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#permission-config">用户权限设置</a></li>
+  <li class="active">
+    <a data-toggle="tab" href="#custom_users">普通用户</a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#asset_users">资管用户</a>
+  </li>
+
+  <li><a data-toggle="tab" href="#permission-config">用户权限设置</a></li>
   <li><a data-toggle="tab" href="#permission-index">用户权限一览</a></li>
 </ul>
+
 <div class="tab-content">
-  <div class="tab-pane fade in active" id="permission-config">
-    <h1>用户权限设置</h1>
+  <div class="tab-pane fade in active" id="custom_users">
+    <h1 class="main-title">普通用户</h1>
+    <div class="container">
+      <div class="row">
+        <%= form_tag bulk_update_admin_users_path,method: :post do %>
+        <table class="table">
+          <thead>
+            <th>email</th>
+            <th>name</th>
+            <th>created time</th>
+            <th>options</th>
+
+          </thead>
+          <tbody>
+            <% @custom_users.each do |c| %>
+              <tr>
+                <td><%=c.email%></td>
+                <td><%=c.email.split("@")[0]%></td>
+                <td><%= c.created_at.strftime("%F") %></td>
+                <td>
+                  <%= check_box_tag "custom_ids[]",c.id,Array(params[:custom_ids]).include?(c) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <p class="text-right">
+          <%= submit_tag "设为职员",class:"btn btn-sm btn-primary",:data=>{confirm:"Are you sure?"} %>
+          <%= submit_tag "设为资管",class:"btn btn-sm btn-info",:data=>{confirm:"Are you sure?"} %>
+        </p>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade " id="asset_users">
+    <h1 class="main-title">资管用户</h1>
+    <div class="container">
+      <div class="row">
+        <table class="table">
+          <thead>
+            <th>email</th>
+            <th>name</th>
+            <th>created time</th>
+            <th>options</th>
+
+          </thead>
+          <tbody>
+            <% @asset_users.each do |a| %>
+              <tr>
+                <td><%=a.email%></td>
+                <td><%=a.email.split("@")[0]%></td>
+                <td><%= a.created_at.strftime("%F") %></td>
+                <td>
+                  <%= check_box_tag "custom_ids[]",a.id,Array(params[:custom_ids]).include?(a) %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tab-pane fade " id="permission-config">
+    <h1 class="main-title">用户权限设置</h1>
     <div class="col-md-12 col-lg-12">
-      <%= form_tag admin_user_managers_path,method: :get do %>
+      <%= form_tag admin_users_path,method: :get do %>
         从<%= date_field_tag 'from_date',"2010-01-01"%>到<%= date_field_tag 'to_date',Date.today %>
         <%= submit_tag '按注册日期筛选',:class=>"btn btn-sm btn-primary" %>
         <%if @from_date.present?%>
@@ -15,7 +88,7 @@
       <% end %>
     </div>
     <div class="col-md-12 col-lg-12">
-      <%= form_tag admin_user_managers_path,method: :get do %>
+      <%= form_tag admin_users_path,method: :get do %>
         <%= text_field_tag 'user_email',nil,placeholder:'请输入注册邮箱名' %>
         <%= submit_tag '按注册名筛选',:class=>"btn btn-sm btn-primary" %>
         <%if @user_email.present?%>
@@ -28,7 +101,7 @@
     </div>
   </div>
   <div class="tab-pane fade" id="permission-index">
-    <h1>用户权限一览</h1>
+    <h1 class="main-title">用户权限一览</h1>
     <table class="table table-bordered table-striped table-hover" >
       <thead>
         <th>角色</th>

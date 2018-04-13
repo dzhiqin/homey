@@ -72,3 +72,9 @@ Things you may want to cover:
 1. 调整求租客国籍选项，允许为空
 2. 调整首页界面，精简美化
 3. 调整title和btn样式
+20180413 dev-house
+1. 修改权限设置，为user添加boolean角色位
+2. 修改controller，用user替代user_manager
+3. 从所有用户中抽取普通用户和资管用户
+4. 普通用户增加设置为“资管”或“职员”的功能
+5. 

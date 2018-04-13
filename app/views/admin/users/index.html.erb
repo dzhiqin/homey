@@ -50,27 +50,36 @@
     <h1 class="main-title">资管用户</h1>
     <div class="container">
       <div class="row">
+        <%= form_tag bulk_update_admin_users_path,method: :post do %>
         <table class="table">
           <thead>
             <th>email</th>
             <th>name</th>
             <th>created time</th>
-            <th>options</th>
-
+            <th>取消资管</th>
+            <th>VIP</th>
           </thead>
           <tbody>
             <% @asset_users.each do |a| %>
               <tr>
-                <td><%=a.email%></td>
+                <td><%=link_to a.email,edit_admin_user_path(a)%></td>
                 <td><%=a.email.split("@")[0]%></td>
                 <td><%= a.created_at.strftime("%F") %></td>
                 <td>
                   <%= check_box_tag "custom_ids[]",a.id,Array(params[:custom_ids]).include?(a) %>
                 </td>
+                <td>
+                  <%= a.asset_vip.try(:name) %>
+                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
+        <p class="text-right">
+          <%= submit_tag "取消资管权限",class:"btn btn-sm btn-danger",:data=>{confirm:"Are you sure?"} %>
+
+        </p>
+        <% end %>
       </div>
     </div>
 
@@ -97,7 +106,7 @@
       <%end%>
     </div>
     <div class="user-table" id="user-table">
-      <%= render "table",:users=>@users %>
+      <%= render "table",:users=>@employee_users %>
     </div>
   </div>
   <div class="tab-pane fade" id="permission-index">
@@ -124,26 +133,6 @@
         <th>公司员工</th>
       </thead>
       <tbody>
-        <!-- <tr>
-          <td>Role</td>
-          <td>:admin</td>
-          <td>:art_designer</td>
-          <td>:housekeeper</td>
-          <td>:cm</td>
-          <td>:overseer</td>
-          <td>:salesman</td>
-          <td>:salesman_p</td>
-          <td>:imanager</td>
-          <td>:imanager_p</td>
-          <td>:acc</td>
-          <td>:hr</td>
-          <td>:design_director</td>
-          <td>:design_assistant</td>
-          <td>:rental_user</td>
-          <td>:asset_user</td>
-          <td>:it</td>
-          <td>:employee</td>
-        </tr> -->
         <tr>
           <td>设计图共享</td>
           <td>读/写</td>

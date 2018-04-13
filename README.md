@@ -77,4 +77,4 @@ Things you may want to cover:
 2. 修改controller，用user替代user_manager
 3. 从所有用户中抽取普通用户和资管用户
 4. 普通用户增加设置为“资管”或“职员”的功能
-5. 
+5. 添加asset_vip Model，user可以设置为vip

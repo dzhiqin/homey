@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413024531) do
+ActiveRecord::Schema.define(version: 20180413101717) do
+
+  create_table "asset_vips", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "max_house",  default: 5
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -183,6 +190,7 @@ ActiveRecord::Schema.define(version: 20180413024531) do
     t.boolean  "is_design_assitant",     default: false
     t.boolean  "is_rental_user",         default: false
     t.boolean  "is_asset_user",          default: false
+    t.integer  "asset_vip_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

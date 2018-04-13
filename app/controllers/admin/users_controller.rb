@@ -17,6 +17,25 @@ class Admin::UsersController < ApplicationController
     end
 
   end
+  def show
+    @user=User.find(params[:id])
+  end
+  def edit
+    @user=User.find(params[:id])
+  end
+  def update
+    @user=User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to admin_users_path
+    else
+      render :edit
+    end
+  end
+  def destroy
+    @user=User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path
+  end
   def bulk_update
     total=0
     Array(params[:custom_ids]).each do |custom_id|
@@ -29,10 +48,14 @@ class Admin::UsersController < ApplicationController
         user.add_role :asset_user
         user.is_asset_user=true
         total+=1
+      elsif params[:commit] == "取消资管权限"
+        user.remove_role :asset_user
+        user.is_asset_user=false
+        total+=1
       end
       user.save
     end
-    flash[:success]="成功编辑#{total}笔资料"
+    flash[:notice]="成功编辑#{total}笔资料！"
     redirect_to admin_users_path
   end
   def art_designer
@@ -238,5 +261,8 @@ class Admin::UsersController < ApplicationController
     @user.is_design_director=false
     @user.is_housekeeper=false
     @user.is_employee=false
+  end
+  def user_params
+    params.require(:user).permit(:asset_vip_id)
   end
 end

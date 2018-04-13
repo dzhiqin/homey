@@ -15,8 +15,8 @@
     <th>人事</th>
     <th>设计总监</th>
     <th>设计助理</th>
-    <th>租房用户</th>
-    <th>资管用户</th>
+    <!-- <th>租房用户</th>
+    <th>资管用户</th> -->
     <th>管理员</th>
   </thead>
   <tbody>
@@ -62,12 +62,12 @@
         <td>
           <%= check_box_tag "checkbox_design_assistant[#{user.id}]",1,user.is_design_assitant,:data=>{:url=>design_assistant_admin_user_path(user)},:class=>"change_role",:disabled=>!user.is_employee%>
         </td>
-        <td>
+        <!-- <td>
           <%= check_box_tag "checkbox_rental[#{user.id}]",1,user.is_rental_user,:data=>{:url=>rental_user_admin_user_path(user)},:class=>"change_role" %>
         </td>
         <td>
           <%= check_box_tag "checkbox_asset[#{user.id}]",1,user.is_asset_user,:data=>{:url=>asset_user_admin_user_path(user)},:class=>"change_role" %>
-        </td>
+        </td> -->
         <td>
           <%= check_box_tag "checkbox_admin[#{user.id}]",1,user.is_admin,:data=>{:url=>admin_admin_user_path(user)},:class=>"change_role",:disabled=>!user.is_employee%>
         </td>

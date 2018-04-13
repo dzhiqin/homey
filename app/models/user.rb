@@ -8,6 +8,7 @@ class User < ApplicationRecord
   scope :recent, -> {order('created_at DESC')}
   has_many :follows
   has_many :guests,through: :follows
+  belongs_to :asset_vip,:optional=>true
   def add_a_role(role)
     self.add_role role
   end

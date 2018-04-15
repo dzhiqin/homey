@@ -78,3 +78,6 @@ Things you may want to cover:
 3. 从所有用户中抽取普通用户和资管用户
 4. 普通用户增加设置为“资管”或“职员”的功能
 5. 添加asset_vip Model，user可以设置为vip
+20180415
+1. 在admin的index页面可以设置vip参数
+2. 

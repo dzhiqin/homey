@@ -77,8 +77,20 @@
         </table>
         <p class="text-right">
           <%= submit_tag "取消资管权限",class:"btn btn-sm btn-danger",:data=>{confirm:"Are you sure?"} %>
-
         </p>
+        <% end %>
+        <% AssetVip.all.each do |v| %>
+          <%= form_tag admin_asset_vip_path(v),method: :put do %>
+            VIP: <input type="text" name="name" value="<%=v.name%>">
+            可查阅数: <input type="text" name="max_house" value="<%=v.max_house%>">
+            <%= submit_tag "确定更新",class:"btn btn-xs btn-default" %>
+            <%= link_to "删除此VIP",admin_asset_vip_path(v),method: :delete,class:"btn btn-xs btn-danger",data:{confirm:"are you sure?"} %>
+          <% end %>
+        <% end %>
+        <%= form_tag admin_asset_vips_path,method: :post do  %>
+          VIP: <input type="text" name="name" value="" placeholder="此栏新增VIP">
+          可查阅数: <input type="text" name="max_house" value="" placeholder="">
+          <%= submit_tag "新增此VIP",class:"btn btn-xs btn-primary" %>
         <% end %>
       </div>
     </div>

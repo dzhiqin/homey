@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <h2 class="sub-title">编辑账户 <%=@user.id%></h2>
-
+    <h2 class="sub-title">编辑账户</h2>
+    Email: <%=@user.email%> <br>
+    ID: <%= @user.id %>
     <%= simple_form_for [:admin,@user] do |f|%>
     <% if @user.has_role?(:asset_user)%>
       <%= f.input :asset_vip_id,collection:AssetVip.all.map{|v| [v.name,v.id]},include_blank:true,prompt:"",label:"设置VIP等级" %>

@@ -32,6 +32,7 @@ Things you may want to cover:
 * 1. 修改使用collection_check_boxes
 *
 20180327-13:42
+
 1. 租客信息页面增加折叠和展开按钮
 20180328-11:12
 1. follow嵌套到guest
@@ -40,12 +41,15 @@ Things you may want to cover:
 4. 动态添加和删除refer_guest
 5. 求租和在租、退租状态区分
 20180329-11:22
+
 1. 客户来源占比饼状图
 2. 对Guest分配用户权限
 3. 调整navbar选项
 20180330
+
 1. 删除employee部分内容
 20180402
+
 1. 权限管理增加确认框
 2. 最近跟进的求租客信息置顶
 3. 资产信息添加联系人栏位
@@ -80,4 +84,4 @@ Things you may want to cover:
 5. 添加asset_vip Model，user可以设置为vip
 20180415
 1. 在admin的index页面可以设置vip参数
-2. 
+2. 修改格式错误

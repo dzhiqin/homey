@@ -34,6 +34,14 @@ zh-CN:
         low: "弱"
         middle: "中"
         high: "强"
+      refurbishment:
+        low: "不翻修"
+        middle: "局部翻修"
+        high: "完整翻修"
+    lease_plan:
+      monthly: "长租"
+      daily: "日租"
+      mon_day: "长租和日租"
 
   guest:
     status:

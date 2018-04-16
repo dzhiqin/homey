@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Admin::HousesControllerTest < ActionDispatch::IntegrationTest
+class LeaseTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

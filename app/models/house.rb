@@ -8,9 +8,12 @@ class House < ApplicationRecord
   STATUS=["valid","invalid"]
   LEVEL=["low","middle","high"]
   FLAG=["you","wu"]
+  LEASE=["monthly","daily","mon_day"]
   validates_inclusion_of :gated_community,:in=>FLAG
   validates_inclusion_of :status,:in=>STATUS
   mount_uploader :logo, LogoUploader
   has_many :house_images,:dependent=>:destroy
   accepts_nested_attributes_for :house_images,:allow_destroy=>true,:reject_if=>:all_blank
+  has_many :leases,:dependent=>:destroy
+  accepts_nested_attributes_for :leases,:allow_destroy=>true,:reject_if=>:all_blank
 end

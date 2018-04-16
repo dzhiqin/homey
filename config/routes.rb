@@ -5,9 +5,8 @@ Rails.application.routes.draw do
   get 'about_us',to: "welcome#about_us"
   get 'backend',to: "backend/base#index"
   get 'backend/pie'=>"backend/base#pie",:as=>:pie
-  namespace :employee do
-    resources :houses
-  end
+
+
   namespace :admin do
     resources :houses
     resources :asset_vips
@@ -36,7 +35,15 @@ Rails.application.routes.draw do
     end
 
   end
-  resources :houses
+  resources :houses do
+    member do
+      get "steps/1"=>"houses#step1",:as=>:step1
+      patch "steps/1/update"=>"houses#step1_update",:as=>:update_step1
+      get "steps/2"=>"houses#step2",:as=>:step2
+      patch "steps/2/update"=>"houses#step2_update",:as=>:update_step2
+    end
+
+  end
   namespace :backend do
     resources :resources
     resources :requests

@@ -676,3 +676,17 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
   background-image: url("http://p2sh8lo60.bkt.clouddn.com/bg2.jpg");
 }
 //========================以上================
+.nested_house_leases{
+
+  border-left: 5px solid #bbb;
+  margin-bottom: 10px;
+  padding:10px;
+}
+.nested_house_leases .btn{
+  margin-top: 25px;
+}
+@media (max-width:968px){
+  .nested_house_leases .btn{
+    margin-top: 0;
+  }
+}

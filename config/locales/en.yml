@@ -56,6 +56,14 @@ en:
         low: "Weak"
         middle: "Medium"
         high: "Strong"
+      refurbishment:
+        low: "No Refurbishment"
+        middle: "Partial Refurbishment"
+        high: "Total Refurbishment"
+    lease_plan:
+      monthly: "Monthly"
+      daily: "Daily"
+      mon_day: "Monthly and Daily"
   guest:
     status:
       request: "Request"

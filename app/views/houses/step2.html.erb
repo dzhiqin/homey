@@ -1,0 +1,130 @@
+<% if @house.errors.any? %>
+<ul>
+  <% @house.errors.full_messages.each do |error|%>
+    <li><%=error%></li>
+  <%end%>
+</ul>
+<% end %>
+<h1 class="main-title">房源信息-Step2</h1>
+<%= simple_form_for @house,:url=>update_step2_house_path(@house)  do |f|%>
+  <div class="container">
+    <div class="row">
+      <p class="text-right">
+        <%= link_to "取消",houses_path,class: "btn btn-warning common-btn" %>
+        <%= link_to "上一步",step1_house_path(@house),class:"btn btn-info common-btn" %>
+        <%= f.submit '确定',class: "btn btn-success common-btn"%>
+      </p>
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h4>必填</h4>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <%= f.input :join_name,label:'加盟角色',required:true,placeholder:"必填" %>
+            </div>
+            <div class="col-md-3">
+              <abbr title="required">*</abbr>
+              <%= f.label "改造户型" %><br>
+              <%= f.select :bedroom,0..10%>卧室
+              <%= f.select :bathroom,0..5 %>卫生间
+              <%= f.select :veranda,0..5 %>阳台
+              <%= f.select :balcony,0..5 %>卫生间
+            </div>
+
+            <div class="col-md-3">
+              <%= f.input :refurbishment,collection:House::LEVEL.map{|s| [t(s,:scope=>"house.level.refurbishment"),s]}, label:'翻修规划' ,required:true,prompt:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :lease_plan,collection:House::LEASE.map{|s| [t(s,:scope=>"house.lease_plan"),s]},label:"招租规划",required:true,prompt:"必填"%>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <%= f.input :indoor_theme,label:'室内主题',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :guarantee_rate ,label:'担保入住率(%)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :duration_of_renovation ,label:'预留装修期(天)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :monthly_rent ,label:'月租金(¥)',required:true,placeholder:"含物业、水电、燃气、网络费,必填"%>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <%= f.input :deposit ,label:'押金(¥)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :daily_rent ,label:'日租指导价(¥)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :refurbishment_budget ,label:'单套改造预算(¥)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :maintain_budget ,label:'年养护预算(¥)',required:true,placeholder:"必填"%>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <%= f.input :overdue_price ,label:'装修超期成本(¥)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :referral_commission ,label:'中介佣金(¥)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :utilities ,label:'物业水电燃气网络成本(¥)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :start_up_cost ,label:'单套启动成本(¥)',required:true,placeholder:"含拿房押金(必填)"%>
+            </div>
+
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <%= f.input :duration_of_lease ,label:'商户增值税百分比(%)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :duration_of_guarantee ,label:'个人增值税百分比(%)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :ROI_lease ,label:'满租回报率(%)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :ROI_guarantee ,label:'担保回报率(%)',required:true,placeholder:"必填"%>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-3">
+              <%= f.input :duration_of_lease ,label:'满租回报周期(月)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :duration_of_guarantee ,label:'担保回报周期(月)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :B_income_rate ,label:'B端净收分配比例(%)',required:true,placeholder:"必填"%>
+            </div>
+            <div class="col-md-3">
+              <%= f.input :platform_income_rate ,label:'资管平台净收分配比例(%)',required:true,placeholder:"必填"%>
+            </div>
+          </div>
+          <div class="col-md-12'">
+            <%= f.nested_fields_for :leases do |ff| %>
+              <fieldset >
+                <div class="col-md-3">
+                  <%= ff.input :charter_costs,label:"包租月租金",required:true %>
+                </div>  <%= ff.remove_nested_fields_link "移除这一笔",:class=>"btn btn-danger" %>
+              </fieldset>
+            <% end %>
+            <%= f.add_nested_fields_link :leases,"多出租1年",:class=>"btn btn-default" %>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+<%end%>

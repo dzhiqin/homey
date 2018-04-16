@@ -1,9 +1,15 @@
-
-<%= simple_form_for (current_user.has_role?(:admin)? [:admin,house] : house)  do |f|%>
+<% if house.errors.any? %>
+<ul>
+  <% house.errors.full_messages.each do |error|%>
+    <li><%=error%></li>
+  <%end%>
+</ul>
+<% end %>
+<%= simple_form_for house  do |f|%>
   <div class="container">
     <p class="text-right">
       <%= link_to "取消",:back,class: "btn btn-warning common-btn" %>
-      <%= f.submit '确定',class: "btn btn-success common-btn"%>
+      <%= f.submit '下一步',class: "btn btn-success common-btn"%>
     </p>
     <div class="panel panel-danger">
       <div class="panel-heading">
@@ -143,9 +149,7 @@
           <div class="col-md-3">
             <%=f.input :price_before_operation,label:'运营前市价(¥)'%>
           </div>
-          <div class="col-md-3">
-            <%=f.input :monthly_rent,label:'月租金(¥)'%>
-          </div>
+          
           <div class="col-md-3">
             <%=f.input :payment_method,label:'支付方式'%>
           </div>

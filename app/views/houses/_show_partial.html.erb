@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped table-hover table-responsive">
+<table class="table table-bordered  table-hover table-responsive">
   <tbody>
     <tr>
       <td colspan="1">编号:<%= house.house_id %></td>
@@ -119,10 +119,29 @@
     </tr>
   </tbody>
 </table>
+<% if @house.vip_users.include?(current_user) || (can? :update ,House)%>
+  <table class="table table-bordered table-hover table-responsive">
+    <tbody>
+      <tr>
+        <td colspan="1">加盟角色:<%=@house.join_name%></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
 <div class="container">
   <div class="row">
 
     <p class="text-right">
+      <% if current_user.is_asset_user && current_user.asset_vip.present?%>
+        <% if @house.vip_users.include?(current_user)%>
+          <%= link_to "已添加","#",class:"btn btn-default",data:{confirm:"您已经把此条信息添加到VIP资产信息栏。"} %>
+        <% else %>
+          <%= link_to "添加",house_path(@house,:add=>"add_to_read"),class:"btn btn-default",
+          data:{confirm:"您是VIP资管用户，可以把此条信息添加到VIP资产信息栏,添加后将会占用您一个VIP资产信息额度，确定添加吗？"} %>
+        <% end %>
+
+      <% end %>
+
       <% if can? :update,@house%>
         <%= link_to('编辑',edit_house_path(@house),class:"btn btn-warning common-btn") %>
       <% end %>

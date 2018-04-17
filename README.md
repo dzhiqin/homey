@@ -96,7 +96,11 @@ Things you may want to cover:
 2. 修改格式错误
 3. 删除admin下的houses_controller
 
-### 20180416
+### 20180416-20180417
 1. 可以编辑隐藏的资管信息
 2. 调整几个已知错误unknown拼写和“工作”改”“职业”
-3.
+3. 新增read_relationship，user与house通过该model建立多对多关联
+4. asset_user可以添加资产信息到自己的read_houses，并且可以查看所有自己已添加的资产信息
+5. 资管专员和管理员可以查看隐藏的资管信息
+6. VIP资产信息添加返回按钮
+7. 管理员可查看资管用户添加的vip资产信息列表

@@ -16,4 +16,6 @@ class House < ApplicationRecord
   accepts_nested_attributes_for :house_images,:allow_destroy=>true,:reject_if=>:all_blank
   has_many :leases,:dependent=>:destroy
   accepts_nested_attributes_for :leases,:allow_destroy=>true,:reject_if=>:all_blank
+  has_many :read_relationships
+  has_many :vip_users,through: :read_relationships,:source=>:user
 end

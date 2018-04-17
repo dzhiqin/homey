@@ -10,7 +10,7 @@ class Ability
       can :manage,House
       can :read ,Guest
     elsif user.has_role?(:imanager_p)
-      # 兼职资管
+      # 兼职资管专员
       can :manage,House
       can :read,Guest
     elsif user.has_role?(:acc)
@@ -47,6 +47,7 @@ class Ability
     elsif user.has_role?(:asset_user)
       # 资管用户
       can :read ,House
+      
     end
     # Define abilities for the passed in user here. For example:
     #

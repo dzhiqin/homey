@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :follows
   has_many :guests,through: :follows
   belongs_to :asset_vip,:optional=>true
+  has_many :read_relationships
+  has_many :read_houses,through: :read_relationships,:source=>:house
   def add_a_role(role)
     self.add_role role
   end

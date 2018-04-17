@@ -1,18 +1,23 @@
 class HousesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :employee_required
-  load_and_authorize_resource
-  attr_accessor :current_number
+  load_and_authorize_resource :except=>[:vip_index]
+
   def index
     @houses=House.order("status DESC").order("updated_at DESC").page(params[:page]).per(20)
     if params[:filter_house_id].present?
       @houses=House.where('house_id LIKE?',"%#{params[:filter_house_id]}%").order("status DESC").order("updated_at DESC").page(params[:page]).per(20)
     end
   end
+  def vip_index
+    @houses=current_user.read_houses
+  end
   def show
     # @house=House.find(params[:id])
+    if params[:add]=="add_to_read"
+      add_house_to_read
 
+    end
   end
   def new
     # @house=House.new
@@ -20,6 +25,9 @@ class HousesController < ApplicationController
     if !@house.house_id.present?
       @house.house_id=generate_id.upcase
     end
+
+  end
+  def add2
 
   end
   def edit
@@ -64,15 +72,26 @@ class HousesController < ApplicationController
     @house.save
   end
   def step2_update
-
-
     if @house.update(house_params)
       redirect_to houses_path
     else
       render :step2
     end
   end
+  
   private
+  def add_house_to_read
+    if current_user.read_houses.size < current_user.asset_vip.max_house
+      if current_user.read_houses.include?(@house)
+        flash.now[:alert]="重复添加！"
+      else
+        current_user.read_houses << @house
+        flash.now[:notice]="添加成功！"
+      end
+    else
+      flash.now[:alert]="超出资管VIP等级最多可添加额度。"
+    end
+  end
   def house_params
     params.require(:house).permit(:house_id,:last_login,:contact_phone,:district_id,:address,:gated_community,:landscape,:greening,:parking_space,:structure,:spatial_planning,
       :completion_date,:floor_height,:is_duplex,:property_area,:actual_area,:house_upgrade,:house_furnishings,:gas_pipeline,:elevator,:public_area,:wall_malleability,:house_malleability,

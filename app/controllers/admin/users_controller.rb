@@ -36,6 +36,7 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_users_path
   end
+  
   def bulk_update
     total=0
     Array(params[:custom_ids]).each do |custom_id|

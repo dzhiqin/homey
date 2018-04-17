@@ -1,0 +1,23 @@
+
+<div class="container">
+  <div class="row">
+    <h1 class="main-title">VIP资产信息</h1>
+    <table class="table table-bordered">
+      <thead>
+        <th>id</th>
+        <th>address</th>
+        <th>options</th>
+      </thead>
+      <tbody>
+        <% @houses.each do  |house|%>
+        <tr>
+          <td><%=link_to house.house_id,house_path(house)%></td>
+          <td><%=house.address%></td>
+          <td></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to "返回",houses_path,class:"btn btn-default" %>
+  </div>
+</div>

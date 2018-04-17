@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180416064641) do
+ActiveRecord::Schema.define(version: 20180417033317) do
 
   create_table "asset_vips", force: :cascade do |t|
     t.string   "name"
@@ -183,6 +183,15 @@ ActiveRecord::Schema.define(version: 20180416064641) do
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "read_relationships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_read_relationships_on_house_id"
+    t.index ["user_id"], name: "index_read_relationships_on_user_id"
   end
 
   create_table "refer_guests", force: :cascade do |t|

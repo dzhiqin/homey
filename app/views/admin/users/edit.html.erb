@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2 class="sub-title">编辑账户</h2>
+    <h2 class="sub-title">编辑资管账户</h2>
     Email: <%=@user.email%> <br>
     ID: <%= @user.id %>
     <%= simple_form_for [:admin,@user] do |f|%>
@@ -8,9 +8,25 @@
       <%= f.input :asset_vip_id,collection:AssetVip.all.map{|v| [v.name,v.id]},include_blank:true,prompt:"",label:"设置VIP等级" %>
     <% end %>
 
-        <%= f.submit "确定" %>
-
+      <%= f.submit "确定" %>
     <% end %>
-
+    <br>
+    <label>已收录VIP资产信息</label>
+    <table class="table table-bordered">
+      <thead>
+        <th>id</th>
+        <th>address</th>
+        <td>options</td>
+      </thead>
+      <tbody>
+        <% @user.read_houses.each do |house|%>
+        <tr>
+          <td><%=house.house_id%></td>
+          <td><%=house.address%></td>
+          <td></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

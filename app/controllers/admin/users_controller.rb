@@ -36,7 +36,14 @@ class Admin::UsersController < ApplicationController
     @user.destroy
     redirect_to admin_users_path
   end
-  
+  def delete_from_read
+    @user=User.find(params[:id])
+    if params[:house_id]
+      house=House.find(params[:house_id])
+      @user.read_houses.delete(house)
+    end
+   redirect_to edit_admin_user_path(@user)
+  end
   def bulk_update
     total=0
     Array(params[:custom_ids]).each do |custom_id|

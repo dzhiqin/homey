@@ -114,8 +114,9 @@
         <%= t(house.medical_convenience,:scope=>"house.level.low") %>
         <% end %>
       </td>
-      <td>月租金: <%= house.monthly_rent %>(¥)</td>
+      <!-- <td>月租金: <%= house.monthly_rent %>(¥)</td> -->
       <td>支付方式: <%= house.payment_method %></td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -124,6 +125,43 @@
     <tbody>
       <tr>
         <td colspan="1">加盟角色:<%=@house.join_name%></td>
+        <td colspan="1">改造户型:<%=@house.bedroom%>卧室<%= @house.bathroom %>卫生间<%= @house.veranda %>阳台<%= @house.balcony %>露台</td>
+        <td colspan="1">翻修规划:<%=@house.refurbishment%></td>
+        <td colspan="1">招租规划:<%=@house.lease_plan%></td>
+        <td colspan="1">室内主题:<%=@house.indoor_theme%></td>
+      </tr>
+      <tr>
+        <td colspan="1">预留装修期:<%=@house.duration_of_renovation%>(天)</td>
+        <td colspan="1">担保入住率:<%=@house.guarantee_rate%>(%)</td>
+        <td colspan="1">月租金(物业/水电/燃气/网络):<%=@house.monthly_rent%>(¥)</td>
+        <td colspan="1">押金:<%=@house.deposit%>(¥)</td>
+        <td colspan="1">日租指导价:<%=@house.daily_rent%>(¥)</td>
+      </tr>
+      <tr>
+        <td colspan="1">单套改造预算:<%=@house.refurbishment_budget%>(¥)</td>
+        <td colspan="1">年养护预算:<%=@house.maintain_budget%>(¥)</td>
+        <td colspan="1">装修超期成本:<%=@house.overdue_price%>(¥)</td>
+        <td colspan="1">中介佣金:<%=@house.referral_commission%>(¥)</td>
+        <td colspan="1">物业/水电/燃气/网络费:<%=@house.utilities%>(¥)</td>
+      </tr>
+      <tr>
+        <td colspan="1">商户增值税百分比:<%=@house.VAT_merchant%>(%)</td>
+        <td colspan="1">个人增值税百分比:<%=@house.VAT_personal%>(%)</td>
+        <td colspan="1">满租回报率:<%=@house.ROI_lease%>(%)</td>
+        <td colspan="1">担保回报率:<%=@house.ROI_guarantee%>(%)</td>
+        <td colspan="1">满租回报周期:<%=@house.duration_of_lease%>(月)</td>
+      </tr>
+      <tr>
+        <td colspan="1">担保回报周期:<%=@house.duration_of_guarantee%>(月)</td>
+        <td colspan="1">单套启动成本(含拿房押金):<%=@house.start_up_cost%>(¥)</td>
+        <td colspan="1">B端净收比例:<%=@house.B_income_rate%>(%)</td>
+        <td colspan="1">平台净收比例:<%=@house.platform_income_rate%>(%)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <% @house.leases.each_with_index do |lease,i|%>
+          <td>第<%= i+1 %>年包租月租金:<%= lease.charter_costs %>(¥)</td>
+        <% end %>
       </tr>
     </tbody>
   </table>

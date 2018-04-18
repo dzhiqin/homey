@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         post :rental_user
         post :asset_user
         post :admin
+        post :delete_from_read
       end
     end
 

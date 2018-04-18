@@ -8,7 +8,7 @@
       <%= f.input :asset_vip_id,collection:AssetVip.all.map{|v| [v.name,v.id]},include_blank:true,prompt:"",label:"设置VIP等级" %>
     <% end %>
 
-      <%= f.submit "确定" %>
+      <%= f.submit "确定",class:"btn btn-primary" %>
     <% end %>
     <br>
     <label>已收录VIP资产信息</label>
@@ -16,17 +16,19 @@
       <thead>
         <th>id</th>
         <th>address</th>
-        <td>options</td>
+        <th>options</th>
       </thead>
       <tbody>
         <% @user.read_houses.each do |house|%>
         <tr>
-          <td><%=house.house_id%></td>
+          <td><%= link_to house.house_id,house_path(house),target:"_blank"%></td>
           <td><%=house.address%></td>
-          <td></td>
+          <td><%= link_to "从列表移除",delete_from_read_admin_user_path(@user,:house_id=>house.id),method: :post ,
+          class:"btn btn-danger",data:{confirm:"are you sure?"}%></td>
         </tr>
         <% end %>
       </tbody>
     </table>
+    <%= link_to "返回",:back,class:"btn btn-default" %>
   </div>
 </div>

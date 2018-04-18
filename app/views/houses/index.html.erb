@@ -6,8 +6,9 @@
     <%= text_field_tag 'filter_house_id' ,nil,placeholder:"请输入ID" %>
     <%= submit_tag '按ID查找',class:"btn btn-default" %>
   <% end %>
-
-  <%= link_to '新增房源信息',new_house_path,:class=>"btn btn-primary common-btn" %>
+  <% if can? :create ,House %>
+    <%= link_to '新增房源信息',new_house_path,:class=>"btn btn-primary common-btn" %>
+  <% end %>
   <%= link_to '返回',:back,:class=>"btn btn-success common-btn" %>
   <table class="table table-bordered">
     <thead>
@@ -15,7 +16,7 @@
         <th>资产ID</th>
         <th>资产地址</th>
         <th>创建时间</th>
-        <th>操作</th>
+        <th colspan="2">操作</th>
       </tr>
     </thead>
     <tbody>
@@ -29,11 +30,16 @@
           <td>
             <% if current_user %>
               <% if can? :update ,house %>
-                <%= link_to('edit',edit_house_path(house),class:"btn btn-info") %>
+                <%= link_to content_tag(:i,"",class:"fa fa-pencil-square-o"),edit_house_path(house) %>
               <% end %>
-              <% if can? :destroy , house %>
-                <%= link_to('destroy',house_path(house),method: :delete,data:{confirm:"are you sure?"},class:"btn btn-danger") %>
-              <%end%>
+            <% end %>
+          </td>
+          <td>
+            <% if current_user %>
+            <% if can? :destroy , house %>
+              <%= link_to content_tag(:i,"",class:"fa fa-trash"),house_path(house),method: :delete,data:{confirm:"are you sure?"} %>
+              <!-- <%= link_to('destroy',house_path(house),method: :delete,data:{confirm:"are you sure?"},class:"btn btn-danger") %> -->
+            <%end%>
             <% end %>
           </td>
         </tr>

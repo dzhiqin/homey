@@ -10,7 +10,11 @@ class Backend::GuestsController < ApplicationController
   def show
     # @guest=Guest.find(params[:id])
     if @guest.follows.any?
-      @guest.follows.last.last_follow_date=Time.now() if @guest.follows.last.user_id=current_user.id
+
+      if @guest.follows.last.user_id=current_user.id
+        # binding.pry
+        @guest.follows.last.last_follow_date=Time.now()
+      end
     end
   end
   def new

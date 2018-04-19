@@ -8,38 +8,35 @@ class Backend::GuestsController < ApplicationController
 
   end
   def show
-    # @guest=Guest.find(params[:id])
-    if @guest.follows.any?
-
-      if @guest.follows.last.user_id=current_user.id
-        # binding.pry
-        @guest.follows.last.last_follow_date=Time.now()
-      end
+    if @guest.follows.any? && @guest.follows.last.user_id=current_user.id
+      pre_follow=@guest.follows.last
+      @guest.follows.build(:user_id=>current_user.id,:last_follow_date=>Time.now())
+      @guest.save if pre_follow.last_follow_date!=@guest.follows.last.last_follow_date
     end
   end
   def new
-    # @guest=Guest.new
     @guest.refer_guests.build
-    @guest.follows.build
   end
   def edit
-    # @guest=Guest.find(params[:id])
     @guest.refer_guests.build if @guest.refer_guests.empty?
-    @guest.follows.build(:user_id=>current_user.id) if @guest.follows.empty?
+    # @guest.follows.build(:user_id=>current_user.id) if @guest.follows.empty?
+    @guest.follows.build
   end
   def create
     @guest=Guest.new(guest_params)
     if @guest.save
+      @guest.row_order_position=:first
       redirect_to backend_guests_path
     else
       render :new
     end
   end
   def update
-    # @guest=Guest.find(params[:id])
     if @guest.update(guest_params)
       @guest.row_order_position=:first
       @guest.save!
+      t=@guest.follows.last.updated_at
+      @guest.follows.last.update(:last_follow_date=>t)
       redirect_to backend_guests_path
 
     else
@@ -47,8 +44,6 @@ class Backend::GuestsController < ApplicationController
     end
   end
   def destroy
-    # @guest=Guest.find(params[:id])
-
     @guest.destroy
     flash[:alert]="已删除此条信息!"
     redirect_to backend_guests_path

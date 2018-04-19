@@ -38,7 +38,11 @@ class HousesController < ApplicationController
   def create
     @house=House.new(house_params)
     if @house.save
-      redirect_to step2_house_path(@house)
+      if params[:commit]=="保存"
+        redirect_to houses_path
+      elsif params[:commit]=="下一步"
+        redirect_to step2_house_path(@house)
+      end
     else
       render :new
     end
@@ -46,7 +50,11 @@ class HousesController < ApplicationController
   def update
     # @house=House.find(params[:id])
     if @house.update(house_params)
-      redirect_to step2_house_path(@house)
+      if params[:commit] == "保存"
+        redirect_to houses_path
+      elsif params[:commit] == "下一步"
+        redirect_to step2_house_path(@house)
+      end
     else
       render :edit
     end
@@ -78,7 +86,7 @@ class HousesController < ApplicationController
       render :step2
     end
   end
-  
+
   private
   def add_house_to_read
     if current_user.read_houses.size < current_user.asset_vip.max_house

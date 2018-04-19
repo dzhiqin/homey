@@ -10,6 +10,7 @@
     <p class="text-right">
       <%= link_to "取消",:back,class: "btn btn-warning common-btn" %>
       <%= f.submit '下一步',class: "btn btn-success common-btn"%>
+      <%= f.submit '保存',class: "btn btn-info common-btn"%>
     </p>
     <div class="panel panel-danger">
       <div class="panel-heading">
@@ -149,7 +150,7 @@
           <div class="col-md-3">
             <%=f.input :price_before_operation,label:'运营前市价(¥)'%>
           </div>
-          
+
           <div class="col-md-3">
             <%=f.input :payment_method,label:'支付方式'%>
           </div>

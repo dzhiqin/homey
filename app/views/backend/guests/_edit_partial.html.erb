@@ -138,16 +138,9 @@
     <h4>跟进信息</h4>
   </div>
   <div class="panel-body">
-    <%= f.nested_fields_for :follows do |ff| %>
-      <fieldset>
-        <%= ff.label :user_id,"跟进人" %>
-        <%= ff.select :user_id,salesman_users.map{|u| [u.email,u.id]},prompt:"选择跟进人"%>
-        <%= ff.remove_nested_fields_link "删除此条",class: "btn btn-danger btn-xs" %>
-        <%= ff.cktext_area :memo ,ckeditor:{toolbar:'mini',language:'zh-CN'} %>
-      </fieldset>
-
-    <% end %>
-    <%= f.add_nested_fields_link :follows ,"增加跟进人",:class=>"btn btn-default" %>
+    <label>新增跟进信息</label>
+    <%= select_tag "guest[follows_attributes][#{guest.id}][user_id]" ,options_for_select(salesman_users.map{|u| [u.email,u.id]}),prompt:"选择跟进人" %>
+    <%= cktext_area_tag "guest[follows_attributes][#{guest.id}][memo]",nil,ckeditor:{toolbar:'mini',language:'zh-CN'} %>
   </div>
 </div>
 

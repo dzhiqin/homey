@@ -131,7 +131,7 @@
         <% @guest.follows.each do |follow|%>
           <tr>
             <td><%=User.find(follow.user_id).email%></td>
-            <td><%=follow.updated_at.strftime("%F %H:%M")%></td>
+            <td><%=follow.try(:last_follow_date)%></td>
             <td><%=sanitize follow.memo%></td>
           </tr>
         <% end %>

@@ -13,8 +13,8 @@ module Backend::GuestsHelper
     end
   end
   def show_last_update_time(guest)
-    if guest.follows.any?
-      guest.follows.last.updated_at.strftime("%F %H:%M")
+    if guest.follows.last.last_follow_date.present?
+      guest.follows.last.last_follow_date.strftime("%F")
     end
   end
 end

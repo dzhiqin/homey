@@ -13,3 +13,10 @@
     District.create!(:name=>'同安区')
     District.create!(:name=>'翔安区')
   end
+  Follow.all.each do |follow|
+    follow.name=User.find(follow.user_id).email
+    if follow.last_follow_date.blank?
+      follow.last_follow_date=follow.created_at
+    end
+    follow.save!
+  end

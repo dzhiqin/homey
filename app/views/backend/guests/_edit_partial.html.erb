@@ -139,8 +139,10 @@
   </div>
   <div class="panel-body">
     <label>新增跟进信息</label>
-    <%= select_tag "guest[follows_attributes][#{guest.id}][user_id]" ,options_for_select(salesman_users.map{|u| [u.email,u.id]}),prompt:"选择跟进人" %>
-    <%= cktext_area_tag "guest[follows_attributes][#{guest.id}][memo]",nil,ckeditor:{toolbar:'mini',language:'zh-CN'} %>
+    <%= select_tag "guest[follows_attributes][#{(@pre_follow.present?)? "#{@pre_follow.id+1}": "1"}][user_id]" ,
+    options_for_select(salesman_users.map{|u| [u.email,u.id]}),prompt:"选择跟进人" %>
+    <%= cktext_area_tag "guest[follows_attributes][#{(@pre_follow.present?)? "#{@pre_follow.id+1}" : "1"}][memo]",nil,
+    ckeditor:{toolbar:'mini',language:'zh-CN'} %>
   </div>
 </div>
 

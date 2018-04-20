@@ -9,12 +9,14 @@ module Backend::GuestsHelper
   end
   def show_follower(guest)
     if guest.follows.any?
-        User.find(guest.follows.last.user_id).email
+        # User.find(guest.follows.last.user_id).email
+        guest.follows.last.name
     end
   end
   def show_last_update_time(guest)
-    if guest.follows.last.last_follow_date.present?
-      guest.follows.last.last_follow_date.strftime("%F")
+    if guest.follows.any?
+      guest.follows.last.last_follow_date
     end
+
   end
 end

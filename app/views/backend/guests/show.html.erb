@@ -130,7 +130,7 @@
       <% if @guest.follows.any? %>
         <% @guest.follows.each do |follow|%>
           <tr>
-            <td><%=User.find(follow.user_id).email%></td>
+            <td><%=follow.name%></td>
             <td><%=follow.try(:last_follow_date)%></td>
             <td><%=sanitize follow.memo%></td>
           </tr>
@@ -147,16 +147,18 @@
 
 <h3 class="col-md-12">裙带客源</h3>
 <% if @guest.refer_guests.present? %>
-<% @guest.refer_guests.each do |ff| %>
-  <fieldset style="border-left: 5px solid #bbb;margin-bottom:10px;padding:10px;">
-    <div class="col-md-3">
-      <label>名称:</label> <%= ff.name %>
-    </div>
-    <div class="col-md-3">
-      <label>联系方式:</label> <%= ff.contact %>
-    </div>
-  </fieldset>
-<% end %>
+  <% @guest.refer_guests.each do |ff| %>
+    <fieldset style="border-left: 5px solid #bbb;margin-bottom:10px;padding:10px;">
+      <div class="col-md-3">
+        <label>名称:</label> <%= ff.name %>
+      </div>
+      <div class="col-md-3">
+        <label>联系方式:</label> <%= ff.contact %>
+      </div>
+    </fieldset>
+  <% end %>
+<% else %>
+  暂无裙带客源
 <% end %>
 <div class="col-md-12">
 

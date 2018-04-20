@@ -19,7 +19,7 @@ class Ability
 
     elsif user.has_role?(:salesman)
       # 业务员
-      can :read ,Guest
+      can :manage,Guest
     elsif user.has_role?(:salesman_p)
       # 兼职业务员
       can :read ,Guest
@@ -47,7 +47,7 @@ class Ability
     elsif user.has_role?(:asset_user)
       # 资管用户
       can :read ,House
-      
+
     end
     # Define abilities for the passed in user here. For example:
     #

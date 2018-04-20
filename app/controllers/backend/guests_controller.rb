@@ -4,13 +4,13 @@ class Backend::GuestsController < ApplicationController
   load_and_authorize_resource
   def index
 
-    @guests=Guest.includes(:follows).includes(:users).includes(:options).order("status DESC").rank(:row_order).page(params[:page]).per(20)
+    @guests=Guest.includes(:follows).includes(:options).order("status DESC").rank(:row_order).page(params[:page]).per(20)
 
   end
   def show
-    if @guest.follows.any? && @guest.follows.last.user_id=current_user.id
+    if @guest.follows.any? && @guest.follows.last.user_id==current_user.id
       pre_follow=@guest.follows.last
-      @guest.follows.build(:user_id=>current_user.id,:last_follow_date=>Time.now())
+      @guest.follows.build(:user_id=>current_user.id,:last_follow_date=>Time.now(),:name=>current_user.email)
       @guest.save if pre_follow.last_follow_date!=@guest.follows.last.last_follow_date
     end
   end
@@ -20,23 +20,33 @@ class Backend::GuestsController < ApplicationController
   def edit
     @guest.refer_guests.build if @guest.refer_guests.empty?
     # @guest.follows.build(:user_id=>current_user.id) if @guest.follows.empty?
-    @guest.follows.build
+    @pre_follow=@guest.follows.last
+    # @guest.follows.build
   end
   def create
     @guest=Guest.new(guest_params)
+    @guest.row_order_position=:first
     if @guest.save
-      @guest.row_order_position=:first
+
+      follow=@guest.follows.last
+      if follow.present?
+        follow.last_follow_date=Time.now()
+        follow.name=User.find(follow.user_id).email
+        follow.save
+      end
       redirect_to backend_guests_path
     else
       render :new
     end
   end
   def update
+    # binding.pry
     if @guest.update(guest_params)
       @guest.row_order_position=:first
       @guest.save!
-      t=@guest.follows.last.updated_at
-      @guest.follows.last.update(:last_follow_date=>t)
+      @the_follow=@guest.follows.last
+      t=@the_follow.updated_at
+      @guest.follows.last.update(:last_follow_date=>t,:name=>User.find(@the_follow.user_id).email)
       redirect_to backend_guests_path
 
     else

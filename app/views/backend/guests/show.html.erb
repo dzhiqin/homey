@@ -14,7 +14,7 @@
       <% if @guest.country_code.present? %>
         <%= @guest.country_name(@guest.country_code) %>
       <% else %>
-        unkown
+        unknown
       <% end %>
     </div>
     <div class="col-md-3">
@@ -127,18 +127,19 @@
         </tr>
       </thead>
       <tbody>
-      <% if @guest.follows.any? %>
-        <% @guest.follows.each do |follow|%>
-          <tr>
-            <td><%=follow.name%></td>
-            <td><%=follow.try(:last_follow_date)%></td>
-            <td><%=sanitize follow.memo%></td>
-          </tr>
+      <% if @follows.any? %>
+        <% @follows.each do |follow| %>
+        <tr>
+          <td><%=follow.name%></td>
+          <td><%=follow.try(:last_follow_date)%></td>
+          <td><%=sanitize follow.memo%></td>
+        </tr>
         <% end %>
-      <%end%>
-
+      <% end %>
       </tbody>
+
     </table>
+    <%= paginate @follows %>
   </div>
 </div>
 

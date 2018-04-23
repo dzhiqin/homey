@@ -16,7 +16,7 @@ class Ability
     elsif user.has_role?(:acc)
       # 会计
       can :read,House
-
+      can :read,Guest
     elsif user.has_role?(:salesman)
       # 业务员
       can :manage,Guest
@@ -43,7 +43,7 @@ class Ability
       can :read ,House
     elsif user.has_role?(:rental_user)
       # 租房用户
-      can :read ,Guest
+      # can :read ,Guest
     elsif user.has_role?(:asset_user)
       # 资管用户
       can :read ,House

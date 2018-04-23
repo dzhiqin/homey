@@ -8,26 +8,28 @@ class Backend::GuestsController < ApplicationController
 
   end
   def show
-    if @guest.follows.any? && @guest.follows.last.user_id==current_user.id
-      pre_follow=@guest.follows.last
-      @guest.follows.build(:user_id=>current_user.id,:last_follow_date=>Time.now(),:name=>current_user.email)
-      @guest.save if pre_follow.last_follow_date!=@guest.follows.last.last_follow_date
+    pre_follow=@guest.follows.last
+    follow=@guest.follows.build(:user_id=>current_user.id,:last_follow_date=>Time.now(),:name=>current_user.email)
+    if  !validate_same_follow(pre_follow,follow)
+      @guest.save
+    else
+      follow.destroy
     end
+    @follows=@guest.follows.order("created_at DESC").page(params[:page]).per(20)
   end
   def new
     @guest.refer_guests.build
   end
   def edit
     @guest.refer_guests.build if @guest.refer_guests.empty?
-    # @guest.follows.build(:user_id=>current_user.id) if @guest.follows.empty?
-    @pre_follow=@guest.follows.last
-    # @guest.follows.build
+    pre_follow=@guest.follows.last
+    follow=@guest.follows.build(:user_id=>current_user.id,:last_follow_date=>Time.now(),:name=>current_user.email)
+    @guest.save if  !validate_same_follow(pre_follow,follow)
   end
   def create
     @guest=Guest.new(guest_params)
     @guest.row_order_position=:first
     if @guest.save
-
       follow=@guest.follows.last
       if follow.present?
         follow.last_follow_date=Time.now()
@@ -40,15 +42,14 @@ class Backend::GuestsController < ApplicationController
     end
   end
   def update
-    # binding.pry
+    @guest.row_order_position=:first
+    pre_follow=@guest.follows.last
     if @guest.update(guest_params)
-      @guest.row_order_position=:first
-      @guest.save!
-      @the_follow=@guest.follows.last
-      t=@the_follow.updated_at
-      @guest.follows.last.update(:last_follow_date=>t,:name=>User.find(@the_follow.user_id).email)
+      follow=@guest.follows.last
+      if pre_follow.id!=follow.id
+        follow.update(:name=>User.find(follow.user_id).email,:last_follow_date=>Time.now())
+      end
       redirect_to backend_guests_path
-
     else
       render :edit
     end
@@ -64,5 +65,10 @@ class Backend::GuestsController < ApplicationController
     params.require(:guest).permit(:name,:country_code,:status,:job,:email,:wechat,:phone,:company,:referrer,:approach,:house_district,:house_type,:liked_estate,
       :landscape,:house_floor,:house_parking,:house_furnished,:house_XIS,:check_in_date,:duration,:budget,:has_pet,:want_buy,:other_requests,
       :follows_attributes=>[:id,:user_id,:guest_id,:name,:last_follow_date,:memo,:_destroy],:option_ids=>[],:refer_guests_attributes=>[:id,:name,:contact,:_destroy])
+  end
+  def validate_same_follow(pre_follow,follow)
+    if pre_follow.present?
+      pre_follow.user_id==follow.user_id && pre_follow.last_follow_date == follow.last_follow_date
+    end
   end
 end

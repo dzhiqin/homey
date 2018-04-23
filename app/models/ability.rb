@@ -47,7 +47,7 @@ class Ability
     elsif user.has_role?(:asset_user)
       # 资管用户
       can :read ,House
-
+      can :read ,Guest
     end
     # Define abilities for the passed in user here. For example:
     #

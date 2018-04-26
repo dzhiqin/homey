@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417033317) do
+ActiveRecord::Schema.define(version: 20180426152724) do
 
   create_table "asset_vips", force: :cascade do |t|
     t.string   "name"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20180417033317) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "row_order"
+    t.string   "creator"
     t.index ["row_order"], name: "index_guests_on_row_order"
   end
 
@@ -211,6 +212,14 @@ ActiveRecord::Schema.define(version: 20180417033317) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "simple_captcha_data", force: :cascade do |t|
+    t.string   "key",        limit: 40
+    t.string   "value",      limit: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["key"], name: "idx_key"
   end
 
   create_table "users", force: :cascade do |t|

@@ -6,6 +6,9 @@ zh-CN:
   log in: "登录"
   log out: "退出"
   change password: "修改密码"
+  simple_captcha:
+    label: "把图片中的字符输入到上栏"
+    placeholder: "输入验证码"
   house:
     status:
       valid: "生效"

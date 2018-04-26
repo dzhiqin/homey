@@ -28,6 +28,7 @@ class Backend::GuestsController < ApplicationController
   end
   def create
     @guest=Guest.new(guest_params)
+    @guest.creator=current_user.email.split("@")[0]
     @guest.row_order_position=:first
     if @guest.save
       follow=@guest.follows.last

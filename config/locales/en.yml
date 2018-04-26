@@ -28,6 +28,9 @@ en:
   log in: "Log in"
   log out: "Log out"
   change password: "Change Password"
+  simple_captcha:
+    label: "Enter numbers.."
+    placeholder: "Type here.."
   house:
     status:
       valid: "Valid"

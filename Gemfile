@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.org'
+# source 'https://gems.ruby-china.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -54,6 +54,8 @@ gem 'ranked-model'
 gem 'country_select'
 gem 'ckeditor'
 gem 'letter_opener',group: :development
+gem 'simple_captcha2', require: 'simple_captcha'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

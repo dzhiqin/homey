@@ -11,6 +11,7 @@
     <th>名称</th>
     <th>国籍</th>
     <th>职业</th>
+    <th>创建人</th>
     <th>操作</th>
   </thead>
   <tbody>
@@ -25,6 +26,7 @@
           <% end %>
         </td>
         <td><%= guest.job %></td>
+        <td><%= guest.try(:creator) %></td>
         <td >
           <% if can? :edit,guest%>
             <%= link_to content_tag(:i,"",class:"fa fa-edit"),edit_backend_guest_path(guest) %>

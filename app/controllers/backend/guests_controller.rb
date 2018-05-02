@@ -46,7 +46,9 @@ class Backend::GuestsController < ApplicationController
     pre_follow=@guest.follows.last
     if @guest.update(guest_params)
       follow=@guest.follows.last
-      if !validate_same_follow(pre_follow,follow)
+      if follow.memo.blank?
+        follow.destroy
+      else
         follow.update(:name=>User.find(follow.user_id).email,:last_follow_date=>Time.now())
       end
       redirect_to backend_guests_path

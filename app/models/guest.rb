@@ -8,7 +8,7 @@ class Guest < ApplicationRecord
   has_many :follows
   has_many :users ,through: :follows
   accepts_nested_attributes_for :refer_guests,:allow_destroy=>true,:reject_if=>:all_blank
-  accepts_nested_attributes_for :follows,:allow_destroy=>true,:reject_if=>:all_blank
+  accepts_nested_attributes_for :follows,:allow_destroy=>true,:reject_if=> :all_blank
   STATUS=["request","checkin","checkout"]
   APPROACH=["official","reference","relocation","hr","advertise","others"]
   validates_inclusion_of :status,:in=>STATUS

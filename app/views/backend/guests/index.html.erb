@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <% @guests.each do |guest| %>
-      <tr>
+      <tr bgcolor=<%= (guest.status=="request")? "#fff" : "#ececec" %>>
         <td><%= link_to guest.name,backend_guest_path(guest) %></td>
         <td>
           <% if guest.country_code.present? %>

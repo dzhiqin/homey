@@ -3,9 +3,7 @@ class Backend::GuestsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
   def index
-
     @guests=Guest.includes(:follows).includes(:options).order("status DESC").rank(:row_order).page(params[:page]).per(20)
-
   end
   def show
     pre_follow=@guest.follows.last
@@ -23,6 +21,7 @@ class Backend::GuestsController < ApplicationController
   def edit
     @guest.refer_guests.build if @guest.refer_guests.empty?
     pre_follow=@guest.follows.last
+    @pre_follow=@guest.follows.last
     follow=@guest.follows.build(:user_id=>current_user.id,:last_follow_date=>Time.now(),:name=>current_user.email)
     @guest.save if  !validate_same_follow(pre_follow,follow)
   end
@@ -47,7 +46,7 @@ class Backend::GuestsController < ApplicationController
     pre_follow=@guest.follows.last
     if @guest.update(guest_params)
       follow=@guest.follows.last
-      if pre_follow.id!=follow.id
+      if !validate_same_follow(pre_follow,follow)
         follow.update(:name=>User.find(follow.user_id).email,:last_follow_date=>Time.now())
       end
       redirect_to backend_guests_path
@@ -70,6 +69,8 @@ class Backend::GuestsController < ApplicationController
   def validate_same_follow(pre_follow,follow)
     if pre_follow.present?
       pre_follow.user_id==follow.user_id && pre_follow.last_follow_date == follow.last_follow_date
+    else
+      false
     end
   end
 end

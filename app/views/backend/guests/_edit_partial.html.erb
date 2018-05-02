@@ -139,9 +139,13 @@
   </div>
   <div class="panel-body">
     <label>新增跟进信息</label>
-    <%= select_tag "guest[follows_attributes][#{(@pre_follow.present?)? "#{@pre_follow.id+1}": "1"}][user_id]" ,
+    <!-- <%= select_tag "guest[follows_attributes][#{(@pre_follow.present?)? "#{Follow.last.id+1}": "1"}][user_id]" ,
     options_for_select(salesman_users.map{|u| [u.email,u.id]}),prompt:"选择跟进人" %>
-    <%= cktext_area_tag "guest[follows_attributes][#{(@pre_follow.present?)? "#{@pre_follow.id+1}" : "1"}][memo]",nil,
+    <%= cktext_area_tag "guest[follows_attributes][#{(@pre_follow.present?)? "#{Follow.last.id+1}" : "1"}][memo]",nil,
+    ckeditor:{toolbar:'mini',language:'zh-CN'} %> -->
+    <input type="text" name="guest[follows_attributes][<%= (@pre_follow.present?)? "#{Follow.all.last.id}" : "#{Follow.all.last.id+1}"%>][user_id]"
+    value="<%= current_user.id %>" hidden>
+    <%= cktext_area_tag "guest[follows_attributes][#{(@pre_follow.present?)? "#{Follow.last.id}" : "#{Follow.all.last.id+1}"}][memo]",nil,
     ckeditor:{toolbar:'mini',language:'zh-CN'} %>
   </div>
 </div>

@@ -252,6 +252,11 @@
   font-family: 'Montserrat', sans-serif;
   color: #09383E;
 }
+.devise-title{
+  text-align: center;
+  font-size: 1.4em;
+  color: #ff9900;
+}
 .container__item {
   margin: 0 auto 40px;
   font-size: 62.5%;
@@ -279,6 +284,10 @@
 }
 .devise-container {
   margin-top: 10%;
+  border: 1px solid #555;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
 }
 .devise-bg .greeting {
   position: absolute;

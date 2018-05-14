@@ -34,7 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if simple_captcha_valid?
       true
     else
-      flash[:alert]="Captcha code is wrong,try again!"
+      flash[:alert]=t("captha_alert",:scope=>"devise")
       self.resource=resource_class.new(sign_up_params)
       respond_with_navigational(resource){render :new}
     end

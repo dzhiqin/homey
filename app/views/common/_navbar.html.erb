@@ -20,8 +20,8 @@
         <li><%=link_to('关于我们',about_us_path)%></li>
 
         <% if !current_user %>
-          <li><%=link_to(t('sign in'),new_user_registration_path)%></li>
-          <li><%=link_to(content_tag(:i,t('log in'),class:'fa fa-sign-in'),new_user_session_path)%></li>
+          <li><%=link_to(t('sign_up',:scope=>"devise"),new_user_registration_path)%></li>
+          <li><%=link_to(content_tag(:i,t('log_in',:scope=>"devise"),class:'fa fa-sign-in'),new_user_session_path)%></li>
         <%else%>
         <% if current_user.has_role?(:admin)%>
         <li class="dropdown">
@@ -51,8 +51,8 @@
               <% end %>
               <li><%=link_to('日程看板')%></li>
               <li><%=link_to('我的资料')%></li>
-              <li><%=link_to(t('change password'),edit_registration_path(:user))%></li>
-              <li><%=link_to(content_tag(:i,t('log out'),class:'fa fa-sign-out'),destroy_user_session_path,method: :delete)%></li>
+              <li><%=link_to(t('change_pw',:scope=>"devise"),edit_registration_path(:user))%></li>
+              <li><%=link_to(content_tag(:i,t('log_out',:scope=>"devise"),class:'fa fa-sign-out'),destroy_user_session_path,method: :delete)%></li>
             </ul>
           </li>
         <%end%>

@@ -19,4 +19,11 @@ module Backend::GuestsHelper
     end
 
   end
+  def show_name_memo(guest)
+    if can? :update ,guest
+      if guest.name_memo.present?
+        "(#{guest.name_memo})"
+      end
+    end
+  end
 end

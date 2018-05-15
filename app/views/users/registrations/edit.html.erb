@@ -21,13 +21,14 @@
 
       <div class="form-actions">
         <%= f.button :submit, t("update",:scope=>"devise"),class:"btn btn-danger" %>
+        <%= link_to t("back"), :back,class:"btn btn-default" %>
       </div>
     <% end %>
 
     <!-- <h3 class=""><%= t("cancel_account",:scope=>"devise") %></h3> -->
 
-    <p>Unhappy? <%= link_to t("cancel_account",:scope=>"devise"), registration_path(resource_name), data: { confirm: t("cancel_account_confirm",:scope=>"devise") }, method: :delete %></p>
+    <!-- <p>Unhappy? <%= link_to t("cancel_account",:scope=>"devise"), registration_path(resource_name), data: { confirm: t("cancel_account_confirm",:scope=>"devise") }, method: :delete %></p> -->
 
-    <%= link_to t("back"), :back %>
+
   </div>
 </div>

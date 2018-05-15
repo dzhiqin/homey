@@ -24,8 +24,9 @@
       </div>
     </div>
     <div class="col-md-12" style="padding:0">
+
       <div class="col-md-3">
-        <%= f.input :job, label:"职业" %>
+        <%= f.input :name_memo,label:"姓名备注" %>
       </div>
       <div class="col-md-3">
         <%= f.input :company ,label:"公司信息" %>
@@ -54,7 +55,8 @@
         <%= f.select :approach,Guest::APPROACH.map{|p| [t(p,:scope=>"guest.approach"),p]},{},class:"form-control" %>
       </div>
       <div class="col-md-3">
-
+        <%= f.input :job, label:"职业" %>
+      </div>
 
         <!-- <%= f.collection_check_boxes :user_ids,User.all,:id,:email %> -->
 

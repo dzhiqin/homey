@@ -1,0 +1,26 @@
+<%= simple_form_for [:backend,user,salary] do |f|%>
+  <div class="" id="salary_form">
+    <%= f.input :name ,label:"姓名",:input_html=>{value:"#{user.profile.name}"}%>
+    <%= f.input :salary_date ,label:"工资月份",start_year: Date.today.year - 10, end_year: Date.today.year,discard_day: true%>
+    <%= f.input :workdays ,label:"全勤天数"%>
+    <%= f.input :attendance_days ,label:"出勤天数"%>
+    <%= f.input :leave_days ,label:"请假"%>
+    <%= f.input :holiday ,label:"调休"%>
+    <%= f.input :full_attendance_bonus,label:"全勤奖" %>
+    <%= f.input :basic_wage ,label:"基本工资"%>
+    <%= f.input :post_wage ,label:"岗位工资"%>
+    <%= f.input :subsidy,label:"补贴" %>
+    <%= f.input :bonus,label:"奖金" %>
+    <%= f.input :performance_fee ,label:"业绩提成"%>
+    <%= f.input :salary,label:"应发工资" %>
+    <%= f.input :endowment_insurance,label:"养老保险" %>
+    <%= f.input :medical_insurance,label:"医疗保险" %>
+    <%= f.input :jobless_insurance ,label:"失业保险"%>
+    <%= f.input :housing_fund ,label:"住房公积金"%>
+    <%= f.input :tax ,label:"个税"%>
+    <%= f.input :actual_salary ,label:"实发工资"%>
+    <%= f.submit "确定",class:"btn btn-primary btn-nav" %>
+    <%= link_to "取消",backend_user_salaries_path(@user),class:"btn btn-default btn-nav" %>
+  </div>
+
+<% end %>

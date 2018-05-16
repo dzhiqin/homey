@@ -1,0 +1,25 @@
+<div class="">
+  <h1>员工列表</h1>
+  <table class="table">
+    <thead>
+      <th>姓名</th>
+      <th>邮箱</th>
+      <th>职位</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+      <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.name %></td>
+        <td><%= profile.user.email %></td>
+        <td><%= profile.job %></td>
+        <td><%= link_to '编辑',edit_backend_profile_path(profile) %> |
+          <%= link_to "工资条",backend_user_salaries_path(profile.user) %>
+        </td>
+
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @profiles %>

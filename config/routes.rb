@@ -2,14 +2,18 @@ Rails.application.routes.draw do
   devise_for :users,controllers: {registrations: 'users/registrations',
     sessions: 'users/sessions',
     passwords: "users/passwords",
-    confirmations: "users/confirmations"
+    confirmations: "users/confirmations",
     }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#index'
   get 'about_us',to: "welcome#about_us"
   get 'backend',to: "backend/base#index"
+  get 'backed/worker',to:"backend/base#worker",as: :worker_backend
   get 'backend/pie'=>"backend/base#pie",:as=>:pie
   get "houses/vip"=>"houses#vip_index",:as=>:vip_houses
+  resources :users do
+    resource :profile,:only=>[:edit,:update]
+  end
   namespace :admin do
     resources :asset_vips
     resources :users do
@@ -49,10 +53,14 @@ Rails.application.routes.draw do
   namespace :backend do
     resources :resources
     resources :requests
-    resources :inquiries
-    resources :messages
-    resources :subleases
-    resources :renters
+    resources :profiles,:only=>[:index,:edit,:update]
+    resources :users,:only=>[:index] do
+      resources :salaries
+    end
+    # resources :inquiries
+    # resources :messages
+    # resources :subleases
+    # resources :renters
     resources :guests
   end
 end

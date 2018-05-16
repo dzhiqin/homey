@@ -11,6 +11,8 @@ class User < ApplicationRecord
   belongs_to :asset_vip,:optional=>true
   has_many :read_relationships
   has_many :read_houses,through: :read_relationships,:source=>:house
+  has_one :profile
+  has_many :salaries,:dependent=>:destroy
   def add_a_role(role)
     self.add_role role
   end

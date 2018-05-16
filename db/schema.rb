@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514101520) do
+ActiveRecord::Schema.define(version: 20180516023413) do
 
   create_table "asset_vips", force: :cascade do |t|
     t.string   "name"
@@ -188,6 +188,25 @@ ActiveRecord::Schema.define(version: 20180514101520) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.date     "birthday"
+    t.string   "location"
+    t.string   "education"
+    t.string   "occupation"
+    t.date     "hiredate"
+    t.text     "slogan"
+    t.string   "job"
+    t.string   "company"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "hometown"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "read_relationships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "house_id"
@@ -214,6 +233,31 @@ ActiveRecord::Schema.define(version: 20180514101520) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "salaries", force: :cascade do |t|
+    t.integer  "user_id"
+    t.decimal  "workdays",              default: "0.0"
+    t.decimal  "attendance_days",       default: "0.0"
+    t.decimal  "full_attendance_bonus", default: "0.0"
+    t.decimal  "leave_days",            default: "0.0"
+    t.decimal  "holiday",               default: "0.0"
+    t.decimal  "basic_wage",            default: "0.0"
+    t.decimal  "post_wage",             default: "0.0"
+    t.decimal  "subsidy",               default: "0.0"
+    t.decimal  "bonus",                 default: "0.0"
+    t.decimal  "performance_fee",       default: "0.0"
+    t.decimal  "salary",                default: "0.0"
+    t.decimal  "endowment_insurance",   default: "0.0"
+    t.decimal  "medical_insurance",     default: "0.0"
+    t.decimal  "jobless_insurance",     default: "0.0"
+    t.decimal  "housing_fund",          default: "0.0"
+    t.decimal  "tax",                   default: "0.0"
+    t.decimal  "actual_salary",         default: "0.0"
+    t.date     "salary_date"
+    t.string   "name"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "simple_captcha_data", force: :cascade do |t|

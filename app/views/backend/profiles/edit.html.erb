@@ -1,0 +1,24 @@
+
+<%= simple_form_for [:backend,@profile] do |f|%>
+<div class="">
+  <h1><%= @profile.name %>个人资料设置</h1>
+  <%= f.input :name,label: "姓名:",input_html:{value: "#{@profile.try(:name)}",placeholder:"姓名",style:"width: 300px;"} %>
+  <%= f.input :email, label:"邮箱:",input_html:{value:"#{@user.try(:email)}",placeholder:"请输入邮箱"}%>
+  <%= f.input :phone,label:"联系电话:" %>
+  <%= f.input :birthday ,label:"出生年月:",start_year: Date.today.year - 90, end_year: Date.today.year - 12,discard_day: true %>
+  <%= f.input :hometown ,label:"籍贯:"%>
+  <%= f.input :location,label:"所在地址:" %>
+  <%= f.input :job,label:"职业/岗位:" %>
+  <% if @user.is_employee %>
+  <%= f.input :hiredate,label:"入职时间:",start_year: Date.today.year - 10, end_year: Date.today.year %>
+  <% else %>
+  <%= f.input :company , label:"公司:" %>
+  <% end %>
+
+  <%= f.input :education,label:"学历:" %>
+  <%= f.input :occupation, label:"专业:" %>
+  <%= f.input :slogan,label:"自我介绍:" %>
+  <%= f.submit "确定",class:"btn btn-primary btn-nav" %> <%= link_to "返回",:back,class:"btn btn-default btn-nav" %>
+</div>
+
+<% end %>

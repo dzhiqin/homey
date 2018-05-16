@@ -1,0 +1,2 @@
+module Backend::SalariesHelper
+end

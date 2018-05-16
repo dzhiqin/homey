@@ -36,6 +36,7 @@
               <% if can? :read,Guest%>
               <li id="guests"><%=link_to("求租客信息",backend_guests_path)%></li>
               <%end%>
+              <li id="worker"><%=link_to("员工管理",worker_backend_path)%></li>
             </ul>
           </div>
 

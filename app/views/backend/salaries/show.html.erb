@@ -1,0 +1,51 @@
+<h1><%= @salary.name %>工资条</h1>
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>姓名</th>
+      <th>工资月份</th>
+      <th>全勤天数</th>
+      <th>出勤天数</th>
+      <th>请假</th>
+      <th>调休</th>
+      <th>全勤奖</th>
+      <th>基本工资</th>
+      <th>岗位工资</th>
+      <th>补贴</th>
+      <th>奖金</th>
+      <th>业务提成</th>
+      <th>应发工资</th>
+      <th>养老保险</th>
+      <th>医疗保险</th>
+      <th>失业保险</th>
+      <th>住房公积金</th>
+      <th>个税</th>
+      <th>实发工资</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @salary.name %></td>
+      <td><%= @salary.salary_date %></td>
+      <td><%= @salary.workdays %></td>
+      <td><%= @salary.attendance_days %></td>
+      <td><%= @salary.leave_days %></td>
+      <td><%= @salary.holiday %></td>
+      <td><%= @salary.full_attendance_bonus %></td>
+      <td><%= @salary.basic_wage %></td>
+      <td><%= @salary.post_wage %></td>
+      <td><%= @salary.subsidy %></td>
+      <td><%= @salary.bonus %></td>
+      <td><%= @salary.performance_fee %></td>
+      <td><%= @salary.salary %></td>
+      <td><%= @salary.endowment_insurance %></td>
+      <td><%= @salary.medical_insurance %></td>
+      <td><%= @salary.jobless_insurance %></td>
+      <td><%= @salary.housing_fund %></td>
+      <td><%= @salary.tax %></td>
+      <td><%= @salary.actual_salary %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "返回",:back,class:"btn btn-default btn-nav" %>

@@ -3,7 +3,8 @@ class Backend::ProfilesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
   def index
-    @profiles=Profile.eager_load(:user).where("is_employee=?",true).page(params[:page]).per(20)
+    @users=User.includes(:profile).where("is_employee=?",true).page(params[:page]).per(20)
+    # @profiles=Profile.eager_load(:user).where("is_employee=?",true).page(params[:page]).per(20)
   end
   def edit
     # @profile=Profile.find(params[:id])

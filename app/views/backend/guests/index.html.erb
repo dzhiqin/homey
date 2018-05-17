@@ -3,7 +3,7 @@
 <% if can? :create,Guest %>
 <%= link_to("新增租客信息",new_backend_guest_path,:class=>"btn btn-default") %>
 <% end %>
-<%= link_to("客户来源占比图",backend_path,:class=>"btn btn-primary") %>
+
 <% if @guests.present?%>
 
 <table class="table">

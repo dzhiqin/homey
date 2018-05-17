@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180516023413) do
+ActiveRecord::Schema.define(version: 20180517032914) do
 
   create_table "asset_vips", force: :cascade do |t|
     t.string   "name"
@@ -222,6 +222,22 @@ ActiveRecord::Schema.define(version: 20180516023413) do
     t.integer  "guest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "renters", force: :cascade do |t|
+    t.decimal  "rental_price"
+    t.string   "address"
+    t.string   "name"
+    t.decimal  "budget"
+    t.decimal  "budget_rental_ratio"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "guest_id"
+    t.date     "rental_from"
+    t.date     "rental_to"
+    t.string   "rental_duration"
+    t.decimal  "rental_square"
+    t.index ["guest_id"], name: "index_renters_on_guest_id"
   end
 
   create_table "roles", force: :cascade do |t|

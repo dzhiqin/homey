@@ -27,6 +27,9 @@ class Backend::GuestsController < ApplicationController
   end
   def create
     @guest=Guest.new(guest_params)
+    if guest_params[:status] == "checkin"
+      Renter.create(:name=>@guest.name,:budget=>@guest.budget,:guest_id=>@geust.id)
+    end
     @guest.creator=current_user.email.split("@")[0]
     @guest.row_order_position=:first
     if @guest.save
@@ -42,6 +45,9 @@ class Backend::GuestsController < ApplicationController
     end
   end
   def update
+    if guest_params[:status] == "checkin"
+      @renter=@guest.renter || Renter.create(:name=>@guest.name,:budget=>@guest.budget,:guest_id=>@guest.id)
+    end
     @guest.row_order_position=:first
     pre_follow=@guest.follows.last
     if @guest.update(guest_params)

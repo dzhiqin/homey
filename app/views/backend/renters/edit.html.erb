@@ -1,0 +1,14 @@
+<h1>编辑在租客信息</h1>
+<%= simple_form_for [:backend,@renter] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :rental_square,label:"租房面积" %>
+  <%= f.input :address,label:"门牌地址" %>
+  <%= f.input :rental_from,label:"起租" %>
+  <%= f.input :rental_to,label:"退租" %>
+  <%= f.input :rental_duration,label:"租期时长" %>
+  <%= f.input :budget,label:"预算租金" %>
+  <%= f.input :rental_price,label:"实租价格" %>
+  <%= f.input :budget_rental_ratio,label:"预算/实租比" %>
+  <%= f.submit "确定",class:"btn btn-primary btn-nav" %>
+  <%= link_to '取消',backend_renters_path,class:"btn btn-default btn-nav" %>
+<% end %>

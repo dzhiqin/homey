@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     resources :users,:only=>[:index] do
       resources :salaries
     end
+    resources :renters
     # resources :inquiries
     # resources :messages
     # resources :subleases

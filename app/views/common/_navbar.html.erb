@@ -44,7 +44,7 @@
             <ul class="dropdown-menu">
               <% if current_user.is_employee%>
               <li><%=link_to('后台管理',backend_path)%></li>
-              <li><%= link_to "工资条",user_salaries_path(current_user) %></li>
+              <li><%= link_to "我的工资条",user_salaries_path(current_user) %></li>
               <% end %>
               <% if current_user.asset_vip.present?%>
                 <li><%= link_to 'VIP资产信息',vip_houses_path%></li>

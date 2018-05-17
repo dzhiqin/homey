@@ -20,3 +20,6 @@
     end
     follow.save!
   end
+  Guest.where("status=?","checkin").each do |g|
+    Renter.create(:name=>"#{g.name}",:budget=>"#{g.budget}",:guest_id=>"#{g.id}")
+  end

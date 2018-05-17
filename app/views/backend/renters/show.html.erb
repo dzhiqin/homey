@@ -1,0 +1,34 @@
+<h1>在租客 - <%= @renter.name %></h1>
+<table class="table table-bordered">
+  <thead>
+
+      <th>名称</th>
+      <th>门牌地址</th>
+      <th>租房面积</th>
+      <th>起租日期</th>
+      <th>退租日期</th>
+
+      <th>租期时长</th>
+      <th>预算租金</th>
+      <th>实租价格</th>
+      <th>预算/实租比</th>
+
+
+  </thead>
+  <tbody>
+
+      <td><%= @renter.name %></td>
+      <td><%= @renter.address %></td>
+      <th><%= @renter.rental_square %></th>
+      <td><%= @renter.rental_from %></td>
+      <td><%= @renter.rental_to %></td>
+
+
+      <td><%= @renter.rental_duration %></td>
+      <td><%= @renter.budget %></td>
+      <td><%= @renter.rental_price %></td>
+      <td><%= @renter.budget_rental_ratio %></td>
+
+  </tbody>
+</table>
+<%= link_to '返回',backend_renters_path,class:"btn btn-default btn-nav" %>

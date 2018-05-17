@@ -1,0 +1,30 @@
+<h1>在租客信息列表</h1>
+<table class="table ">
+  <thead>
+    <th>名称</th>
+    <th>地址</th>
+    <th>预算</th>
+    <th>实际租金</th>
+    <th>预算/实际租金比</th>
+    <th>操作</th>
+  </thead>
+  <tbody>
+    <% @renters.each do |renter| %>
+    <tr>
+      <td><%= renter.name %></td>
+      <td><%= renter.address %></td>
+      <td><%= renter.budget %></td>
+      <td><%= renter.rental_price %></td>
+      <td><%= renter.budget_rental_ratio %></td>
+      <td>
+        <%= link_to "查看",backend_renter_path(renter) %> |
+        <%= link_to "编辑",edit_backend_renter_path(renter) %> |
+        <%= link_to "删除",backend_renter_path(renter),method: :delete ,data:{confirm:"您确定要删除此条信息吗?"}%>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to '新增租客信息',new_backend_renter_path,class:"btn btn-success btn-nav" %>
+<%= link_to("客户来源占比图",backend_path,:class=>"btn btn-primary") %>
+<%= paginate @renters %>

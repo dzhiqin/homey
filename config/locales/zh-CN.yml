@@ -7,7 +7,7 @@ zh-CN:
     sign_up: "注册"
     log_in: "登录"
     log_out: "退出"
-    change_pw: "修改资料"
+    change_pw: "修改账号密码"
     update: "更新"
     min_char: "个字符以上"
     captha_alert: "验证码错误，请重新输入！"

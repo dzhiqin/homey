@@ -7,6 +7,7 @@ class Guest < ApplicationRecord
   has_many :options,through: :guest_options
   has_many :follows
   has_many :users ,through: :follows
+  has_one :renter,:dependent=>:destroy
   accepts_nested_attributes_for :refer_guests,:allow_destroy=>true,:reject_if=>:all_blank
   accepts_nested_attributes_for :follows,:allow_destroy=>true,:reject_if=> :all_blank
   STATUS=["request","checkin","checkout"]

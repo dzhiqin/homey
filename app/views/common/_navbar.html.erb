@@ -23,19 +23,18 @@
           <li><%=link_to(t('sign_up',:scope=>"devise"),new_user_registration_path)%></li>
           <li><%=link_to(content_tag(:i,t('log_in',:scope=>"devise"),class:'fa fa-sign-in'),new_user_session_path)%></li>
         <%else%>
-        <% if current_user.has_role?(:admin)%>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理员选项 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%=link_to('用户权限管理',admin_users_path)%></li>
-            <li><%=link_to('资产管理',houses_path)%></li>
-            <li><%=link_to('房源管理',"#")%></li>
-            <li><%=link_to('员工信息')%></li>
-            <li><%=link_to('广告合作')%></li>
-            <li><%=link_to('线上加盟系统')%></li>
-          </ul>
-        </li>
-        <% end %>
+          <% if current_user.is_admin %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理员选项 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%=link_to('用户权限管理',admin_users_path)%></li>
+                <li><%=link_to('资产管理',houses_path)%></li>
+                <!-- <li><%=link_to('房源管理',"#")%></li> -->
+                <li><%=link_to('广告合作')%></li>
+                <li><%=link_to('线上加盟系统')%></li>
+              </ul>
+            </li>
+          <% end %>
 
           <li class="dropdown">
             <a href='#' class="dropdown-toggle" data-toggle="dropdown">
@@ -45,14 +44,16 @@
             <ul class="dropdown-menu">
               <% if current_user.is_employee%>
               <li><%=link_to('后台管理',backend_path)%></li>
+              <li><%= link_to "工资条",user_salaries_path(current_user) %></li>
               <% end %>
               <% if current_user.asset_vip.present?%>
                 <li><%= link_to 'VIP资产信息',vip_houses_path%></li>
               <% end %>
               <li><%=link_to('日程看板')%></li>
               <% if current_user %>
-              <li><%=link_to('我的资料',edit_user_profile_path(current_user))%></li>
+              <li><%=link_to('个人资料设置',edit_user_profile_path(current_user))%></li>
               <% end %>
+
               <li><%=link_to(t('change_pw',:scope=>"devise"),edit_registration_path(:user))%></li>
               <li><%=link_to(content_tag(:i,t('log_out',:scope=>"devise"),class:'fa fa-sign-out'),destroy_user_session_path,method: :delete)%></li>
             </ul>

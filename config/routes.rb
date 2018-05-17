@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get 'backed/worker',to:"backend/base#worker",as: :worker_backend
   get 'backend/pie'=>"backend/base#pie",:as=>:pie
   get "houses/vip"=>"houses#vip_index",:as=>:vip_houses
-  resources :users do
+  resources :users,:only=>[:index] do
     resource :profile,:only=>[:edit,:update]
+    resources :salaries,:only=>[:index,:show]
   end
   namespace :admin do
     resources :asset_vips

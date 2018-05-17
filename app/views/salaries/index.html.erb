@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>工资条列表</h1>
+  <table class="table">
+    <thead>
+      <th>姓名</th>
+      <th>工资月份</th>
+      <th>操作</th>
+    </thead>
+    <tbody>
+      <% @salaries.each do |s| %>
+      <tr>
+        <td><%= s.name %></td>
+        <td><%= s.salary_date %></td>
+        <td>
+          <%= link_to "查看" ,user_salary_path(@user,s) %>
+
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "返回","/",class:"btn btn-default btn-nav" %>
+</div>

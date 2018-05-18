@@ -93,8 +93,9 @@ en:
       hr: "College/Company HR"
       advertise: "Advertise"
       others: "Others"
-  pagination:
-    last: "Last"
-    next: "Next"
-    previous: "Previous"
-    first: "First"
+  views:
+    pagination:
+      last: "Last"
+      next: "Next"
+      previous: "Previous"
+      first: "First"

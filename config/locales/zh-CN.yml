@@ -72,8 +72,9 @@ zh-CN:
       hr: "高校/外企人事部"
       advertise: "广告"
       others: "其它"
-  pagination:
-    last: "末页"
-    next: "下一页"
-    previous: "上一页"
-    first: "首页"
+  views:
+    pagination:
+      last: "末页"
+      next: "下一页"
+      previous: "上一页"
+      first: "首页"

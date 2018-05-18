@@ -5,7 +5,7 @@
   <%end%>
 </ul>
 <% end %>
-<h1 class="main-title">房源信息-Step2</h1>
+<h1 class="main-title">资产信息-Step2</h1>
 <%= simple_form_for @house,:url=>update_step2_house_path(@house)  do |f|%>
   <div class="container">
     <div class="row">
@@ -36,7 +36,7 @@
               <%= f.input :refurbishment,collection:House::LEVEL.map{|s| [t(s,:scope=>"house.level.refurbishment"),s]}, label:'翻修规划' ,required:true,prompt:"必填"%>
             </div>
             <div class="col-md-3">
-              <%= f.input :lease_plan,collection:House::LEASE.map{|s| [t(s,:scope=>"house.lease_plan"),s]},label:"招租规划",required:true,prompt:"必填"%>
+              <%= f.input :lease_plan,collection:House::LEASE.map{|s| [t(s,:scope=>"house.lease_plan"),s]},label:"租赁运营规划",required:true,prompt:"必填"%>
             </div>
           </div>
           <div class="col-md-12">

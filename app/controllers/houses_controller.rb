@@ -101,12 +101,16 @@ class HousesController < ApplicationController
     end
   end
   def house_params
-    params.require(:house).permit(:house_id,:last_login,:contact_phone,:district_id,:address,:gated_community,:landscape,:greening,:parking_space,:structure,:spatial_planning,
-      :completion_date,:floor_height,:is_duplex,:property_area,:actual_area,:house_upgrade,:house_furnishings,:gas_pipeline,:elevator,:public_area,:wall_malleability,:house_malleability,
-      :public_passage,:sercurity_service,:charter_costs,:monthly_rent,:payment_method,:price_before_operation,:transportation_convenience,:shopping_convenience,:medical_convenience,:education_resources,
+    params.require(:house).permit(
+      :house_id,:last_login,:contact_phone,:district_id,:address,:gated_community,:landscape,:greening,:parking_space,:structure,:spatial_planning,
+      :completion_date,:floor_height,:is_duplex,:property_area,:actual_area,:house_upgrade,:house_furnishings,:gas_pipeline,:elevator,:public_area,
+      :wall_malleability,:house_malleability,
+      :public_passage,:sercurity_service,:charter_costs,:monthly_rent,:payment_method,:price_before_operation,:transportation_convenience,
+      :shopping_convenience,:medical_convenience,:education_resources,
       :logo,:remove_logo,:contact_name,:cp_lat,:cp_lng,:status,
       :join_name,:bedroom,:bathroom,:veranda,:balcony,:refurbishment,:lease_plan,:indoor_theme,:guarantee_rate,:duration_of_renovation,:deposit,:daily_rent,
-      :refurbishment_budget,:maintain_budget,:overdue_price,:referral_commission,:utilities,:VAT_merchant,:VAT_personal,:ROI_lease,:ROI_guarantee,:duration_of_lease,:duration_of_guarantee,
+      :refurbishment_budget,:maintain_budget,:overdue_price,:referral_commission,:utilities,:VAT_merchant,:VAT_personal,:ROI_lease,:ROI_guarantee,
+      :duration_of_lease,:duration_of_guarantee,
       :start_up_cost,:B_income_rate,:platform_income_rate,:house_images_attributes=>[:id,:image,:description,:_destroy],
       :leases_attributes=>[:id,:charter_costs,:platform_guarantee_yearly_income,:B_guarantee_yearly_income,:homey_guarantee_yearly_income_bonus,:_destroy]
     )

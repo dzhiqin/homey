@@ -30,7 +30,7 @@ en:
     log_in: "Log in"
     log_out: "Log out"
     update: "Update"
-    min_char: " characters minimum" 
+    min_char: " characters minimum"
     captha_alert: "Captcha code is wrong,try again!"
     send_pw_instructions: "Send me reset password instructions"
     resend_confirmation: "Resend confirmation instructions"
@@ -93,3 +93,8 @@ en:
       hr: "College/Company HR"
       advertise: "Advertise"
       others: "Others"
+  pagination:
+    last: "Last"
+    next: "Next"
+    previous: "Previous"
+    first: "First"

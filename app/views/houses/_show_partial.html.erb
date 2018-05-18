@@ -1,4 +1,4 @@
-<table class="table table-bordered  table-hover table-responsive">
+<table class="table table-bordered  table-hover table-responsive table-bg" >
   <tbody>
     <tr>
       <td colspan="1">编号:<%= house.house_id %></td>
@@ -118,74 +118,90 @@
       <td>支付方式: <%= house.payment_method %></td>
       <td></td>
     </tr>
-  </tbody>
-</table>
-<% if @house.vip_users.include?(current_user) || (can? :update ,House)%>
-  <table class="table table-bordered table-hover table-responsive">
-    <tbody>
+    <% if house.vip_users.include?(current_user) || (can? :update ,House)%>
+    <tr>
+      <td colspan="1">加盟角色:<%=house.join_name%></td>
+      <td colspan="1">改造户型:<%=house.bedroom%>卧室<%= house.bathroom %>卫生间<%= house.veranda %>阳台<%= house.balcony %>露台</td>
+      <td colspan="1">翻修规划:<%=t(house.refurbishment,:scope=>"house.level.refurbishment")%></td>
+      <td colspan="1">租赁运营规划:<%=t(house.lease_plan,:scope=>"house.lease_plan")%></td>
+      <td colspan="1">室内主题:<%=house.indoor_theme%></td>
+    </tr>
+    <tr>
+      <td colspan="1">预留装修期:<%=house.duration_of_renovation%>(天)</td>
+      <td colspan="1">担保入住率:<%=house.guarantee_rate%>(%)</td>
+      <td colspan="1">月租金(物业/水电/燃气/网络):<%=house.monthly_rent%>(¥)</td>
+      <td colspan="1">押金:<%=house.deposit%>(¥)</td>
+      <td colspan="1">日租指导价:<%=house.daily_rent%>(¥)</td>
+    </tr>
+    <tr>
+      <td colspan="1">单套改造预算:<%=house.refurbishment_budget%>(¥)</td>
+      <td colspan="1">年养护预算:<%=house.maintain_budget%>(¥)</td>
+      <td colspan="1">装修超期成本:<%=house.overdue_price%>(¥)</td>
+      <td colspan="1">中介佣金:<%=house.referral_commission%>(¥)</td>
+      <td colspan="1">物业/水电/燃气/网络费:<%=house.utilities%>(¥)</td>
+    </tr>
+    <tr>
+      <td colspan="1">商户增值税百分比:<%=house.VAT_merchant%>(%)</td>
+      <td colspan="1">个人增值税百分比:<%=house.VAT_personal%>(%)</td>
+      <td colspan="1">满租回报率:<%=house.ROI_lease%>(%)</td>
+      <td colspan="1">担保回报率:<%=house.ROI_guarantee%>(%)</td>
+      <td colspan="1">满租回报周期:<%=house.duration_of_lease%>(月)</td>
+    </tr>
+    <tr>
+      <td colspan="1">担保回报周期:<%=house.duration_of_guarantee%>(月)</td>
+      <td colspan="1">单套启动成本(含拿房押金):<%=house.start_up_cost%>(¥)</td>
+      <td colspan="1">B端净收比例:<%=house.B_income_rate%>(%)</td>
+      <td colspan="1">平台净收比例:<%=house.platform_income_rate%>(%)</td>
+      <td></td>
+    </tr>
+      <% house.leases.each_with_index do |lease,i|%>
       <tr>
-        <td colspan="1">加盟角色:<%=@house.join_name%></td>
-        <td colspan="1">改造户型:<%=@house.bedroom%>卧室<%= @house.bathroom %>卫生间<%= @house.veranda %>阳台<%= @house.balcony %>露台</td>
-        <td colspan="1">翻修规划:<%=@house.refurbishment%></td>
-        <td colspan="1">招租规划:<%=@house.lease_plan%></td>
-        <td colspan="1">室内主题:<%=@house.indoor_theme%></td>
-      </tr>
-      <tr>
-        <td colspan="1">预留装修期:<%=@house.duration_of_renovation%>(天)</td>
-        <td colspan="1">担保入住率:<%=@house.guarantee_rate%>(%)</td>
-        <td colspan="1">月租金(物业/水电/燃气/网络):<%=@house.monthly_rent%>(¥)</td>
-        <td colspan="1">押金:<%=@house.deposit%>(¥)</td>
-        <td colspan="1">日租指导价:<%=@house.daily_rent%>(¥)</td>
-      </tr>
-      <tr>
-        <td colspan="1">单套改造预算:<%=@house.refurbishment_budget%>(¥)</td>
-        <td colspan="1">年养护预算:<%=@house.maintain_budget%>(¥)</td>
-        <td colspan="1">装修超期成本:<%=@house.overdue_price%>(¥)</td>
-        <td colspan="1">中介佣金:<%=@house.referral_commission%>(¥)</td>
-        <td colspan="1">物业/水电/燃气/网络费:<%=@house.utilities%>(¥)</td>
-      </tr>
-      <tr>
-        <td colspan="1">商户增值税百分比:<%=@house.VAT_merchant%>(%)</td>
-        <td colspan="1">个人增值税百分比:<%=@house.VAT_personal%>(%)</td>
-        <td colspan="1">满租回报率:<%=@house.ROI_lease%>(%)</td>
-        <td colspan="1">担保回报率:<%=@house.ROI_guarantee%>(%)</td>
-        <td colspan="1">满租回报周期:<%=@house.duration_of_lease%>(月)</td>
-      </tr>
-      <tr>
-        <td colspan="1">担保回报周期:<%=@house.duration_of_guarantee%>(月)</td>
-        <td colspan="1">单套启动成本(含拿房押金):<%=@house.start_up_cost%>(¥)</td>
-        <td colspan="1">B端净收比例:<%=@house.B_income_rate%>(%)</td>
-        <td colspan="1">平台净收比例:<%=@house.platform_income_rate%>(%)</td>
+        <td>第<%= i+1 %>年包租月租金:<%= lease.charter_costs %>(¥)</td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td></td>
       </tr>
-      <tr>
-        <% @house.leases.each_with_index do |lease,i|%>
-          <td>第<%= i+1 %>年包租月租金:<%= lease.charter_costs %>(¥)</td>
-        <% end %>
-      </tr>
-    </tbody>
-  </table>
-<% end %>
+      <% end %>
+
+    <% end %>
+
+  </tbody>
+</table>
+
 <div class="container">
   <div class="row">
 
     <p class="text-right">
       <% if current_user.is_asset_user && current_user.asset_vip.present?%>
-        <% if @house.vip_users.include?(current_user)%>
+        <% if house.vip_users.include?(current_user)%>
           <%= link_to "已添加","#",class:"btn btn-default",data:{confirm:"您已经把此条信息添加到VIP资产信息栏。"} %>
         <% else %>
-          <%= link_to "添加",house_path(@house,:add=>"add_to_read"),class:"btn btn-default",
+          <%= link_to "添加",house_path(house,:add=>"add_to_read"),class:"btn btn-default",
           data:{confirm:"您是VIP资管用户，可以把此条信息添加到VIP资产信息栏,添加后将会占用您一个VIP资产信息额度，确定添加吗？"} %>
         <% end %>
 
       <% end %>
 
-      <% if can? :update,@house%>
-        <%= link_to('编辑',edit_house_path(@house),class:"btn btn-warning common-btn") %>
+      <% if can? :update,house%>
+        <%= link_to('编辑',edit_house_path(house),class:"btn btn-warning common-btn") %>
       <% end %>
       <%= link_to "返回",houses_path,class:"btn btn-success common-btn" %>
     </p>
 
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          地图信息
+          <% if house.cp_lat.blank?%>
+          --暂未定位
+          <% end %>
+        </h4>
+      </div>
+      <div class="panel-body">
+        <%= render "common/baidumap_2" %>
+      </div>
+    </div>
 
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-xs-12 bhoechie-tab-container">
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
@@ -361,19 +377,7 @@
 
 
 
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        地图信息
-        <% if house.cp_lat.blank?%>
-        --暂未定位
-        <% end %>
-      </h4>
-    </div>
-    <div class="panel-body">
-      <%= render "common/baidumap_2" %>
-    </div>
-  </div>
+
 
 </div>
 

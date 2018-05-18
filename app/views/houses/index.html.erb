@@ -17,7 +17,7 @@
         <th>资产地址</th>
         <th>创建时间</th>
         <th>上次更新时间</th>
-        <th colspan="2">操作</th>
+        <th>操作</th>
       </tr>
     </thead>
     <tbody>
@@ -36,14 +36,13 @@
               <% end %>
             <% end %>
           </td>
-          <td>
+          <!-- <td>
             <% if current_user %>
             <% if can? :destroy , house %>
               <%= link_to content_tag(:i,"",class:"fa fa-trash"),house_path(house),method: :delete,data:{confirm:"are you sure?"} %>
-              <!-- <%= link_to('destroy',house_path(house),method: :delete,data:{confirm:"are you sure?"},class:"btn btn-danger") %> -->
             <%end%>
             <% end %>
-          </td>
+          </td> -->
         </tr>
       <%end%>
     </tbody>

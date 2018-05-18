@@ -354,7 +354,12 @@
           <ul class="slides">
             <% house.house_images.each do |house_image| %>
             <li>
-              <%= image_tag(house_image.image.url) %>
+              <% if house_image.image.url.present? %>
+                <%= image_tag(house_image.image.url) %>
+              <% else %>
+                <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+              <% end %>
+
             </li>
             <% end %>
           </ul>
@@ -363,7 +368,11 @@
           <ul class="slides">
             <% house.house_images.each do |house_image| %>
             <li>
+              <% if house_image.image.url.present? %>
               <%= image_tag(house_image.image.medium.url) %>
+              <% else %>
+              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+              <% end %>
             </li>
             <% end %>
           </ul>

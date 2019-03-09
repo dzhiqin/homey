@@ -75,7 +75,8 @@ end
 
 group :production do
   # deploy heroku
-  gem 'pg'
+  # gem 'pg'
+  gem 'sqlite3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

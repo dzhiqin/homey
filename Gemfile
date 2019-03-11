@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+ruby '2.5.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.6'
 # Use sqlite3 as the database for Active Record
@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
 gem 'simple_form'
-gem 'devise'
+gem 'devise', '~> 4.4', '>= 4.4.1'
 gem 'font-awesome-rails'
 gem 'rails-i18n'
 gem 'devise-i18n'
@@ -48,7 +48,6 @@ gem 'mini_magick'
 gem 'nested_form_fields'
 gem 'figaro'
 gem 'kaminari'
-gem 'mysql2'
 gem 'fog'
 gem 'ranked-model'
 gem 'country_select'
@@ -75,7 +74,7 @@ end
 
 group :production do
   # deploy heroku
-  gem 'pg', '~> 0.18'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

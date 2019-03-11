@@ -20,13 +20,13 @@ test:
   database: db/test.sqlite3
 
 production:
-  # <<: *default
-  # database: db/production.sqlite3
-  adapter: postgresql
-  encoding: unicode
-  host: localhost
-  database: homey_production
-  pool: 50
-  username: homey
-  password: homey512
-  template: template0
+  <<: *default
+  database: db/production.sqlite3
+  # adapter: postgresql
+  # encoding: unicode
+  # host: localhost
+  # database: homey_production
+  # pool: 50
+  # username: homey
+  # password: homey512
+  # template: template0
